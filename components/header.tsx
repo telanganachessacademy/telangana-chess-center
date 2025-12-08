@@ -1,19 +1,30 @@
 "use client";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+
+import { useState, useEffect } from "react";
+import { ChevronDown, Menu, X, Phone, Mail, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/button"; // Assuming you have this, otherwise standard html button works
 
 interface NavItem {
   name: string;
   href: string;
   hasDropdown?: boolean;
   dropdownItems?: { name: string; href: string }[];
+  isButton?: boolean; // New property to style specific links as buttons
 }
 
 export function Header() {
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Detect scroll to add shadow/shrink effect
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems: NavItem[] = [
     { name: "Home", href: "/" },
@@ -27,163 +38,137 @@ export function Header() {
   ];
 
   return (
-    <header className="bg-[#F5F7FA] shadow-md fixed w-full z-20">
-      {/* Top Section: Logo + Academy + Contact */}
-      <div className="flex flex-col lg:flex-row justify-between items-center px-4 md:px-60 py-3">
-        <div className="flex items-center w-full lg:w-auto">
-          {/* Logo and Title (Centered) */}
-          <div className="flex flex-1 justify-center lg:justify-start">
-            <Link href="/" className="flex items-center space-x-1.5 md:space-x-4">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <Image
-                  src="/logo.ico"
-                  alt="Bharat Chess Academy Logo"
-                  width={55}
-                  height={55}
-                />
-              </div>
-              <span className="text-base md:text-xl font-semibold tracking-tight bg-gradient-to-r from-[#2B6CB0] via-[#4299E1] to-[#F56565] bg-clip-text text-transparent whitespace-nowrap">
-                Bharat Chess Academy
-              </span>
-            </Link>
+    <header className="fixed w-full z-50 top-0 left-0 font-sans">
+      
+      {/* --- TOP BAR (Dark Navy) --- */}
+      <div className="bg-[#0f172a] text-slate-300 text-xs py-2 px-4 transition-all duration-300">
+        <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row justify-between items-center gap-2">
+          <div className="flex items-center space-x-4">
+            <a href="tel:+919864646481" className="flex items-center hover:text-white transition-colors">
+              <Phone className="w-3 h-3 mr-1.5" /> +91 9864646481
+            </a>
+            <span className="hidden sm:block text-slate-600">|</span>
+            <a href="mailto:bharatchessacademy@gmail.com" className="flex items-center hover:text-white transition-colors">
+              <Mail className="w-3 h-3 mr-1.5" /> bharatchessschool@gmail.com
+            </a>
           </div>
-          {/* Mobile Menu Toggle (Right-aligned) */}
-          <div className="lg:hidden flex items-center">
-            <button
-              className="p-1 text-[#2D3748] hover:text-[#2B6CB0]"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
-                />
-              </svg>
-            </button>
+          <div className="hidden sm:block text-slate-400 font-medium tracking-wide text-[10px] uppercase">
+            Checkmate Your Limits
           </div>
-        </div>
-
-        <div className="mt-2 lg:mt-0 text-xs md:text-sm text-[#2D3748] flex flex-col lg:flex-row lg:space-x-2 text-center lg:text-right">
-          <span>WhatsApp/Call: +91 9864646481</span>
-          <span className="lg:block hidden">|</span>
-          <span>Email: bharatchessacademy@gmail.com</span>
         </div>
       </div>
 
-      {/* Navbar Menu */}
-      <nav className="bg-[#F5F7FA] border-t border-gray-200 px-4 md:px-6 py-0">
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center justify-center space-x-3 xl:space-x-10">
-          {navItems.map((item) => (
-            <div key={item.name} className="relative">
-              {item.hasDropdown ? (
-                <div className="relative">
-                  <button
-                    onClick={() => setIsAboutOpen(!isAboutOpen)}
-                    className="flex items-center space-x-1 text-[#2D3748] hover:text-[#2B6CB0] font-medium py-1 px-1.5 text-md whitespace-nowrap"
-                    aria-expanded={isAboutOpen}
-                    aria-haspopup="true"
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown className="w-3 h-3" />
-                  </button>
-                  {isAboutOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-40 bg-white text-[#2D3748] rounded shadow-lg border border-gray-200 z-10">
-                      {item.dropdownItems?.map((dropItem) => (
-                        <Link
-                          key={dropItem.name}
-                          href={dropItem.href}
-                          className="block px-3 py-1.5 text-md hover:bg-gray-100 whitespace-nowrap"
-                          onClick={() => setIsAboutOpen(false)}
-                        >
-                          {dropItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : item.name === "Online Coaching" ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#2D3748] hover:text-[#2B6CB0] font-medium py-1 px-1.5 text-md rounded hover:bg-gray-100 whitespace-nowrap"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="text-[#2D3748] hover:text-[#2B6CB0] font-medium py-1 px-1.5 text-md rounded hover:bg-gray-100 whitespace-nowrap"
-                >
-                  {item.name}
-                </Link>
-              )}
+      {/* --- MAIN NAVIGATION (White Glass) --- */}
+      <div 
+        className={`bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300 ${
+          isScrolled ? "shadow-md py-2" : "py-3 sm:py-4"
+        }`}
+      >
+        <div className="container mx-auto max-w-7xl px-4 flex items-center justify-between">
+          
+          {/* Logo Section */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/logo.jpg"
+                alt="Bharat Chess Academy"
+                width={50}
+                height={50}
+                className="object-contain"
+              />
             </div>
-          ))}
-        </div>
+            <div className="flex flex-col leading-none">
+              <span className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                Bharat Chess School
+              </span>
+              <span className="text-xs sm:text-sm font-semibold text-blue-600 uppercase tracking-widest">
+                
+              </span>
+            </div>
+          </Link>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-3 space-y-2 text-[#2D3748]">
-            {navItems.map((item) => (
-              <div key={item.name}>
-                {item.hasDropdown ? (
-                  <div>
-                    <button
-                      onClick={() => setIsAboutOpen(!isAboutOpen)}
-                      className="flex items-center justify-between w-full hover:text-[#2B6CB0] py-1.5 text-sm"
-                      aria-expanded={isAboutOpen}
-                      aria-haspopup="true"
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown className="w-3 h-3" />
-                    </button>
-                    {isAboutOpen && (
-                      <div className="ml-3 mt-1 space-y-1">
-                        {item.dropdownItems?.map((dropItem) => (
-                          <Link
-                            key={dropItem.name}
-                            href={dropItem.href}
-                            className="block text-[#2D3748] bg-white hover:bg-gray-100 py-1.5 text-sm px-3"
-                            onClick={() => {
-                              setIsAboutOpen(false);
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            {dropItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : item.name === "Online Coaching" ? (
-                  <a
-                    href={item.href}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => {
+              // Primary CTA Button Style (Online Coaching)
+              if (item.isButton) {
+                return (
+                  <Link 
+                    key={item.name} 
+                    href={item.href} 
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#2B6CB0] py-1.5 text-sm block"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="ml-4"
                   >
-                    {item.name}
-                  </a>
-                ) : (
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5 flex items-center gap-2">
+                      {item.name}
+                      <ExternalLink className="w-3 h-3 opacity-70" />
+                    </button>
+                  </Link>
+                );
+              }
+
+              // Standard Links
+              return (
+                <div key={item.name} className="relative group">
                   <Link
                     href={item.href}
-                    className="hover:text-[#2B6CB0] py-1.5 text-sm block"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50"
                   >
                     {item.name}
                   </Link>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* --- MOBILE MENU OVERLAY --- */}
+      <div 
+        className={`fixed inset-x-0 top-[110px] bg-white border-b border-slate-200 shadow-xl transition-all duration-300 ease-in-out lg:hidden overflow-hidden ${
+          isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="p-4 space-y-2 overflow-y-auto">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : "_self"}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors flex items-center justify-between ${
+                item.isButton 
+                  ? "bg-blue-600 text-white hover:bg-blue-700 mt-4 text-center justify-center shadow-md" 
+                  : "text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+              }`}
+            >
+              <span>{item.name}</span>
+              {!item.isButton && item.href.startsWith("http") && <ExternalLink className="w-4 h-4 opacity-50" />}
+            </Link>
+          ))}
+          
+          {/* Mobile Contact Footer */}
+          <div className="pt-6 mt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+             <a href="tel:+919864646481" className="flex flex-col items-center justify-center p-3 bg-slate-50 rounded-lg text-xs text-slate-600 hover:bg-blue-50 hover:text-blue-600">
+                <Phone className="w-5 h-5 mb-1" />
+                <span>Call Us</span>
+             </a>
+             <a href="mailto:bharatchessschool@gmail.com" className="flex flex-col items-center justify-center p-3 bg-slate-50 rounded-lg text-xs text-slate-600 hover:bg-blue-50 hover:text-blue-600">
+                <Mail className="w-5 h-5 mb-1" />
+                <span>Email Us</span>
+             </a>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
+
     </header>
   );
 }

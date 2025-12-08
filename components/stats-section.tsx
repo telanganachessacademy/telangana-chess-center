@@ -1,105 +1,163 @@
 "use client";
 
-import type React from "react";
+import { useEffect, useState, useRef } from "react";
+import { Trophy, Users, GraduationCap, Swords } from "lucide-react";
 
-import { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Trophy, Users, Award, GamepadIcon } from "lucide-react";
+// --- Custom Hook for Counting Up Numbers ---
+const useCounter = (end: number, duration: number = 2000, start: boolean = false) => {
+  const [count, setCount] = useState(0);
 
-interface StatItem {
-  value: string;
-  label: string;
-  suffix?: string;
-  icon: React.ReactNode;
-  color: string;
-}
+  useEffect(() => {
+    if (!start) return;
+
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [end, duration, start]);
+
+  return count;
+};
+
+// --- Stat Card Component ---
+const StatCard = ({ item, isVisible, index }: { item: any; isVisible: boolean; index: number }) => {
+  const count = useCounter(parseInt(item.value), 2000, isVisible);
+
+  return (
+    <div
+      className={`relative group bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      {/* Background Watermark Icon */}
+      <div className="absolute -right-6 -bottom-6 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
+        <item.icon className="w-40 h-40" />
+      </div>
+
+      {/* Top Icon */}
+      <div className={`inline-flex p-4 rounded-xl mb-6 bg-gradient-to-br ${item.bgGradient} shadow-inner`}>
+        <item.icon className={`w-8 h-8 ${item.iconColor}`} />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="flex items-baseline gap-1 mb-2">
+          <span className="text-5xl font-extrabold text-slate-900 tracking-tight">
+            {count}
+          </span>
+          <span className={`text-3xl font-bold ${item.accentColor}`}>
+            {item.suffix}
+          </span>
+        </div>
+        <h3 className="text-slate-500 font-medium uppercase tracking-wider text-sm">
+          {item.label}
+        </h3>
+      </div>
+
+      {/* Bottom Border Accent */}
+      <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${item.bgGradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+    </div>
+  );
+};
 
 export function StatsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect(); // Only animate once
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
 
-    const element = document.getElementById("stats-section");
-    if (element) observer.observe(element);
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => observer.disconnect();
   }, []);
 
-  const stats: StatItem[] = [
+  const stats = [
     {
       value: "50",
-      label: "Unique Features",
+      label: "Features & Tools",
       suffix: "+",
-      icon: <Trophy className="w-8 h-8" />,
-      color: "from-[#2563EB] to-[#3B82F6]", // Softer blue gradient
+      icon: Trophy,
+      iconColor: "text-blue-600",
+      accentColor: "text-blue-500",
+      bgGradient: "from-blue-50 to-blue-100",
     },
     {
       value: "500",
       label: "Happy Students",
       suffix: "+",
-      icon: <Users className="w-8 h-8" />,
-      color: "from-[#2563EB] to-[#60A5FA]", // Lighter soft blue gradient
+      icon: Users,
+      iconColor: "text-orange-600",
+      accentColor: "text-orange-500",
+      bgGradient: "from-orange-50 to-orange-100",
     },
     {
       value: "15",
-      label: "FIDE Rated Coaches",
+      label: "FIDE Coaches",
       suffix: "+",
-      icon: <Award className="w-8 h-8" />,
-      color: "from-[#2563EB] to-[#3B82F6]", // Softer blue gradient
+      icon: GraduationCap,
+      iconColor: "text-blue-600",
+      accentColor: "text-blue-500",
+      bgGradient: "from-blue-50 to-blue-100",
     },
     {
       value: "1000",
       label: "Training Games",
       suffix: "+",
-      icon: <GamepadIcon className="w-8 h-8" />,
-      color: "from-[#DB2777] to-[#F472B6]", // Soft and professional pink gradient
+      icon: Swords,
+      iconColor: "text-orange-600",
+      accentColor: "text-orange-500",
+      bgGradient: "from-orange-50 to-orange-100",
     },
   ];
 
   return (
     <section
-      id="stats-section"
-      className="py-24 bg-gradient-to-br from-white via-[#F3F4F6] to-[#EFF6FF]"
+      ref={sectionRef}
+      className="py-24 relative bg-slate-50 overflow-hidden"
     >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1E40AF] mb-4">
-            Our Achievements
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header */}
+        <div className={`text-center mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="inline-block mb-4 px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase">
+            Proven Results
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Our Numbers Speak
           </h2>
-          <p className="text-lg md:text-xl text-[#334155] max-w-2xl mx-auto font-medium">
-            Numbers that speak for our commitment to excellence in chess education
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            We measure our success by the growth of our students. Here is the impact Bharat Chess School has created in the chess community.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {stats.map((stat, index) => (
-            <Card
-              key={index}
-              className={`bg-white border border-gray-200 text-center p-8 transition-transform duration-300 hover:scale-105 hover:shadow-lg ${
-                isVisible ? "opacity-100 animate-fade-scale" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div
-                className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-md animate-bounce-gentle`}
-              >
-                {stat.icon}
-              </div>
-
-              <div className="text-4xl md:text-5xl font-bold text-[#1E293B] mb-3">
-                {stat.value}
-                <span className="text-[#2563EB]">{stat.suffix}</span>
-              </div>
-              <div className="text-[#475569] font-semibold text-lg">{stat.label}</div>
-            </Card>
+            <StatCard 
+              key={index} 
+              item={stat} 
+              isVisible={isVisible} 
+              index={index} 
+            />
           ))}
         </div>
       </div>

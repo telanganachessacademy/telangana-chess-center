@@ -1,67 +1,109 @@
-import { Card } from "@/components/ui/card"
-import { Gamepad2, Monitor, Users } from "lucide-react"
+"use client";
+
+import { Gamepad2, Monitor, Users, ArrowRight, Zap } from "lucide-react";
+import Image from "next/image";
 
 export function FeaturesSection() {
   const features = [
     {
       icon: Gamepad2,
-      title: "Game Area",
+      title: "Interactive Game Area",
       description:
-        "Players can play games by inviting the other players. Coach can watch the games played by the students. It helps the students to play with the engine for practice.",
-      image: "/chess-game-area-interface.jpg",
+        "Practice with purpose. Challenge peers, analyze moves with Stockfish engine, and get real-time coach feedback in our dedicated arena.",
+      image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800", // Chess Board
+      color: "blue",
     },
     {
       icon: Monitor,
-      title: "Online Classes",
+      title: "Live Digital Classrooms",
       description:
-        'Conduct interactive One to One or One to Many classes with students. Coach can conduct "Open Classroom" where the students under the coach can attend the classes.',
-      image: "/online-chess-class-interface.jpg",
+        "Experience seamless learning with interactive 1-on-1 and group sessions. Our 'Open Classroom' technology brings the academy to your home.",
+      image: "https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&q=80&w=800", // Student/Laptop
+      color: "orange",
     },
     {
       icon: Users,
-      title: "Team Management",
-      description: "Manage your chess academy team with professional coaches and track student progress effectively.",
-      image: "/chess-team-management-dashboard.jpg",
+      title: "Academy Management",
+      description:
+        "A centralized dashboard for coaches and parents. Track ELO ratings, tournament history, and attendance with professional analytics.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800", // Analytics/Dashboard
+      color: "purple",
     },
-  ]
+  ];
 
   return (
-    <section id="features" className="py-20 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Features</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Discover the comprehensive features that make our chess academy the perfect place for learning and growth.
+    <section id="features" className="py-24 relative bg-white overflow-hidden">
+      
+      {/* Background Decor (Dot Pattern) */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wider mb-4 border border-orange-100">
+            <Zap className="w-3 h-3" />
+            <span>World-Class Platform</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Everything you need to <span className="text-blue-600">Master the Game</span>
+          </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            We combine traditional chess wisdom with modern technology. Explore the tools that give our students the competitive edge.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Features Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
           {features.map((feature, index) => (
-            <Card
+            <div
               key={index}
-              className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-scale"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="group relative bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1"
             >
-              <div className="aspect-video overflow-hidden">
-                <img
-                  src={feature.image || "/placeholder.svg"}
+              {/* Image Area */}
+              <div className="relative h-56 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                <Image
+                  src={feature.image}
                   alt={feature.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="bg-accent/10 p-2 rounded-lg">
-                    <feature.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
+                
+                {/* Floating Icon Badge */}
+                <div className={`absolute -bottom-6 right-8 z-20 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-all duration-300 ${
+                  feature.color === 'blue' ? 'bg-blue-600' : 
+                  feature.color === 'orange' ? 'bg-orange-500' : 'bg-purple-600'
+                }`}>
+                  <feature.icon className="w-7 h-7 text-white" />
                 </div>
-                <p className="text-muted-foreground text-pretty">{feature.description}</p>
               </div>
-            </Card>
+
+              {/* Content Area */}
+              <div className="p-8 pt-10 flex flex-col flex-grow">
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-500 leading-relaxed mb-6 flex-grow">
+                  {feature.description}
+                </p>
+
+                {/* Bottom Action */}
+                <div className="flex items-center text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors cursor-pointer">
+                  <span>Learn more</span>
+                  <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+
+              {/* Decorative Top Border */}
+              <div className={`absolute top-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ${
+                  feature.color === 'blue' ? 'bg-blue-600' : 
+                  feature.color === 'orange' ? 'bg-orange-500' : 'bg-purple-600'
+              }`}></div>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

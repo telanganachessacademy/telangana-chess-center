@@ -1,210 +1,235 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Play, Users, Trophy, Star, Sparkles, Award, VideoIcon, BellIcon } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Play, Users, Trophy, Star, Sparkles, Award, VideoIcon, BellIcon, Phone } from "lucide-react";
 import Link from "next/link";
-import { Chessboard } from "react-chessboard"; // Import react-chessboard
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export function HeroSection() {
-  const [hoveredPiece, setHoveredPiece] = useState<number | null>(null);
-  
-  // State for responsive chessboard width
-  const [boardWidth, setBoardWidth] = useState(400); 
-  const boardContainerRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // 4 High-quality Chess Images
+  const heroImages = [
+    "/hero-1.jpg",    // ← Put your images in public/images/
+    "/hero-2.jpg",
+    "/hero-3.jpg",
+    "/hero-5.jpg",
+    "/hero-6.jpg",
+  ];
+
+  // Auto-rotate images every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const chessPieces = ["♔", "♕", "♖", "♗", "♘", "♙"];
-
-  // Logic to handle responsive resizing of the chessboard
-  useEffect(() => {
-    const handleResize = () => {
-      if (boardContainerRef.current) {
-        setBoardWidth(boardContainerRef.current.offsetWidth);
-      }
-    };
-
-    // Initial calculation
-    handleResize();
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-16 flex items-center justify-center overflow-hidden bg-background sm:pt-20 md:pt-24 lg:pt-28"
-      style={{ background: "linear-gradient(135deg, #F5F7FA 0%, #E2E8F0 60%, #2B6CB0 90%, #9F7AEA 10%)" }}
+      className="relative min-h-screen pt-24 md:pt-32 pb-16 flex items-center overflow-hidden bg-white"
     >
-      {/* Background Floating Pieces */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
-        {chessPieces.map((piece, index) => {
-          const colors = ["#2B6CB0", "#9F7AEA"];
-          const color = colors[index % colors.length];
-          return (
-            <div
-              key={index}
-              className="absolute text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-8xl animate-chess-float cursor-default"
-              style={{
-                left: `${5 + index * 10}%`,
-                top: `${10 + (index % 3) * 20}%`,
-                animationDelay: `${index * 0.5}s`,
-                color: color,
-                transform: `translateZ(${hoveredPiece === index ? "20px" : "0"})`,
-                transition: "transform 0.3s ease, color 0.5s ease",
-              }}
-              onMouseEnter={() => setHoveredPiece(index)}
-              onMouseLeave={() => setHoveredPiece(null)}
-            >
-              {piece}
-            </div>
-          );
-        })}
+      {/* --- Background Gradients --- */}
+      <div 
+        className="absolute inset-0 z-0 opacity-80"
+        style={{
+          background: "linear-gradient(135deg, #FFF3E0 0%, #E8F5E9 35%, #E1F5FE 70%, #F3E5F5 100%)",
+        }}
+      />
+      
+      {/* --- Floating Chess Pieces Background --- */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none z-0 overflow-hidden">
+        {chessPieces.map((piece, i) => (
+          <div
+            key={i}
+            className="absolute text-7xl md:text-9xl lg:text-[10rem] select-none font-serif"
+            style={{
+              left: `${5 + i * 15}%`,
+              top: `${10 + (i % 3) * 25}%`,
+              animation: `float ${10 + i * 2}s ease-in-out infinite`,
+              color: i % 2 === 0 ? "#2E7D32" : "#1976D2",
+              textShadow: "0 4px 12px rgba(0,0,0,0.1)"
+            }}
+          >
+            {piece}
+          </div>
+        ))}
       </div>
 
-      {/* Decorative Blobs */}
-      <div className="absolute top-4 xs:top-8 sm:top-12 md:top-16 right-4 xs:right-6 sm:right-8 w-12 xs:w-16 sm:w-20 md:w-24 h-12 xs:h-16 sm:h-20 md:h-24 bg-[#2B6CB0] rounded-full opacity-20 animate-pulse-slow z-0"></div>
-      <div className="absolute top-8 xs:top-12 sm:top-16 md:top-24 left-4 xs:left-6 sm:left-8 md:left-12 w-10 xs:w-12 sm:w-16 md:w-20 h-10 xs:h-12 sm:h-16 md:h-20 bg-[#2B6CB0] rounded-full opacity-15 animate-pulse-slow" style={{ animationDelay: "0.5s" }}></div>
-      <div className="absolute bottom-4 xs:bottom-8 sm:bottom-12 md:bottom-16 right-4 xs:right-6 sm:right-8 md:right-12 w-12 xs:w-16 sm:w-20 md:w-28 h-12 xs:h-16 sm:h-20 md:h-28 bg-[#2B6CB0] rounded-full opacity-15 animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-      <div className="absolute bottom-8 xs:bottom-12 sm:bottom-16 md:bottom-24 left-4 xs:left-6 sm:left-8 md:left-8 w-10 xs:w-12 sm:w-14 md:w-16 h-10 xs:h-12 sm:h-14 md:h-16 bg-[#FF69B4] rounded-full opacity-10 animate-pulse-slow" style={{ animationDelay: "1.5s" }}></div>
+      {/* --- Decorative Blobs --- */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-40 right-40 w-64 h-64 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-8 left-20 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
-      <div className="container max-w-[90%] xs:max-w-[85%] sm:max-w-4xl md:max-w-5xl lg:max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12 md:gap-16 items-center">
-          
-          {/* Left Column: Text Content */}
-          <div className="text-center lg:text-left animate-fade-in">
-            <div className="inline-flex items-center space-x-2 bg-[#E2E8F0] text-[#2B6CB0] px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-full text-xs xs:text-sm sm:text-base font-bold mb-4 xs:mb-6 sm:mb-8 shadow-md border border-[#E2E8F0]">
-              <Star className="w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5 text-[#9F7AEA]" />
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* Left Side - Content */}
+          <div className="text-center lg:text-left space-y-8 animate-fade-in-up">
+            
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-green-200 text-green-800 px-4 py-2 rounded-full text-sm font-bold shadow-sm hover:shadow-md transition-all">
+              <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
               <span>Certified FIDE Coaches</span>
-              <Sparkles className="w-2.5 xs:w-3 sm:w-4 h-2.5 xs:h-3 sm:h-4 text-[#2B6CB0]" />
+              <Sparkles className="w-4 h-4 text-blue-500" />
             </div>
 
-            {/* --- UPDATED BUTTONS SECTION --- */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-8 xs:mb-10 sm:mb-12">
-              <Link href="https://coaching.telanganachessacademy.com/login" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto bg-[#2B6CB0] hover:bg-[#2B6CB0]/90 text-white font-bold px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 md:py-4 rounded-full shadow-lg animate-pulse-slow text-sm xs:text-base sm:text-lg md:text-xl"
-                >
-                  <Users className="w-4 xs:w-5 sm:w-6 h-4 xs:h-5 sm:h-6 mr-1 xs:mr-2 sm:mr-3" /> 
-                  ONLINE COACHING
+            {/* Headline */}
+            <h1 className="text-5xl sm:text-6xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight">
+              
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] via-[#43A047] to-[#1976D2]">
+                Bharat Chess School
+              </span>
+            </h1>
+
+
+            {/* Main CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+              <Link href="https://coaching.telanganachessacademy.com/login" target="_blank" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-[#2E7D32] hover:bg-[#1B5E20] text-white text-lg px-8 py-6 rounded-xl shadow-lg shadow-green-900/20 font-bold transition-transform hover:-translate-y-1">
+                  <Users className="w-6 h-6 mr-2" />
+                  Online Coaching
                 </Button>
               </Link>
 
-              <Link href="https://pages.razorpay.com/pl_RimudLa05GzfHG/view" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  // CHANGED: Button color to Purple to contrast with coaching button
-                  className="w-full sm:w-auto bg-[#805AD5] hover:bg-[#6B46C1] text-white font-bold px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 md:py-4 rounded-full shadow-lg animate-pulse-slow text-sm xs:text-base sm:text-lg md:text-xl"
-                >
-                  <Trophy className="w-4 xs:w-5 sm:w-6 h-4 xs:h-5 sm:h-6 mr-1 xs:mr-2 sm:mr-3" /> 
-                  EVENTS
-                </Button>
-              </Link>
-            </div>
-            {/* -------------------------------- */}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 md:gap-10 justify-center lg:justify-start mb-4 xs:mb-6 sm:mb-8 md:mb-12">
-              <Link href="https://meet.google.com/vjj-cfpx-dav?pli=1" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#2B6CB0] text-[#2B6CB0] hover:bg-[#2B6CB0] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <VideoIcon className="w-4 h-4 mr-2" /> G-Meet
-                </Button>
-              </Link>
-
-              <Link href="https://meet.jit.si/TelanganaChessAcademy" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#2B6CB0] text-[#2B6CB0] hover:bg-[#2B6CB0] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <Play className="w-4 h-4 mr-2" /> Start Call
-                </Button>
-              </Link>
-
-              <Link href="https://meet.google.com/wuk-nfie-mgx" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#2B6CB0] text-[#2B6CB0] hover:bg-[#2B6CB0] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <Play className="w-4 h-4 mr-2" /> Call Naresh
-                </Button>
-              </Link>
-
-              <Link href="https://meet.google.com/atu-ziid-ojg" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#06402B] text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <Sparkles className="w-4 h-4 mr-2" /> TCS Meeting
-                </Button>
-              </Link>
-
-              <Link href="https://meet.google.com/uux-vyxa-pgq" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#06402B] text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <BellIcon className="w-4 h-4 mr-2" /> BCA Meeting
-                </Button>
-              </Link>
-
-              <Link href="https://meet.google.com/mxj-uwyj-vzp" target="_blank" className="cursor-pointer w-full sm:w-auto">
-                <Button size="sm" variant="outline" className="border-2 border-[#06402B] text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
-                  <BellIcon className="w-4 h-4 mr-2" /> Call Rohith
+              <Link href="https://pages.razorpay.com/pl_RimudLa05GzfHG/view" target="_blank" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-[#1976D2] hover:bg-[#1565C0] text-white text-lg px-8 py-6 rounded-xl shadow-lg shadow-blue-900/20 font-bold transition-transform hover:-translate-y-1">
+                  <Trophy className="w-6 h-6 mr-2" />
+                  Events & Tournaments
                 </Button>
               </Link>
             </div>
 
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-[#4A5568] mb-4 xs:mb-6 sm:mb-8 md:mb-10 max-w-xl xs:max-w-2xl leading-relaxed font-medium mx-auto lg:mx-0">
-              Bharat chess academy empowers you with world-class training from FIDE-rated coaches. Build unshakeable skills, dominate the board, and rise to the top of the chess world.
-            </p>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 md:gap-10 justify-center lg:justify-start mb-4 xs:mb-6 sm:mb-8 md:mb-12">
+  
+  {/* 1. G-Meet: Blue */}
+  <Link href="https://meet.google.com/vjj-cfpx-dav?pli=1" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#2563EB] text-[#2563EB] hover:bg-[#2563EB] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <VideoIcon className="w-4 h-4 mr-2" /> G-Meet
+    </Button>
+  </Link>
 
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 xs:gap-4 sm:gap-6 justify-center lg:justify-start">
-              <div className="flex items-center space-x-2 xs:space-x-3 bg-white px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 sm:py-3 rounded-full shadow-md hover:shadow-lg border border-[#E2E8F0]">
-                <div className="w-7 xs:w-8 sm:w-10 h-7 xs:h-8 sm:h-10 bg-[#2B6CB0] rounded-full flex items-center justify-center">
-                  <Trophy className="w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5 text-white" />
+  {/* 2. Start Call: Green */}
+  <Link href="https://meet.jit.si/TelanganaChessAcademy" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#16A34A] text-[#16A34A] hover:bg-[#16A34A] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <Play className="w-4 h-4 mr-2" /> Start Call
+    </Button>
+  </Link>
+
+  {/* 3. Call Naresh: Orange */}
+  <Link href="https://meet.google.com/wuk-nfie-mgx" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#EA580C] text-[#EA580C] hover:bg-[#EA580C] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <Play className="w-4 h-4 mr-2" /> Call Naresh
+    </Button>
+  </Link>
+
+  {/* 4. TCS Meeting: Purple */}
+  <Link href="https://meet.google.com/atu-ziid-ojg" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#9333EA] text-[#9333EA] hover:bg-[#9333EA] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <Sparkles className="w-4 h-4 mr-2" /> TCS Meeting
+    </Button>
+  </Link>
+
+  {/* 5. BCA Meeting: Rose/Red */}
+  <Link href="https://meet.google.com/uux-vyxa-pgq" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#E11D48] text-[#E11D48] hover:bg-[#E11D48] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <BellIcon className="w-4 h-4 mr-2" /> BCA Meeting
+    </Button>
+  </Link>
+
+  {/* 6. Call Rohith: Teal */}
+  <Link href="https://meet.google.com/mxj-uwyj-vzp" target="_blank" className="cursor-pointer w-full sm:w-auto">
+    <Button size="sm" variant="outline" className="border-2 border-[#0D9488] text-[#0D9488] hover:bg-[#0D9488] hover:text-white font-bold px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-md text-xs xs:text-sm sm:text-base md:text-base transition-all duration-300 w-full">
+      <BellIcon className="w-4 h-4 mr-2" /> Call Rohith
+    </Button>
+  </Link>
+</div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-4">
+              {[
+                { label: "Tournaments", value: "120+", icon: Trophy, color: "text-orange-500", bg: "bg-orange-50", border: "border-orange-100" },
+                { label: "Students", value: "600+", icon: Users, color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100" },
+                { label: "Champions", value: "60+", icon: Award, color: "text-green-600", bg: "bg-green-50", border: "border-green-100" },
+              ].map((stat, idx) => (
+                <div key={idx} className={`bg-white rounded-xl p-4 text-center shadow-md border ${stat.border} hover:shadow-lg transition-shadow`}>
+                  <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-2`} />
+                  <div className="text-2xl sm:text-3xl font-bold text-slate-800">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium">{stat.label}</div>
                 </div>
-                <div>
-                  <div className="font-bold text-[#2D3749] text-sm xs:text-base sm:text-lg">120+</div>
-                  <div className="text-xs xs:text-sm text-[#4A5568]">Tournaments</div>
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side - Changing Images Slideshow */}
+          <div className="flex justify-center lg:justify-end animate-fade-in-right relative group">
+            <div className="relative w-full max-w-md lg:max-w-xl aspect-[6/5] sm:aspect-square lg:aspect-[6/5]">
+              
+              {/* Background Blob behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-tr from-green-200 to-blue-200 rounded-full blur-3xl opacity-60 -z-10 group-hover:opacity-80 transition-opacity"></div>
+              
+              {/* Image Container with Overflow Hidden */}
+              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-[8px] border-white">
+                {heroImages.map((src, index) => (
+                  <Image
+                    key={index}
+                    src={src}
+                    alt={`Telangana Chess School Highlight ${index + 1}`}
+                    fill
+                    className={`object-cover transition-opacity duration-1000 ease-in-out ${
+                      index === currentImageIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                    }`}
+                    priority={index === 0}
+                  />
+                ))}
               </div>
-              <div className="flex items-center space-x-2 xs:space-x-3 bg-white px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 sm:py-3 rounded-full shadow-md hover:shadow-lg border border-[#E2E8F0]">
-                <div className="w-7 xs:w-8 sm:w-10 h-7 xs:h-8 sm:h-10 bg-[#2B6CB0] rounded-full flex items-center justify-center">
-                  <Users className="w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5 text-white" />
+              
+              {/* Floating Badge on Image (Stays on top) */}
+              <div className="absolute -bottom-6 -left-4 sm:-left-8 bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-white flex items-center gap-4 animate-bounce-slow z-20">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Award className="w-8 h-8 text-green-600" />
                 </div>
                 <div>
-                  <div className="font-bold text-[#2D3749] text-sm xs:text-base sm:text-lg">600+</div>
-                  <div className="text-xs xs:text-sm text-[#4A5568]">Students</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2 xs:space-x-3 bg-white px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 sm:py-3 rounded-full shadow-md hover:shadow-lg border border-[#E2E8F0]">
-                <div className="w-7 xs:w-8 sm:w-10 h-7 xs:h-8 sm:h-10 bg-[#9F7AEA] rounded-full flex items-center justify-center">
-                  <Award className="w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5 text-white" />
-                </div>
-                <div>
-                  <div className="font-bold text-[#2D3749] text-sm xs:text-base sm:text-lg">60+</div>
-                  <div className="text-xs xs:text-sm text-[#4A5568]">Champions</div>
+                  <p className="text-sm text-slate-500 font-bold uppercase tracking-wider">Join The</p>
+                  <p className="text-xl font-black text-slate-800">Champions</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: React Chessboard */}
-          <div className="flex justify-center lg:justify-end animate-fade-in-up">
-            <div className="relative z-10 w-full max-w-[28rem] xl:max-w-[32rem]">
-              <div 
-                ref={boardContainerRef}
-                className="bg-white rounded-xl shadow-xl p-2 xs:p-3 sm:p-4 border-4 border-[#E2E8F0] hover:shadow-2xl transition-all duration-300"
-              >
-                {/* 
-                  Chessboard Component 
-                  The boardWidth prop is controlled by the ResizeObserver logic above 
-                */}
-                <Chessboard 
-                  boardWidth={boardWidth - 32} // Subtracting padding 
-                  customBoardStyle={{
-                    borderRadius: "4px",
-                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                  }}
-                  customDarkSquareStyle={{ backgroundColor: "#B58863" }}
-                  customLightSquareStyle={{ backgroundColor: "#F0D9B5" }}
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* --- Styles for Animations --- */}
+      <style jsx global>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+        .animate-bounce-slow {
+          animation: bounce 3s infinite;
+        }
+      `}</style>
     </section>
   );
 }

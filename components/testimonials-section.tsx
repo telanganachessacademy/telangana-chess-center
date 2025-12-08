@@ -1,5 +1,8 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, MessageCircle, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -7,147 +10,141 @@ export function TestimonialsSection() {
       id: 1,
       name: "Jyothi Yadav",
       role: "Intermediate Player",
-      rating: 5,
-      content:
-        "My daughter has improved tremendously since joining the academy. The instructors are patient, knowledgeable, and make learning chess fun and engaging.",
-      image: "/jyothi.png",
-      bgColorClass: "bg-purple-50",
-      borderColorClass: "border-purple-200",
-      starColorClass: "text-purple-600",
+      content: "My daughter has improved tremendously since joining. The instructors are patient, knowledgeable, and make learning chess fun and engaging.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200", // Female portrait
     },
     {
       id: 2,
       name: "Khilend Sahu",
       role: "Adult Beginner",
-      rating: 5,
-      content:
-        "I started as a complete beginner and now I'm competing in local tournaments. The structured curriculum and personalized attention made all the difference.",
-      image: "/khilend.png",
-      bgColorClass: "bg-blue-50",
-      borderColorClass: "border-blue-200",
-      starColorClass: "text-blue-600",
+      content: "I started as a complete beginner. The structured curriculum and personalized attention helped me compete in local tournaments within months.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200", // Male portrait
     },
     {
       id: 3,
       name: "Arjun Biru",
-      role: "intermediate Player",
-      rating: 5,
-      content:
-        "The online coaching sessions are fantastic! I can learn from expert coaches from the comfort of my home. My rating has increased by 300 points in 6 months.",
-      image: "/arjun.png",
-      bgColorClass: "bg-green-50",
-      borderColorClass: "border-green-200",
-      starColorClass: "text-green-600",
+      role: "Intermediate Player",
+      content: "The online coaching sessions are fantastic! I learn from expert coaches from home. My rating increased by 300 points in just 6 months.",
+      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=200", // Young male
     },
     {
       id: 4,
       name: "Dandu Ravi",
       role: "Tournament Player",
-      rating: 5,
-      content:
-        "The academy's focus on both tactical and strategic understanding has elevated my game to the next level. I recently won my first regional tournament!",
-      image: "/dandu.png",
-      bgColorClass: "bg-pink-50",
-      borderColorClass: "border-pink-200",
-      starColorClass: "text-pink-600",
+      content: "The focus on tactical and strategic understanding elevated my game. Thanks to the academy, I recently won my first regional tournament!",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200", // Male
     },
     {
       id: 5,
-      name: "Krarjun gaud",
-      role: "Parent of 8-year-old",
-      rating: 5,
-      content:
-        "The coaches here understand how to work with young children. My son looks forward to every lesson and has developed excellent concentration skills.",
-      image: "/gaud.png",
-      bgColorClass: "bg-purple-50",
-      borderColorClass: "border-purple-200",
-      starColorClass: "text-purple-600",
+      name: "Krarjun Gaud",
+      role: "Parent of Student",
+      content: "The coaches understand how to work with young children. My son looks forward to every lesson and has developed excellent concentration.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200", // Older male
     },
     {
       id: 6,
       name: "Chandu Shekhar",
       role: "Student",
-      rating: 5,
-      content:
-        "Never thought I could learn chess, but the patient instructors proved me wrong. Chess has become my favorite hobby and mental exercise.",
-      image: "/andu.png",
-      bgColorClass: "bg-blue-50",
-      borderColorClass: "border-blue-200",
-      starColorClass: "text-blue-600",
+      content: "Never thought I could learn chess, but the instructors proved me wrong. It has become my favorite hobby and mental exercise.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200", // Female
     },
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F5F7FA] via-[#E2E8F0] to-[#2B6CB0]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] mb-4">
-            What Our Students Say
+    <section className="py-24 bg-white relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-60 pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-100">
+            <MessageCircle className="w-3 h-3" />
+            <span>Community Feedback</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Stories from the <span className="text-blue-600">Board</span>
           </h2>
-          <p className="text-lg text-[#4A5568] max-w-2xl mx-auto">
-            Hear from our community of chess enthusiasts about their learning journey and achievements at our academy.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Join hundreds of satisfied students and parents who have transformed their strategic thinking with Bharat Chess School.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {testimonials.map((testimonial) => (
             <Card
               key={testimonial.id}
-              className={`${testimonial.bgColorClass} hover-lift border-2 ${testimonial.borderColorClass} hover:border-opacity-70 transition-all duration-300`}
+              className="bg-white border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-300 rounded-3xl overflow-visible h-full flex flex-col"
             >
-              <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 fill-current ${testimonial.starColorClass}`}
-                    />
+              <CardContent className="p-8 flex flex-col h-full relative">
+                
+                {/* Large Quote Icon Background */}
+                <Quote className="absolute top-6 right-6 w-12 h-12 text-blue-100/50 rotate-180" />
+
+                {/* Stars */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-orange-400 text-orange-400" />
                   ))}
                 </div>
 
-                <div className="relative mb-4">
-                  <Quote className="h-8 w-8 text-current absolute -top-2 -left-2 text-opacity-20" />
-                  <p className="text-[#4A5568] italic pl-6">"{testimonial.content}"</p>
-                </div>
+                {/* Content */}
+                <p className="text-slate-600 leading-relaxed mb-8 relative z-10 flex-grow">
+                  "{testimonial.content}"
+                </p>
 
-                <div className="flex items-center gap-3">
-                  <img
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-opacity-20 border-current"
-                  />
+                {/* User Profile */}
+                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-slate-50">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-[#2D3748]">{testimonial.name}</h4>
-                    <p className="text-sm text-[#4A5568]">{testimonial.role}</p>
+                    <h4 className="font-bold text-slate-900 text-sm">{testimonial.name}</h4>
+                    <p className="text-xs text-blue-600 font-medium uppercase tracking-wide">{testimonial.role}</p>
                   </div>
                 </div>
+
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <div className="bg-white rounded-lg p-8 border border-[#E2E8F0]">
-            <h3 className="text-2xl font-bold text-[#2D3748] mb-4">Join Our Success Stories</h3>
-            <p className="text-[#4A5568] mb-6 max-w-2xl mx-auto">
-              Whether you're a complete beginner or looking to improve your competitive play, our academy provides the perfect environment for chess growth and achievement.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#2B6CB0]">500+</div>
-                <div className="text-sm text-[#4A5568]">Happy Students</div>
+        {/* Bottom Impact Bar */}
+        <div className="bg-slate-900 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          {/* Abstract Glows */}
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-600/20 rounded-full blur-[80px] pointer-events-none"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">Ready to write your success story?</h3>
+              <p className="text-slate-400">Join a community of champions today.</p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+              <div className="flex flex-col items-center md:items-start">
+                <span className="text-3xl font-bold text-white mb-1">500+</span>
+                <span className="text-xs text-slate-400 uppercase tracking-wider font-medium">Happy Students</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#9F7AEA]">95%</div>
-                <div className="text-sm text-[#4A5568]">Satisfaction Rate</div>
+              <div className="flex flex-col items-center md:items-start">
+                <span className="text-3xl font-bold text-blue-400 mb-1">98%</span>
+                <span className="text-xs text-slate-400 uppercase tracking-wider font-medium">Satisfaction Rate</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#2B6CB0]">50+</div>
-                <div className="text-sm text-[#4A5568]">Tournament Winners</div>
+              <div className="flex flex-col items-center md:items-start">
+                <span className="text-3xl font-bold text-orange-500 mb-1">50+</span>
+                <span className="text-xs text-slate-400 uppercase tracking-wider font-medium">Champions Made</span>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

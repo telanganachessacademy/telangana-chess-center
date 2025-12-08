@@ -1,12 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Calendar, Clock, MapPin, Trophy, Users, Zap } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy, Users, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function EventsPreview() {
@@ -14,129 +9,166 @@ export function EventsPreview() {
     {
       id: 1,
       title: "Monthly Chess Tournament",
-      date: "October 15, 2025",
-      time: "10:00 AM - 6:00 PM",
+      day: "15",
+      month: "OCT",
+      year: "2025",
+      time: "10:00 AM",
       location: "Main Academy Hall",
       type: "Tournament",
-      participants: "32 players",
+      participants: "32/50 Slots",
       icon: Trophy,
-      description:
-        "Compete against fellow chess enthusiasts in our monthly tournament with exciting prizes.",
-      bgColorClass: "bg-blue-50",
-      badgeBgClass: "bg-blue-100",
-      badgeTextClass: "text-blue-700",
-      iconColorClass: "text-blue-600",
+      description: "Compete against fellow enthusiasts. Swiss system, 5 rounds, cash prizes for top 3.",
+      color: "blue", // Theme color
     },
     {
       id: 2,
-      title: "Beginner's Workshop",
-      date: "October 20, 2025",
-      time: "2:00 PM - 4:00 PM",
+      title: "Beginner's Strategy Workshop",
+      day: "20",
+      month: "OCT",
+      year: "2025",
+      time: "02:00 PM",
       location: "Training Room A",
       type: "Workshop",
-      participants: "15 students",
+      participants: "Limited Seats",
       icon: Users,
-      bgColorClass: "bg-purple-50",
-      badgeBgClass: "bg-purple-100",
-      badgeTextClass: "text-purple-700",
-      iconColorClass: "text-purple-600",
+      description: "Master the opening principles and middle-game tactics in this intensive session.",
+      color: "orange",
     },
     {
       id: 3,
-      title: "Grandmaster Masterclass",
-      date: "November 05, 2025",
-      time: "11:00 AM - 1:00 PM",
-      location: "Conference Hall",
+      title: "GM Masterclass Series",
+      day: "05",
+      month: "NOV",
+      year: "2025",
+      time: "11:00 AM",
+      location: "Virtual & Offline",
       type: "Masterclass",
-      participants: "50 attendees",
+      participants: "Open to All",
       icon: Zap,
-      bgColorClass: "bg-pink-50",
-      badgeBgClass: "bg-pink-100",
-      badgeTextClass: "text-pink-700",
-      iconColorClass: "text-pink-600",
+      description: "Exclusive session with Grandmaster Naresh on endgame theoretical complexities.",
+      color: "purple",
     },
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F5F7FA] via-[#E2E8F0] to-[#2B6CB0]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#2B6CB0] to-[#9F7AEA] bg-clip-text text-transparent mb-4">
-            Upcoming Events
-          </h2>
-          <p className="text-lg text-[#2D3748] max-w-2xl mx-auto">
-            Join our exciting chess events, tournaments, and workshops designed
-            to enhance your skills and connect with fellow players.
-          </p>
+    <section className="py-24 bg-[#020617] relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+              <Calendar className="w-3 h-3" />
+              <span>Mark Your Calendars</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Battles</span>
+            </h2>
+            <p className="text-slate-400 max-w-xl text-lg">
+              Join our tournaments, workshops, and masterclasses to elevate your game.
+            </p>
+          </div>
+          
+          <Link href="/events" className="hidden md:block">
+            <Button variant="outline" className="border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-blue-500 transition-all rounded-full px-6">
+              View Full Calendar
+            </Button>
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* Events Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {upcomingEvents.map((event) => {
-            const IconComponent = event.icon;
+            const Icon = event.icon;
+            
+            // Dynamic Color Logic
+            const themeColor = 
+              event.color === 'blue' ? 'text-blue-500 bg-blue-500/10 border-blue-500/20' :
+              event.color === 'orange' ? 'text-orange-500 bg-orange-500/10 border-orange-500/20' :
+              'text-purple-500 bg-purple-500/10 border-purple-500/20';
+            
+            const btnColor = 
+              event.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
+              event.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' :
+              'bg-purple-600 hover:bg-purple-700';
+
             return (
-              <Card
+              <div 
                 key={event.id}
-                className={`${event.bgColorClass} hover-lift border border-gray-200 hover:border-opacity-60 transition-all duration-300`}
+                className="group relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-600 transition-all duration-300 hover:-translate-y-2 flex flex-col"
               >
-                <CardHeader className="pb-4">
-                  <div
-                    className={`flex items-center gap-3 mb-2 p-2 rounded-lg ${event.badgeBgClass} inline-block`}
-                  >
-                    <div
-                      className={`p-2 rounded-lg ${event.badgeBgClass} flex items-center justify-center`}
-                    >
-                      <IconComponent
-                        className={`h-5 w-5 ${event.iconColorClass}`}
-                      />
+                {/* Decorative Top Bar */}
+                <div className={`h-1 w-full bg-gradient-to-r ${
+                  event.color === 'blue' ? 'from-blue-500 to-cyan-400' :
+                  event.color === 'orange' ? 'from-orange-500 to-red-400' :
+                  'from-purple-500 to-pink-400'
+                }`} />
+
+                <div className="p-6 flex flex-col h-full">
+                  
+                  {/* Top Row: Date & Type */}
+                  <div className="flex justify-between items-start mb-6">
+                    {/* Date Block */}
+                    <div className="flex flex-col items-center justify-center w-16 h-16 bg-slate-800 rounded-2xl border border-slate-700 group-hover:border-slate-500 transition-colors">
+                      <span className="text-xs font-bold text-slate-400 uppercase">{event.month}</span>
+                      <span className="text-2xl font-black text-white">{event.day}</span>
                     </div>
-                    <span
-                      className={`text-sm font-medium px-2 py-1 rounded-full ${event.badgeTextClass} bg-opacity-20`}
-                    >
+
+                    {/* Badge */}
+                    <div className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wide border ${themeColor}`}>
                       {event.type}
-                    </span>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl text-[#2D3748]">
-                    {event.title}
-                  </CardTitle>
-                  <CardDescription className="text-[#4A5568]">
-                    {event.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-[#4A5568]">
-                    <Calendar className="h-4 w-4 text-[#2B6CB0]" />
-                    <span>{event.date}</span>
+
+                  {/* Content */}
+                  <div className="mb-6 flex-grow">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                      {event.title}
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-2">
+                      {event.description}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-[#4A5568]">
-                    <Clock className="h-4 w-4 text-[#2B6CB0]" />
-                    <span>{event.time}</span>
+
+                  {/* Meta Details */}
+                  <div className="space-y-3 mb-6 border-t border-slate-800 pt-4">
+                    <div className="flex items-center text-sm text-slate-300">
+                      <Clock className="w-4 h-4 mr-3 text-slate-500" />
+                      {event.time}
+                    </div>
+                    <div className="flex items-center text-sm text-slate-300">
+                      <MapPin className="w-4 h-4 mr-3 text-slate-500" />
+                      {event.location}
+                    </div>
+                    <div className="flex items-center text-sm text-slate-300">
+                      <Users className="w-4 h-4 mr-3 text-slate-500" />
+                      {event.participants}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-[#4A5568]">
-                    <MapPin className="h-4 w-4 text-[#2B6CB0]" />
-                    <span>{event.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-[#4A5568]">
-                    <Users className="h-4 w-4 text-[#2B6CB0]" />
-                    <span>{event.participants}</span>
-                  </div>
-                  <Link href="/contact" className="cursor-pointer w-full sm:w-auto">
-                  <Button className="w-full mt-4 bg-[#2B6CB0] hover:bg-[#2B6CB0]/90 text-white">
-                    Register Now
-                  </Button>
+
+                  {/* Action Button */}
+                  <Link href="/contact" className="w-full mt-auto">
+                    <Button className={`w-full ${btnColor} text-white font-bold h-12 rounded-xl shadow-lg transition-transform active:scale-95`}>
+                      Register Now <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
                   </Link>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        <div className="text-center">
+        {/* Mobile View All Button */}
+        <div className="mt-12 text-center md:hidden">
           <Link href="/events">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-[#2B6CB0] text-[#2B6CB0] hover:bg-[#2B6CB0] hover:text-white bg-transparent"
-            >
+            <Button variant="outline" className="w-full border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800">
               View All Events
             </Button>
           </Link>

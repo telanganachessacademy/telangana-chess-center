@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Phone,
@@ -7,6 +9,9 @@ import {
   Twitter,
   Instagram,
   Youtube,
+  ExternalLink,
+  ChevronRight,
+  Globe
 } from "lucide-react";
 
 export function Footer() {
@@ -19,55 +24,77 @@ export function Footer() {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Courses", href: "/courses" },
-    { name: "Coaches", href: "/coaches" },
-    { name: "Events", href: "/events" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Courses", href: "/courses" },
+    { name: "Meet Coaches", href: "/coaches" },
+    { name: "Latest Events", href: "/events" },
     { name: "Contact", href: "/contact" },
   ];
 
+  // Specific network links from your request
+  const networkLinks = [
+    { name: "Telangana Chess Academy", href: "https://telanganachessacademy.com/" },
+    { name: "Telangana Chess School", href: "https://www.telanganachessschool.com" },
+    { name: "Bharat Chess Academy", href: "https://www.bharatchessacademy.com" },
+    { name: "Bharat Chess Institute", href: "http://www.bharatchessinstitute.com" },
+    { name: "Hyderabad Chess Institute", href: "https://www.hyderabadchessinstitute.com" },
+  ];
+
   return (
-    <footer className="bg-[#2B6CB0] text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Academy Info */}
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">♔</span>
+    <footer className="bg-[#020617] text-slate-300 font-sans relative">
+      {/* Top Gradient Border */}
+      <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500"></div>
+
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          
+          {/* Column 1: Brand Info (Span 4 cols) */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="flex items-center space-x-3">
+              {/* Logo Placeholder or Icon */}
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/20">
+                <span className="text-white font-bold text-2xl">♔</span>
               </div>
-              <div>
-                <h3 className="font-bold text-lg">Bharat chess academy</h3>
-                <p className="text-white/80 text-xs">Professional Chess Training</p>
+              <div className="flex flex-col">
+                <h3 className="font-bold text-xl text-white tracking-wide uppercase">Bharat Chess School</h3>
+                <span className="text-xs text-blue-400 font-medium tracking-wider">EST. 2024</span>
               </div>
             </div>
-            <p className="text-white/90 text-sm mb-6">
-              Dedicated to providing quality chess education and developing strong foundations for future success in chess.
+            
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
+              Forging champions through strategic excellence. We provide world-class chess education designed to build character, intellect, and competitive success.
             </p>
-            <div className="flex space-x-4">
+
+            <div className="flex gap-3 pt-2">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/40 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 group"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 text-white" />
+                  <social.icon className="w-4 h-4 text-slate-400 group-hover:text-white" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white mb-6">Quick Links</h4>
+          {/* Column 2: Quick Links (Span 2 cols) */}
+          <div className="lg:col-span-2">
+            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+              Explore
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-blue-500 rounded-full"></span>
+            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-white/80 hover:text-white transition-colors text-sm"
+                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors"
                   >
+                    <ChevronRight className="w-3 h-3 mr-2 text-slate-600 group-hover:text-blue-500 transition-colors" />
                     {link.name}
                   </Link>
                 </li>
@@ -75,102 +102,89 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold text-white mb-6">Contact Info</h4>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-white/80 mt-0.5" />
-                <div>
-                  <p className="text-white text-sm">+91 9864646481</p>
-                  <p className="text-white/70 text-xs">Mon - Sun, 10:00 AM - 8:00 PM</p>
+          {/* Column 3: Contact Info (Span 3 cols) */}
+          <div className="lg:col-span-3">
+            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+              Contact Us
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-orange-500 rounded-full"></span>
+            </h4>
+            <div className="space-y-5">
+              <a href="tel:9864646481" className="flex items-start space-x-4 group">
+                <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
+                  <Phone className="w-5 h-5 text-slate-300 group-hover:text-white" />
                 </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-white/80 mt-0.5" />
                 <div>
-                  <p className="text-white text-sm">bharatchessacademy@gmail.com</p>
-                  <p className="text-white/70 text-xs">We'll respond within 24 hours</p>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Call Us</p>
+                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors">+91 9864646481</p>
                 </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-white/80 mt-0.5" />
+              </a>
+
+              <a href="mailto:bharatchessschool@gmail.com" className="flex items-start space-x-4 group">
+                <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
+                  <Mail className="w-5 h-5 text-slate-300 group-hover:text-white" />
+                </div>
                 <div>
-                  <p className="text-white text-sm">Hyderabad, Telangana</p>
-                  <p className="text-white/70 text-xs">India</p>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Us</p>
+                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors break-all">bharatchessschool@gmail.com</p>
+                </div>
+              </a>
+
+              <div className="flex items-start space-x-4">
+                <div className="p-2 bg-slate-800 rounded-lg">
+                  <MapPin className="w-5 h-5 text-slate-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Visit Us</p>
+                  <p className="text-white font-medium">Hyderabad, Telangana</p>
+                  <p className="text-xs text-slate-500">India</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Academy Links */}
-          <div>
-            <h4 className="font-semibold text-white mb-6">Academy Links</h4>
+          {/* Column 4: Our Network (Span 3 cols) */}
+          <div className="lg:col-span-3">
+            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+              Our Network
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-purple-500 rounded-full"></span>
+            </h4>
             <div className="space-y-3">
-              <div>
-                <h5 className="text-white text-sm font-medium">Telangana Chess Academy </h5>
+              {networkLinks.map((site, index) => (
                 <a
-                  href="https://telanganachessacademy.com/"
-                  className="text-white/70 text-xs hover:text-white transition-colors"
+                  key={index}
+                  href={site.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 hover:bg-slate-800 transition-all group"
                 >
-                  www.telanganachessacademy.com
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-3 h-3 text-slate-500 group-hover:text-blue-400" />
+                      <span className="text-xs font-semibold text-slate-300 group-hover:text-white">
+                        {site.name}
+                      </span>
+                    </div>
+                    <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-white" />
+                  </div>
                 </a>
-              </div>
-              <div>
-                <h5 className="text-white text-sm font-medium">Telangana Chess school</h5>
-                <a
-                  href="https://www.telanganachessschool.com"
-                  className="text-white/70 text-xs hover:text-white transition-colors"
-                >
-                  www.telanganachessschool.com
-                </a>
-              </div>
-              <div>
-                <h5 className="text-white text-sm font-medium">Bharat chess academy</h5>
-                <a
-                  href="https://www.bharatchessacademy.com"
-                  className="text-white/70 text-xs hover:text-white transition-colors"
-                >
-                  www.bharatchessacademy.com
-                </a>
-              </div>
-              <div>
-                <h5 className="text-white text-sm font-medium">Bharat chess institute</h5>
-                <a
-                  href="http://www.bharatchessinstitute.com"
-                  className="text-white/70 text-xs hover:text-white transition-colors"
-                >
-                  www.bharatchessinstitute.com
-                </a>
-              </div>
-              <div>
-                <h5 className="text-white text-sm font-medium">Hyderabad Chess Institute</h5>
-                <a
-                  href="https://www.hyderabadchessinstitute.com"
-                  className="text-white/70 text-xs hover:text-white transition-colors"
-                >
-                  www.hyderabadchessinstitute.com
-                </a>
-              </div>
+              ))}
             </div>
           </div>
+
         </div>
 
-        <div className="border-t border-white/30 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white/70 text-sm">© 2024 Bharat chess academy. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                href="/terms"
-                className="text-white/70 hover:text-white text-sm transition-colors"
-              >
-                Terms & Conditions
-              </Link>
-              <Link
-                href="/contact"
-                className="text-white/70 hover:text-white text-sm transition-colors"
-              >
+        {/* Footer Bottom */}
+        <div className="border-t border-slate-800 mt-16 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 text-sm">
+              © {new Date().getFullYear()} <span className="text-slate-300">Bharat Chess School</span>. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-6">
+              <Link href="/privacy" className="text-xs text-slate-500 hover:text-white transition-colors">
                 Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-xs text-slate-500 hover:text-white transition-colors">
+                Terms of Service
               </Link>
             </div>
           </div>
