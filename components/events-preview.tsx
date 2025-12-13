@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin, Trophy, Users, Zap, ArrowRight } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy, Users, Zap, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export function EventsPreview() {
+  // --- Data Preserved Exactly ---
   const upcomingEvents = [
     {
       id: 1,
@@ -18,7 +19,7 @@ export function EventsPreview() {
       participants: "32/50 Slots",
       icon: Trophy,
       description: "Compete against fellow enthusiasts. Swiss system, 5 rounds, cash prizes for top 3.",
-      color: "blue", // Theme color
+      color: "blue", 
     },
     {
       id: 2,
@@ -50,112 +51,137 @@ export function EventsPreview() {
     },
   ];
 
+  // Helper for dynamic styling based on color prop
+  const getStyles = (color: string) => {
+    switch (color) {
+      case "blue":
+        return {
+          border: "border-blue-500/30",
+          bg: "bg-blue-500/10",
+          text: "text-blue-400",
+          iconBg: "bg-blue-500",
+          gradient: "from-blue-600 to-indigo-600",
+          glow: "shadow-[0_0_20px_rgba(59,130,246,0.2)]"
+        };
+      case "orange":
+        return {
+          border: "border-orange-500/30",
+          bg: "bg-orange-500/10",
+          text: "text-orange-400",
+          iconBg: "bg-orange-500",
+          gradient: "from-orange-600 to-red-600",
+          glow: "shadow-[0_0_20px_rgba(249,115,22,0.2)]"
+        };
+      case "purple":
+        return {
+          border: "border-purple-500/30",
+          bg: "bg-purple-500/10",
+          text: "text-purple-400",
+          iconBg: "bg-purple-500",
+          gradient: "from-purple-600 to-fuchsia-600",
+          glow: "shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+        };
+      default: return { border: "", bg: "", text: "", iconBg: "", gradient: "", glow: "" };
+    }
+  };
+
   return (
-    <section className="py-24 bg-[#020617] relative overflow-hidden">
+    <section className="py-24 bg-[#0B0F19] relative overflow-hidden">
       
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px]" />
+      {/* --- Background Ambience --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-600/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
-              <Calendar className="w-3 h-3" />
+        {/* --- Header Section --- */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="text-left space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 backdrop-blur-md text-indigo-300 text-xs font-bold uppercase tracking-widest shadow-lg">
+              <Calendar className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
               <span>Mark Your Calendars</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Battles</span>
+            
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">Battles</span>
             </h2>
-            <p className="text-slate-400 max-w-xl text-lg">
-              Join our tournaments, workshops, and masterclasses to elevate your game.
+            
+            <p className="text-slate-400 max-w-xl text-lg leading-relaxed">
+              Join our tournaments, workshops, and masterclasses to elevate your strategy and claim your victory.
             </p>
           </div>
           
           <Link href="/events" className="hidden md:block">
-            <Button variant="outline" className="border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-blue-500 transition-all rounded-full px-6">
+            <Button variant="outline" className="border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-indigo-500 transition-all rounded-xl px-6 h-12 backdrop-blur-sm">
               View Full Calendar
             </Button>
           </Link>
         </div>
 
-        {/* Events Grid */}
+        {/* --- Events Grid --- */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {upcomingEvents.map((event) => {
-            const Icon = event.icon;
+            const styles = getStyles(event.color);
             
-            // Dynamic Color Logic
-            const themeColor = 
-              event.color === 'blue' ? 'text-blue-500 bg-blue-500/10 border-blue-500/20' :
-              event.color === 'orange' ? 'text-orange-500 bg-orange-500/10 border-orange-500/20' :
-              'text-purple-500 bg-purple-500/10 border-purple-500/20';
-            
-            const btnColor = 
-              event.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
-              event.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' :
-              'bg-purple-600 hover:bg-purple-700';
-
             return (
               <div 
                 key={event.id}
-                className="group relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-600 transition-all duration-300 hover:-translate-y-2 flex flex-col"
+                className={`group relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl overflow-hidden hover:border-slate-600 transition-all duration-500 hover:-translate-y-2 flex flex-col hover:shadow-2xl`}
               >
-                {/* Decorative Top Bar */}
-                <div className={`h-1 w-full bg-gradient-to-r ${
-                  event.color === 'blue' ? 'from-blue-500 to-cyan-400' :
-                  event.color === 'orange' ? 'from-orange-500 to-red-400' :
-                  'from-purple-500 to-pink-400'
-                }`} />
+                {/* Glow Effect on Hover */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-b from-white/5 to-transparent`} />
+                
+                {/* Decorative Top Line */}
+                <div className={`h-1.5 w-full bg-gradient-to-r ${styles.gradient}`} />
 
-                <div className="p-6 flex flex-col h-full">
+                <div className="p-8 flex flex-col h-full relative z-10">
                   
-                  {/* Top Row: Date & Type */}
-                  <div className="flex justify-between items-start mb-6">
+                  {/* Top Row: Date & Type Badge */}
+                  <div className="flex justify-between items-start mb-8">
                     {/* Date Block */}
-                    <div className="flex flex-col items-center justify-center w-16 h-16 bg-slate-800 rounded-2xl border border-slate-700 group-hover:border-slate-500 transition-colors">
-                      <span className="text-xs font-bold text-slate-400 uppercase">{event.month}</span>
+                    <div className="flex flex-col items-center justify-center w-18 h-18 p-3 bg-slate-950 rounded-2xl border border-slate-800 group-hover:border-slate-600 transition-colors shadow-inner">
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{event.month}</span>
                       <span className="text-2xl font-black text-white">{event.day}</span>
                     </div>
 
-                    {/* Badge */}
-                    <div className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wide border ${themeColor}`}>
+                    {/* Type Badge */}
+                    <div className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide border ${styles.border} ${styles.bg} ${styles.text}`}>
                       {event.type}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="mb-6 flex-grow">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                  <div className="mb-8 flex-grow">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all">
                       {event.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-2">
+                    <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-4">
                       {event.description}
                     </p>
                   </div>
 
                   {/* Meta Details */}
-                  <div className="space-y-3 mb-6 border-t border-slate-800 pt-4">
+                  <div className="space-y-4 mb-8">
                     <div className="flex items-center text-sm text-slate-300">
-                      <Clock className="w-4 h-4 mr-3 text-slate-500" />
-                      {event.time}
+                      <div className="w-8 flex justify-center"><Clock className="w-4 h-4 text-slate-500" /></div>
+                      <span className="font-medium">{event.time}</span>
                     </div>
                     <div className="flex items-center text-sm text-slate-300">
-                      <MapPin className="w-4 h-4 mr-3 text-slate-500" />
-                      {event.location}
+                      <div className="w-8 flex justify-center"><MapPin className="w-4 h-4 text-slate-500" /></div>
+                      <span className="font-medium">{event.location}</span>
                     </div>
                     <div className="flex items-center text-sm text-slate-300">
-                      <Users className="w-4 h-4 mr-3 text-slate-500" />
-                      {event.participants}
+                      <div className="w-8 flex justify-center"><Users className="w-4 h-4 text-slate-500" /></div>
+                      <span className="font-medium">{event.participants}</span>
                     </div>
                   </div>
 
                   {/* Action Button */}
                   <Link href="/contact" className="w-full mt-auto">
-                    <Button className={`w-full ${btnColor} text-white font-bold h-12 rounded-xl shadow-lg transition-transform active:scale-95`}>
+                    <Button className={`w-full bg-gradient-to-r ${styles.gradient} text-white font-bold h-12 rounded-xl ${styles.glow} transition-all duration-300 hover:scale-[1.02] border border-white/10`}>
                       Register Now <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
@@ -168,7 +194,7 @@ export function EventsPreview() {
         {/* Mobile View All Button */}
         <div className="mt-12 text-center md:hidden">
           <Link href="/events">
-            <Button variant="outline" className="w-full border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800">
+            <Button variant="outline" className="w-full border-slate-700 bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 h-12 rounded-xl">
               View All Events
             </Button>
           </Link>

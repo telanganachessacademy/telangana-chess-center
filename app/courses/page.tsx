@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,12 +10,13 @@ import {
   Clock,
   BookOpen,
   Target,
-  Zap,
   Crown,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
-  ArrowRight
+  ArrowRight,
+  Zap,
+  Sparkles
 } from "lucide-react";
 import Link from "next/link";
 
@@ -90,7 +90,7 @@ export default function CoursesPage() {
         "Knight Forks & Double Attacks",
         "Checkmate in 3 & 4 moves",
         "Discovered Check Tactics",
-        "removing the Defender",
+        "Removing the Defender",
         "Decoy Sacrifices",
       ],
       schedule: "3 classes/week (2 hrs)",
@@ -209,23 +209,61 @@ export default function CoursesPage() {
     },
   ];
 
+  // Dynamic Theme Helper
+  const getThemeStyles = (color: string) => {
+    switch (color) {
+      case "blue":
+        return {
+          iconBg: "bg-indigo-500/10 border-indigo-500/20",
+          iconColor: "text-indigo-400",
+          border: "group-hover:border-indigo-500/50",
+          glow: "group-hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]",
+          btn: "bg-indigo-600 hover:bg-indigo-500",
+          check: "text-indigo-400"
+        };
+      case "orange":
+        return {
+          iconBg: "bg-orange-500/10 border-orange-500/20",
+          iconColor: "text-orange-400",
+          border: "group-hover:border-orange-500/50",
+          glow: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]",
+          btn: "bg-orange-600 hover:bg-orange-500",
+          check: "text-orange-400"
+        };
+      case "purple":
+        return {
+          iconBg: "bg-purple-500/10 border-purple-500/20",
+          iconColor: "text-purple-400",
+          border: "group-hover:border-purple-500/50",
+          glow: "group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]",
+          btn: "bg-purple-600 hover:bg-purple-500",
+          check: "text-purple-400"
+        };
+      default: return {};
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-[#0B0F19] font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
       
       {/* --- HERO SECTION --- */}
-      <section className="bg-[#020617] pt-32 pb-24 relative overflow-hidden">
-        {/* Abstract Background */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+      <section className="relative pt-32 pb-24 overflow-hidden">
+        {/* Background Ambience */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
+           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3"></div>
+           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay"></div>
+        </div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-blue-900/50 text-blue-300 border-blue-800 px-4 py-1.5 text-sm uppercase tracking-wider">
+          <Badge className="mb-6 bg-indigo-500/10 text-indigo-300 border-indigo-500/30 px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg">
             Curriculum
           </Badge>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight">
-            Master the Game at <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">Every Level</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white tracking-tight">
+            Master the Game at <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">Every Level</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed border-t border-slate-800 pt-6">
             From your first move to your first tournament win. Our structured curriculum is designed to take you from beginner to expert.
           </p>
         </div>
@@ -236,16 +274,20 @@ export default function CoursesPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { level: "Beginner", desc: "Foundations & Rules", color: "bg-blue-600", border: "border-blue-500" },
-              { level: "Intermediate", desc: "Tactics & Strategy", color: "bg-orange-600", border: "border-orange-500" },
-              { level: "Advanced", desc: "Competition & Mastery", color: "bg-purple-600", border: "border-purple-500" },
+              { level: "Beginner", desc: "Foundations & Rules", color: "text-indigo-400", border: "border-indigo-500", bg: "bg-indigo-500/10" },
+              { level: "Intermediate", desc: "Tactics & Strategy", color: "text-orange-400", border: "border-orange-500", bg: "bg-orange-500/10" },
+              { level: "Advanced", desc: "Competition & Mastery", color: "text-purple-400", border: "border-purple-500", bg: "bg-purple-500/10" },
             ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-slate-100 hover:-translate-y-1 transition-transform duration-300" style={{borderColor: item.color}}>
-                <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center text-white font-bold text-xl mb-4 shadow-lg`}>
+              <div 
+                key={idx} 
+                className={`bg-slate-900/60 backdrop-blur-md rounded-2xl shadow-xl p-8 border-t-4 hover:-translate-y-2 transition-transform duration-300 border border-slate-800 ${item.border}`}
+                style={{borderTopColor: "inherit"}}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mb-4 shadow-inner border border-white/5 ${item.bg} ${item.color}`}>
                   {idx + 1}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">{item.level}</h3>
-                <p className="text-slate-500 text-sm">{item.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-1">{item.level}</h3>
+                <p className="text-slate-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -257,81 +299,72 @@ export default function CoursesPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 gap-8">
             {courses.map((course, index) => {
-              // Dynamic Colors
-              const themeColor = 
-                course.color === 'blue' ? 'text-blue-600 bg-blue-50 border-blue-100' :
-                course.color === 'orange' ? 'text-orange-600 bg-orange-50 border-orange-100' : 
-                'text-purple-600 bg-purple-50 border-purple-100';
-
-              const btnColor = 
-                course.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
-                course.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' : 
-                'bg-purple-600 hover:bg-purple-700';
+              const styles = getThemeStyles(course.color);
 
               return (
-                <div key={index} className="bg-white rounded-[2rem] shadow-lg border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
+                <div 
+                  key={index} 
+                  className={`group bg-slate-900/40 backdrop-blur-md rounded-[2rem] border border-slate-800 overflow-hidden transition-all duration-500 hover:-translate-y-1 flex flex-col ${styles.border} ${styles.glow}`}
+                >
+                  
                   {/* Card Header */}
                   <div className="p-8 pb-4">
                     <div className="flex justify-between items-start mb-6">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${themeColor}`}>
-                        <course.icon className="w-7 h-7" />
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border ${styles.iconBg}`}>
+                        <course.icon className={`w-8 h-8 ${styles.iconColor}`} />
                       </div>
                       <div className="text-right">
-                        <span className="block text-2xl font-bold text-slate-900">{course.price}</span>
-                        <span className="text-xs text-slate-500 font-medium uppercase tracking-wide">/ course</span>
+                        <span className="block text-3xl font-black text-white">{course.price}</span>
+                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">/ course</span>
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{course.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6">{course.description}</p>
+                    <h3 className="text-2xl font-bold text-white mb-3">{course.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-slate-700 pl-4">{course.description}</p>
 
-                    {/* Meta Stats Row */}
-                    <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-slate-50">
-                       <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-slate-400" />
+                    {/* Meta Stats Row (Glass Strip) */}
+                    <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-slate-800 bg-slate-950/30 rounded-lg px-2">
+                       <div className="flex items-center gap-2 justify-center lg:justify-start">
+                          <Clock className="w-4 h-4 text-slate-500" />
                           <div>
-                            <p className="text-[10px] uppercase text-slate-400 font-bold">Duration</p>
-                            <p className="text-sm font-bold text-slate-700">{course.duration}</p>
+                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Duration</p>
+                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.duration}</p>
                           </div>
                        </div>
-                       <div className="flex items-center gap-2">
-                          <Users className="w-4 h-4 text-slate-400" />
+                       <div className="flex items-center gap-2 justify-center lg:justify-start">
+                          <Users className="w-4 h-4 text-slate-500" />
                           <div>
-                            <p className="text-[10px] uppercase text-slate-400 font-bold">Size</p>
-                            <p className="text-sm font-bold text-slate-700">{course.classSize}</p>
+                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Size</p>
+                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.classSize}</p>
                           </div>
                        </div>
-                       <div className="flex items-center gap-2">
-                          <Star className="w-4 h-4 text-slate-400" />
+                       <div className="flex items-center gap-2 justify-center lg:justify-start">
+                          <Star className="w-4 h-4 text-slate-500" />
                           <div>
-                            <p className="text-[10px] uppercase text-slate-400 font-bold">Rating</p>
-                            <p className="text-sm font-bold text-slate-700">{course.rating}</p>
+                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Rating</p>
+                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.rating}</p>
                           </div>
                        </div>
                     </div>
                   </div>
 
                   {/* Syllabus / Features */}
-                  <div className="px-8 py-4 bg-slate-50/50 flex-grow">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Syllabus Highlights</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4">
+                  <div className="px-8 py-6 bg-slate-950/40 flex-grow">
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                      <Sparkles className="w-3 h-3" /> Syllabus Highlights
+                    </h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                       {course.features.slice(0, 4).map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                             course.color === 'blue' ? 'text-blue-500' :
-                             course.color === 'orange' ? 'text-orange-500' : 'text-purple-500'
-                          }`} />
+                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
                           <span className="leading-tight">{feature}</span>
                         </li>
                       ))}
                       
                       {/* Expanded View */}
                       {expandedCourses[index] && course.features.slice(4).map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-600 animate-fade-in">
-                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                             course.color === 'blue' ? 'text-blue-500' :
-                             course.color === 'orange' ? 'text-orange-500' : 'text-purple-500'
-                          }`} />
+                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300 animate-in fade-in slide-in-from-top-2 duration-300">
+                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
                           <span className="leading-tight">{feature}</span>
                         </li>
                       ))}
@@ -340,7 +373,7 @@ export default function CoursesPage() {
                     {course.features.length > 4 && (
                       <button 
                         onClick={() => toggleFeatures(index)}
-                        className="mt-4 flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors"
+                        className="mt-6 flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-white transition-colors uppercase tracking-wide"
                       >
                         {expandedCourses[index] ? (
                           <>Show Less <ChevronUp className="w-3 h-3" /></>
@@ -354,12 +387,12 @@ export default function CoursesPage() {
                   {/* Actions */}
                   <div className="p-8 pt-4 flex gap-4 mt-auto">
                     <Link href="/contact" className="flex-1">
-                      <Button className={`w-full h-12 rounded-xl font-bold text-base shadow-lg transition-transform active:scale-95 ${btnColor}`}>
+                      <Button className={`w-full h-12 rounded-xl font-bold text-base shadow-lg transition-all hover:scale-[1.02] active:scale-95 ${styles.btn}`}>
                         Enroll Now
                       </Button>
                     </Link>
                     <Link href="/contact">
-                      <Button variant="outline" className="h-12 w-full rounded-xl font-bold border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                      <Button variant="outline" className="h-12 w-full rounded-xl font-bold border-slate-700 bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white hover:border-slate-600">
                         Details
                       </Button>
                     </Link>
@@ -372,32 +405,25 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* --- WHY CHOOSE US --- */}
-      <section className="py-20 bg-slate-900 relative overflow-hidden">
+      {/* --- WHY CHOOSE US (Dark Panel) --- */}
+      <section className="py-20 bg-slate-900/50 relative overflow-hidden border-t border-slate-800">
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
          <div className="container mx-auto px-4 relative z-10 text-center">
             <h2 className="text-3xl font-bold text-white mb-12">Why Train With Us?</h2>
             
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { icon: Users, title: "Small Batches", desc: "We limit class sizes to ensure every student gets personal attention from the coach." },
-                { icon: Trophy, title: "Proven Success", desc: "Our structured curriculum has produced state champions and rated players consistently." },
-                { icon: Zap, title: "Interactive Learning", desc: "We use modern tools, puzzles, and game analysis to make learning engaging." },
+                { icon: Users, title: "Small Batches", desc: "We limit class sizes to ensure every student gets personal attention from the coach.", color: "text-indigo-400" },
+                { icon: Trophy, title: "Proven Success", desc: "Our structured curriculum has produced state champions and rated players consistently.", color: "text-amber-400" },
+                { icon: Zap, title: "Interactive Learning", desc: "We use modern tools, puzzles, and game analysis to make learning engaging.", color: "text-emerald-400" },
               ].map((item, i) => (
-                <div key={i} className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700">
-                  <item.icon className="w-10 h-10 text-blue-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                <div key={i} className="bg-slate-950/60 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-slate-700 transition-colors">
+                  <item.icon className={`w-12 h-12 mx-auto mb-6 ${item.color}`} />
+                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold text-white mb-6">Ready to make your move?</h3>
-              <Link href="/contact">
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-bold h-14 px-10 rounded-full shadow-xl shadow-orange-900/30 text-lg">
-                  Book a Free Trial Class <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
             </div>
          </div>
       </section>

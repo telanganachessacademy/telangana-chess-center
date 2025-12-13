@@ -1,2 +1,2 @@
-﻿# Bharat-chess
+﻿# Telangana-chess
 

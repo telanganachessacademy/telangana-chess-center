@@ -11,15 +11,16 @@ import {
   Youtube,
   ExternalLink,
   ChevronRight,
-  Globe
+  Globe,
+  ShieldCheck
 } from "lucide-react";
 
 export function Footer() {
   const socialLinks = [
-    { icon: Facebook, href: "https://www.facebook.com/telanganachessacademy", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
+    { icon: Facebook, href: "https://www.facebook.com/telanganachessacademy", label: "Facebook", color: "hover:bg-blue-600" },
+    { icon: Twitter, href: "#", label: "Twitter", color: "hover:bg-sky-500" },
+    { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
+    { icon: Youtube, href: "#", label: "YouTube", color: "hover:bg-red-600" },
   ];
 
   const quickLinks = [
@@ -31,7 +32,6 @@ export function Footer() {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Specific network links from your request
   const networkLinks = [
     { name: "Telangana Chess Academy", href: "https://telanganachessacademy.com/" },
     { name: "Telangana Chess School", href: "https://www.telanganachessschool.com" },
@@ -41,23 +41,35 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#020617] text-slate-300 font-sans relative">
-      {/* Top Gradient Border */}
-      <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500"></div>
+    <footer className="bg-[#0B0F19] text-slate-300 font-sans relative overflow-hidden border-t border-slate-800">
+      
+      {/* --- Background Ambience --- */}
+      <div className="absolute inset-0 pointer-events-none">
+         <div className="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px]" />
+         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-[120px]" />
+         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay"></div>
+      </div>
 
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      {/* Top Gradient Line */}
+      <div className="h-0.5 w-full bg-gradient-to-r from-emerald-500 via-indigo-500 to-purple-500 opacity-50"></div>
+
+      <div className="container mx-auto px-4 pt-16 pb-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           
           {/* Column 1: Brand Info (Span 4 cols) */}
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center space-x-3">
-              {/* Logo Placeholder or Icon */}
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/20">
-                <span className="text-white font-bold text-2xl">♔</span>
+              {/* Logo Icon */}
+              <div className="w-12 h-12 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center shadow-lg shadow-black/50">
+                <span className="text-white font-black text-2xl">♔</span>
               </div>
               <div className="flex flex-col">
-                <h3 className="font-bold text-xl text-white tracking-wide uppercase">Bharat Chess School</h3>
-                <span className="text-xs text-blue-400 font-medium tracking-wider">EST. 2024</span>
+                <h3 className="font-bold text-xl text-white tracking-wide">Telangana Chess Institute</h3>
+                <div className="flex items-center gap-2">
+                   <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                     FIDE Certified
+                   </span>
+                </div>
               </div>
             </div>
             
@@ -72,10 +84,10 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                  className={`w-10 h-10 bg-slate-900 border border-slate-700 rounded-lg flex items-center justify-center transition-all duration-300 group ${social.color} hover:border-transparent hover:text-white`}
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 text-slate-400 group-hover:text-white" />
+                  <social.icon className="w-4 h-4 text-slate-400 transition-colors" />
                 </a>
               ))}
             </div>
@@ -83,9 +95,9 @@ export function Footer() {
 
           {/* Column 2: Quick Links (Span 2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
               Explore
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-blue-500 rounded-full"></span>
+              <div className="h-px flex-grow bg-slate-800"></div>
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -94,7 +106,7 @@ export function Footer() {
                     href={link.href}
                     className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 text-slate-600 group-hover:text-blue-500 transition-colors" />
+                    <ChevronRight className="w-3 h-3 mr-2 text-slate-600 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
                     {link.name}
                   </Link>
                 </li>
@@ -104,38 +116,38 @@ export function Footer() {
 
           {/* Column 3: Contact Info (Span 3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
               Contact Us
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-orange-500 rounded-full"></span>
+              <div className="h-px flex-grow bg-slate-800"></div>
             </h4>
             <div className="space-y-5">
-              <a href="tel:9864646481" className="flex items-start space-x-4 group">
-                <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
-                  <Phone className="w-5 h-5 text-slate-300 group-hover:text-white" />
+              <a href="tel:+919864646481" className="flex items-start space-x-4 group p-3 rounded-xl hover:bg-slate-900/50 transition-colors -ml-3">
+                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg group-hover:border-emerald-500/50 group-hover:text-emerald-400 transition-colors">
+                  <Phone className="w-4 h-4 text-slate-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Call Us</p>
-                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors">+91 9864646481</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Call Us</p>
+                  <p className="text-white font-medium group-hover:text-emerald-400 transition-colors">+91 9864646481</p>
                 </div>
               </a>
 
-              <a href="mailto:bharatchessschool@gmail.com" className="flex items-start space-x-4 group">
-                <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
-                  <Mail className="w-5 h-5 text-slate-300 group-hover:text-white" />
+              <a href="mailto:telanganachessinstitute@gmail.com" className="flex items-start space-x-4 group p-3 rounded-xl hover:bg-slate-900/50 transition-colors -ml-3">
+                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg group-hover:border-indigo-500/50 group-hover:text-indigo-400 transition-colors">
+                  <Mail className="w-4 h-4 text-slate-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Us</p>
-                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors break-all">bharatchessschool@gmail.com</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Email Us</p>
+                  <p className="text-white font-medium group-hover:text-indigo-400 transition-colors break-all text-sm">telanganachessinstitute@gmail.com</p>
                 </div>
               </a>
 
-              <div className="flex items-start space-x-4">
-                <div className="p-2 bg-slate-800 rounded-lg">
-                  <MapPin className="w-5 h-5 text-slate-300" />
+              <div className="flex items-start space-x-4 p-3 -ml-3">
+                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg">
+                  <MapPin className="w-4 h-4 text-slate-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Visit Us</p>
-                  <p className="text-white font-medium">Hyderabad, Telangana</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Visit Us</p>
+                  <p className="text-slate-300 font-medium text-sm">Hyderabad, Telangana</p>
                   <p className="text-xs text-slate-500">India</p>
                 </div>
               </div>
@@ -144,9 +156,9 @@ export function Footer() {
 
           {/* Column 4: Our Network (Span 3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-white text-lg mb-6 relative inline-block">
+            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
               Our Network
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-purple-500 rounded-full"></span>
+              <div className="h-px flex-grow bg-slate-800"></div>
             </h4>
             <div className="space-y-3">
               {networkLinks.map((site, index) => (
@@ -155,16 +167,16 @@ export function Footer() {
                   href={site.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-600 hover:bg-slate-800 transition-all group"
+                  className="block p-3 rounded-lg bg-slate-900/50 border border-slate-800 hover:border-slate-600 hover:bg-slate-800 hover:shadow-lg transition-all group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Globe className="w-3 h-3 text-slate-500 group-hover:text-blue-400" />
-                      <span className="text-xs font-semibold text-slate-300 group-hover:text-white">
+                    <div className="flex items-center gap-3">
+                      <Globe className="w-3.5 h-3.5 text-slate-600 group-hover:text-blue-400 transition-colors" />
+                      <span className="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">
                         {site.name}
                       </span>
                     </div>
-                    <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-white" />
+                    <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-white opacity-0 group-hover:opacity-100 transition-all" />
                   </div>
                 </a>
               ))}
@@ -177,15 +189,21 @@ export function Footer() {
         <div className="border-t border-slate-800 mt-16 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} <span className="text-slate-300">Bharat Chess School</span>. All rights reserved.
+              © {new Date().getFullYear()} <span className="text-white font-medium">Telangana Chess Institute</span>. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
               <Link href="/privacy" className="text-xs text-slate-500 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
+              <div className="w-1 h-1 rounded-full bg-slate-700"></div>
               <Link href="/terms" className="text-xs text-slate-500 hover:text-white transition-colors">
                 Terms of Service
               </Link>
+              <div className="w-1 h-1 rounded-full bg-slate-700"></div>
+              <div className="flex items-center gap-1 text-xs text-slate-600">
+                <ShieldCheck className="w-3 h-3" />
+                <span>Secure Platform</span>
+              </div>
             </div>
           </div>
         </div>
