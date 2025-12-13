@@ -100,7 +100,7 @@ export function HeroSection() {
               <Link href="https://pages.razorpay.com/pl_RimudLa05GzfHG/view" target="_blank" className="w-full sm:w-auto">
                 <Button className="w-full sm:w-auto bg-[#1976D2] hover:bg-[#1565C0] text-white text-lg px-8 py-6 rounded-xl shadow-lg shadow-blue-900/20 font-bold transition-transform hover:-translate-y-1">
                   <Trophy className="w-6 h-6 mr-2" />
-                  Events & Tournaments
+                  EVENTS & TOURNAMENTS
                 </Button>
               </Link>
             </div>
