@@ -10,142 +10,147 @@ export function FeaturesSection() {
       title: "Interactive Game Area",
       description:
         "Practice with purpose. Challenge peers, analyze moves with Stockfish engine, and get real-time coach feedback in our dedicated arena.",
-      image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800", // Chess Board
-      color: "blue", // Mapped to Indigo/Blue in dark theme
+      image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800",
+      color: "blue",
     },
     {
       icon: Monitor,
       title: "Live Digital Classrooms",
       description:
         "Experience seamless learning with interactive 1-on-1 and group sessions. Our 'Open Classroom' technology brings the academy to your home.",
-      image: "https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&q=80&w=800", // Student/Laptop
-      color: "orange", // Mapped to Amber/Orange
+      image: "https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&q=80&w=800",
+      color: "orange",
     },
     {
       icon: Users,
       title: "Academy Management",
       description:
         "A centralized dashboard for coaches and parents. Track ELO ratings, tournament history, and attendance with professional analytics.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800", // Analytics/Dashboard
-      color: "purple", // Mapped to Purple/Violet
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      color: "purple",
     },
   ];
 
-  // Helper to map string colors to Tailwind classes dynamically
   const getColorClasses = (color: string) => {
     switch (color) {
       case "blue":
         return {
-          bg: "bg-indigo-500",
-          glow: "shadow-[0_0_30px_rgba(99,102,241,0.4)]",
-          text: "text-indigo-400",
-          border: "group-hover:border-indigo-500/50"
+          bg: "bg-blue-600",
+          lightBg: "bg-blue-50",
+          text: "text-blue-600",
+          shadow: "shadow-blue-100",
+          border: "group-hover:border-blue-200"
         };
       case "orange":
         return {
           bg: "bg-orange-500",
-          glow: "shadow-[0_0_30px_rgba(249,115,22,0.4)]",
-          text: "text-orange-400",
-          border: "group-hover:border-orange-500/50"
+          lightBg: "bg-orange-50",
+          text: "text-orange-600",
+          shadow: "shadow-orange-100",
+          border: "group-hover:border-orange-200"
         };
       case "purple":
         return {
-          bg: "bg-purple-500",
-          glow: "shadow-[0_0_30px_rgba(168,85,247,0.4)]",
-          text: "text-purple-400",
-          border: "group-hover:border-purple-500/50"
+          bg: "bg-purple-600",
+          lightBg: "bg-purple-50",
+          text: "text-purple-600",
+          shadow: "shadow-purple-100",
+          border: "group-hover:border-purple-200"
         };
       default:
         return {
-          bg: "bg-slate-500",
-          glow: "shadow-none",
-          text: "text-slate-400",
-          border: "group-hover:border-slate-500"
+          bg: "bg-emerald-600",
+          lightBg: "bg-emerald-50",
+          text: "text-emerald-600",
+          shadow: "shadow-emerald-100",
+          border: "group-hover:border-emerald-200"
         };
     }
   };
 
   return (
-    <section id="features" className="py-24 relative bg-[#0B0F19] overflow-hidden">
+    <section id="features" className="py-24 relative bg-white overflow-hidden">
       
-      {/* --- Background Ambience --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[100px]" />
+      {/* --- Elegant Light Background --- */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50/50 rounded-full blur-[120px] -mr-48 -mt-48" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* --- Header Section --- */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm text-indigo-300 text-xs font-bold uppercase tracking-widest shadow-lg">
-            <Zap className="w-3.5 h-3.5 fill-indigo-400" />
-            <span>World-Class Platform</span>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+            <Zap className="w-3.5 h-3.5 fill-emerald-500 text-emerald-500" />
+            <span>Premium Learning Experience</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Everything you need to <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">
-              Master the Game
-            </span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">
+            Elite Tools for <br/>
+            <span className="text-emerald-600">Chess Mastery</span>
           </h2>
           
-          <p className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            We combine traditional chess wisdom with modern technology. Explore the tools that give our students the competitive edge.
+          <p className="text-lg text-slate-500 font-medium leading-relaxed">
+            At Telangana Chess Academy, we blend time-honored strategies with 
+            cutting-edge digital tools to build the grandmasters of tomorrow.
           </p>
         </div>
 
         {/* --- Features Grid --- */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid lg:grid-cols-3 gap-10">
           {features.map((feature, index) => {
             const styles = getColorClasses(feature.color);
 
             return (
               <div
                 key={index}
-                className={`group relative bg-slate-900/50 backdrop-blur-sm rounded-3xl border border-slate-800 ${styles.border} transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden flex flex-col`}
+                className={`group relative bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 ${styles.border} transition-all duration-500 hover:-translate-y-3 overflow-hidden flex flex-col`}
               >
-                {/* Image Section */}
-                <div className="relative h-64 w-full overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent z-10"></div>
+                {/* Image Wrap */}
+                <div className="relative h-72 w-full overflow-hidden">
                   <Image
                     src={feature.image}
                     alt={feature.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
+                  {/* Glassy Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
                   
-                  {/* Floating Neon Icon */}
-                  <div className={`absolute -bottom-6 right-8 z-20 w-16 h-16 rounded-2xl flex items-center justify-center ${styles.bg} text-white transform rotate-6 group-hover:rotate-0 transition-all duration-300 ${styles.glow} border border-white/20`}>
+                  {/* Floating Action Icon */}
+                  <div className={`absolute bottom-6 right-8 z-20 w-16 h-16 rounded-2xl flex items-center justify-center ${styles.bg} text-white shadow-2xl ${styles.shadow} transition-transform duration-500 group-hover:rotate-[360deg]`}>
                     <feature.icon className="w-8 h-8" />
                   </div>
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 pt-10 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-colors">
+                <div className="p-10 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-slate-400 leading-relaxed mb-8 flex-grow">
+                  <p className="text-slate-500 font-medium leading-relaxed mb-8 flex-grow">
                     {feature.description}
                   </p>
 
-                  {/* Action Link */}
-                  <div className={`flex items-center text-sm font-bold ${styles.text} transition-colors cursor-pointer mt-auto uppercase tracking-wide`}>
-                    <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1.5 transition-transform" />
+                  {/* Colored Action Button */}
+                  <div className={`inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest ${styles.text} group-hover:gap-4 transition-all`}>
+                    <span className={`h-[2px] w-8 ${styles.bg} transition-all group-hover:w-12`} />
+                    Learn Strategy
+                    <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
-
-                {/* Decorative Gradient Line at bottom */}
-                <div className={`h-1 w-full ${styles.bg} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
               </div>
             );
           })}
+        </div>
+
+        {/* --- Trust Bar --- */}
+        <div className="mt-24 pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-12 grayscale opacity-40">
+           <div className="flex items-center gap-2 font-bold text-slate-900"><CheckCircle2 className="w-5 h-5" /> FIDE Standards</div>
+           <div className="flex items-center gap-2 font-bold text-slate-900"><CheckCircle2 className="w-5 h-5" /> Stockfish 16 Analysis</div>
+           <div className="flex items-center gap-2 font-bold text-slate-900"><CheckCircle2 className="w-5 h-5" /> Real-time Coaching</div>
         </div>
       </div>
     </section>

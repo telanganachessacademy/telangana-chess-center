@@ -12,15 +12,16 @@ import {
   ExternalLink,
   ChevronRight,
   Globe,
-  ShieldCheck
+  ShieldCheck,
+  Award
 } from "lucide-react";
 
 export function Footer() {
   const socialLinks = [
-    { icon: Facebook, href: "https://www.facebook.com/telanganachessacademy", label: "Facebook", color: "hover:bg-blue-600" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:bg-sky-500" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
-    { icon: Youtube, href: "#", label: "YouTube", color: "hover:bg-red-600" },
+    { icon: Facebook, href: "https://www.facebook.com/telanganachessacademy", label: "Facebook", bgColor: "hover:bg-[#1877F2]" },
+    { icon: Twitter, href: "#", label: "Twitter", bgColor: "hover:bg-[#1DA1F2]" },
+    { icon: Instagram, href: "#", label: "Instagram", bgColor: "hover:bg-[#E4405F]" },
+    { icon: Youtube, href: "#", label: "YouTube", bgColor: "hover:bg-[#FF0000]" },
   ];
 
   const quickLinks = [
@@ -41,72 +42,75 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0B0F19] text-slate-300 font-sans relative overflow-hidden border-t border-slate-800">
+    <footer className="bg-white text-slate-600 font-sans relative overflow-hidden border-t border-slate-100">
       
-      {/* --- Background Ambience --- */}
+      {/* --- Aesthetic Background --- */}
       <div className="absolute inset-0 pointer-events-none">
-         <div className="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px]" />
-         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-[120px]" />
-         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay"></div>
+         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-[100px] opacity-60" />
+         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[100px] opacity-60" />
       </div>
 
-      {/* Top Gradient Line */}
-      <div className="h-0.5 w-full bg-gradient-to-r from-emerald-500 via-indigo-500 to-purple-500 opacity-50"></div>
+      {/* Institutional Top Accent */}
+      <div className="h-1.5 w-full bg-emerald-600"></div>
 
-      <div className="container mx-auto px-4 pt-16 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+      <div className="container mx-auto max-w-7xl px-6 pt-20 pb-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12">
           
-          {/* Column 1: Brand Info (Span 4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center space-x-3">
-              {/* Logo Icon */}
-              <div className="w-12 h-12 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center shadow-lg shadow-black/50">
-                <span className="text-white font-black text-2xl">♔</span>
+          {/* Column 1: Brand Info */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="flex items-center gap-4">
+              {/* Refined Logo Box */}
+              <div className="w-14 h-14 bg-white border border-slate-100 rounded-2xl flex items-center justify-center shadow-xl shadow-slate-200/50">
+                <span className="text-emerald-600 font-black text-2xl">♔</span>
               </div>
               <div className="flex flex-col">
-                <h3 className="font-bold text-xl text-white tracking-wide">Telangana Chess Institute</h3>
-                <div className="flex items-center gap-2">
-                   <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                     FIDE Certified
-                   </span>
+                <h3 className="font-black text-xl text-slate-900 tracking-tighter whitespace-nowrap">
+                  Telangana Chess <span className="text-emerald-600">Academy</span>
+                </h3>
+                <div className="flex items-center gap-2 mt-1">
+                   <div className="flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                      <Award className="w-3 h-3 text-emerald-600" />
+                      <span className="text-[9px] text-emerald-700 font-black uppercase tracking-widest">FIDE Certified</span>
+                   </div>
                 </div>
               </div>
             </div>
             
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Forging champions through strategic excellence. We provide world-class chess education designed to build character, intellect, and competitive success.
+            <p className="text-slate-500 font-medium text-sm leading-relaxed max-w-sm">
+              The premier institution for strategic excellence in Telangana. We forge champions by blending traditional wisdom with modern engine analysis.
             </p>
 
-            <div className="flex gap-3 pt-2">
+            {/* Social Buttons - Varied Colors */}
+            <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 bg-slate-900 border border-slate-700 rounded-lg flex items-center justify-center transition-all duration-300 group ${social.color} hover:border-transparent hover:text-white`}
+                  className={`w-11 h-11 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center transition-all duration-300 group ${social.bgColor} hover:shadow-lg hover:-translate-y-1`}
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 text-slate-400 transition-colors" />
+                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links (Span 2 cols) */}
+          {/* Column 2: Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
-              Explore
-              <div className="h-px flex-grow bg-slate-800"></div>
+            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+               Explore
+               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="group flex items-center text-sm text-slate-400 hover:text-white transition-colors"
+                    className="group flex items-center text-sm font-bold text-slate-500 hover:text-emerald-600 transition-all"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 text-slate-600 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
+                    <ChevronRight className="w-4 h-4 mr-2 text-slate-200 group-hover:text-emerald-500 transition-all group-hover:translate-x-1" />
                     {link.name}
                   </Link>
                 </li>
@@ -114,70 +118,67 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact Info (Span 3 cols) */}
+          {/* Column 3: Contact Info */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
-              Contact Us
-              <div className="h-px flex-grow bg-slate-800"></div>
+            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+               Connect
+               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
             </h4>
-            <div className="space-y-5">
-              <a href="tel:+919864646481" className="flex items-start space-x-4 group p-3 rounded-xl hover:bg-slate-900/50 transition-colors -ml-3">
-                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg group-hover:border-emerald-500/50 group-hover:text-emerald-400 transition-colors">
-                  <Phone className="w-4 h-4 text-slate-400" />
+            <div className="space-y-4">
+              <a href="tel:+919864646481" className="flex items-center gap-4 group p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-emerald-100 hover:bg-emerald-50/30 transition-all">
+                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Phone className="w-4 h-4 text-emerald-600" />
                 </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Call Us</p>
-                  <p className="text-white font-medium group-hover:text-emerald-400 transition-colors">+91 9864646481</p>
-                </div>
-              </a>
-
-              <a href="mailto:telanganachessinstitute@gmail.com" className="flex items-start space-x-4 group p-3 rounded-xl hover:bg-slate-900/50 transition-colors -ml-3">
-                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg group-hover:border-indigo-500/50 group-hover:text-indigo-400 transition-colors">
-                  <Mail className="w-4 h-4 text-slate-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Email Us</p>
-                  <p className="text-white font-medium group-hover:text-indigo-400 transition-colors break-all text-sm">telanganachessinstitute@gmail.com</p>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Call</span>
+                  <span className="text-sm font-bold text-slate-700">+91 9864646481</span>
                 </div>
               </a>
 
-              <div className="flex items-start space-x-4 p-3 -ml-3">
-                <div className="p-2.5 bg-slate-900 border border-slate-700 rounded-lg">
-                  <MapPin className="w-4 h-4 text-slate-400" />
+              <a href="mailto:telanganachessacademy@gmail.com" className="flex items-center gap-4 group p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-blue-100 hover:bg-blue-50/30 transition-all">
+                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="w-4 h-4 text-blue-600" />
                 </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Visit Us</p>
-                  <p className="text-slate-300 font-medium text-sm">Hyderabad, Telangana</p>
-                  <p className="text-xs text-slate-500">India</p>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Email</span>
+                  <span className="text-sm font-bold text-slate-700 truncate">telanganachessacademy@gmail.com</span>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4">
+                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-orange-600" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Visit</span>
+                  <span className="text-sm font-bold text-slate-700">Hyderabad, Telangana</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Column 4: Our Network (Span 3 cols) */}
+          {/* Column 4: Our Network */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-white text-base mb-6 uppercase tracking-wider flex items-center gap-2">
-              Our Network
-              <div className="h-px flex-grow bg-slate-800"></div>
+            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+               Network
+               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
             </h4>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 gap-3">
               {networkLinks.map((site, index) => (
                 <a
                   key={index}
                   href={site.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-3 rounded-lg bg-slate-900/50 border border-slate-800 hover:border-slate-600 hover:bg-slate-800 hover:shadow-lg transition-all group"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all group shadow-sm hover:shadow-md"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Globe className="w-3.5 h-3.5 text-slate-600 group-hover:text-blue-400 transition-colors" />
-                      <span className="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">
-                        {site.name}
-                      </span>
-                    </div>
-                    <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-white opacity-0 group-hover:opacity-100 transition-all" />
+                  <div className="flex items-center gap-3">
+                    <Globe className="w-4 h-4 text-slate-300 group-hover:text-emerald-600" />
+                    <span className="text-xs font-bold text-slate-600 group-hover:text-slate-900 transition-colors">
+                      {site.name}
+                    </span>
                   </div>
+                  <ExternalLink className="w-3 h-3 text-slate-300 group-hover:text-emerald-600" />
                 </a>
               ))}
             </div>
@@ -186,23 +187,21 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-slate-800 mt-16 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} <span className="text-white font-medium">Telangana Chess Institute</span>. All rights reserved.
+        <div className="border-t border-slate-100 mt-20 pt-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-slate-400 text-xs font-bold">
+              © {new Date().getFullYear()} <span className="text-slate-900">Telangana Chess Academy</span>. Empowering strategic minds.
             </p>
-            <div className="flex items-center space-x-6">
-              <Link href="/privacy" className="text-xs text-slate-500 hover:text-white transition-colors">
-                Privacy Policy
+            <div className="flex items-center gap-8">
+              <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-emerald-600 transition-colors">
+                Privacy
               </Link>
-              <div className="w-1 h-1 rounded-full bg-slate-700"></div>
-              <Link href="/terms" className="text-xs text-slate-500 hover:text-white transition-colors">
-                Terms of Service
+              <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-emerald-600 transition-colors">
+                Terms
               </Link>
-              <div className="w-1 h-1 rounded-full bg-slate-700"></div>
-              <div className="flex items-center gap-1 text-xs text-slate-600">
-                <ShieldCheck className="w-3 h-3" />
-                <span>Secure Platform</span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Secure Portal</span>
               </div>
             </div>
           </div>

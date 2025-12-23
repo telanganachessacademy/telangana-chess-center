@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, ExternalLink } from "lucide-react";
+import { Menu, X, Phone, Mail, ExternalLink, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 interface NavItem {
   name: string;
   href: string;
-  isButton?: boolean;
+  hasDropdown?: boolean;
+  dropdownItems?: { name: string; href: string }[];
+  isExternal?: boolean;
 }
 
 export function Header() {
@@ -21,10 +23,19 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // EXACT SEQUENCE AS REQUESTED
   const navItems: NavItem[] = [
     { name: "Home", href: "/" },
-    { name: "Online Coaching", href: "https://coaching.telanganachessacademy.com/" },
-    { name: "Events", href: "https://pages.razorpay.com/pl_RimudLa05GzfHG/view" },
+    {
+      name: "Online Coaching",
+      href: "https://coaching.telanganachessacademy.com/",
+      isExternal: true,
+    },
+    {
+      name: "Events",
+      href: "/events",
+      isExternal: true,
+    },
     { name: "Courses", href: "/courses" },
     { name: "Our Coaches", href: "/coaches" },
     { name: "Gallery", href: "/gallery" },
@@ -33,120 +44,121 @@ export function Header() {
   ];
 
   return (
-    <header className={`fixed w-full z-50 top-0 left-0 font-sans transition-all duration-300 ${isScrolled ? "bg-[#0B0F19]/90 backdrop-blur-md shadow-lg border-b border-slate-800" : "bg-transparent"}`}>
-      
-      {/* --- TOP BAR (Only visible when at top) --- */}
-      <div className={`overflow-hidden transition-all duration-300 ${isScrolled ? "h-0 opacity-0" : "h-auto opacity-100 bg-[#0B0F19] border-b border-slate-800"}`}>
-        <div className="container mx-auto max-w-7xl px-4 py-2 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400">
-          <div className="flex items-center gap-4">
-            <a href="tel:+919864646481" className="flex items-center hover:text-emerald-400 transition-colors">
-              <Phone className="w-3 h-3 mr-1.5" /> +91 9864646481
+    <header 
+      className={`fixed w-full z-50 top-0 left-0 transition-all duration-500 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-emerald-100 py-3" 
+          : "bg-transparent py-6"
+      }`}
+    >
+      {/* --- TOP BAR --- */}
+      <div className={`overflow-hidden transition-all duration-500 ${isScrolled ? "h-0 opacity-0" : "h-auto opacity-100 mb-4"}`}>
+        <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center text-[11px] font-bold tracking-wider text-slate-500">
+          <div className="flex items-center gap-6">
+            <a href="tel:+919864646481" className="flex items-center hover:text-emerald-600 transition-colors">
+              <Phone className="w-3 h-3 text-emerald-500 mr-2" />
+              +91 9864646481
             </a>
-            <span className="hidden sm:block text-slate-700">|</span>
-            {/* UPDATED EMAIL */}
-            <a href="mailto:telanganachessinstitute@gmail.com" className="flex items-center hover:text-emerald-400 transition-colors">
-              <Mail className="w-3 h-3 mr-1.5" /> telanganachessinstitute@gmail.com
+            <a href="mailto:telanganachessacademy@gmail.com" className="flex items-center hover:text-emerald-600 transition-colors">
+              <Mail className="w-3 h-3 text-emerald-500 mr-2" />
+              telanganachessacademy@gmail.com
             </a>
           </div>
-          <div className="hidden sm:block font-medium tracking-wide uppercase text-slate-500">
-            Checkmate Your Limits
+          <div className="hidden md:flex items-center gap-2 font-black uppercase text-[10px] text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+             FIDE Certified Academy
           </div>
         </div>
       </div>
 
       {/* --- MAIN NAVIGATION --- */}
-      <div className="container mx-auto max-w-7xl px-4 py-3 sm:py-4 flex items-center justify-between">
+      <div className="container mx-auto max-w-7xl px-6 flex items-center justify-between">
         
-        {/* Logo Section */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden bg-white/5 border border-white/10 p-0.5">
+        {/* Logo Section - ONE LINE BRANDING */}
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white shadow-md border border-slate-100 p-0.5">
             <Image
-              src="/logo.jpg"
-              alt="Telangana Chess Institute"
-              width={50}
-              height={50}
+              src="/logo.jpeg"
+              alt="Logo"
+              width={40}
+              height={40}
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="flex flex-col leading-none">
-            {/* UPDATED NAME */}
-            <span className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
-              Telangana Chess Institute
-            </span>
-          </div>
+          <span className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter whitespace-nowrap">
+            Telangana Chess <span className="text-emerald-600">Academy</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-1">
-          {navItems.map((item) => {
-            if (item.name === "Online Coaching" || item.name === "Events") {
-              return (
-                <Link key={item.name} href={item.href} target="_blank" className="ml-2">
-                   <span className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
-                       item.name === "Online Coaching" 
-                       ? "bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg shadow-emerald-900/20" 
-                       : "bg-slate-800 text-white hover:bg-slate-700 border border-slate-700"
-                   }`}>
-                      {item.name}
-                      <ExternalLink className="w-3 h-3 opacity-70" />
-                   </span>
-                </Link>
-              );
-            }
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+        <nav className="hidden lg:flex items-center gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="px-3 py-2 text-[13px] font-bold text-slate-600 hover:text-emerald-600 transition-all"
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          {/* Action Buttons
+          <div className="flex items-center gap-3 ml-4">
+            <Link href="/events" >
+               <button className="px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-lg shadow-slate-200 flex items-center gap-2">
+                  Tournaments
+                  <ExternalLink className="w-3 h-3 opacity-50" />
+               </button>
+            </Link>
+            
+            <Link href="https://coaching.telanganachessacademy.com/" target="_blank">
+               <button className="px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest bg-emerald-600 text-white hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 flex items-center gap-2">
+                  Online Coaching
+                  <ExternalLink className="w-3 h-3 opacity-50" />
+               </button>
+            </Link>
+          </div> */}
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+          className="lg:hidden p-2 text-slate-900 bg-slate-100 rounded-lg hover:bg-emerald-600 hover:text-white transition-all"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* --- MOBILE MENU OVERLAY --- */}
+      {/* --- MOBILE OVERLAY --- */}
       <div 
-        className={`fixed inset-x-0 top-[110px] bg-[#0B0F19] border-t border-slate-800 shadow-2xl transition-all duration-300 ease-in-out lg:hidden overflow-hidden ${
-          isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        className={`fixed inset-0 bg-white z-[-1] transition-all duration-500 lg:hidden pt-32 px-6 ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="p-4 space-y-2 overflow-y-auto max-h-[70vh]">
+        <div className="space-y-3">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : "_self"}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors flex items-center justify-between ${
-                item.name === "Online Coaching" 
-                  ? "bg-emerald-600 text-white hover:bg-emerald-500" 
-                  : "text-slate-300 hover:bg-white/5 hover:text-white"
-              }`}
+              className="flex items-center justify-between p-4 rounded-xl bg-slate-50 text-base font-bold text-slate-900"
             >
-              <span>{item.name}</span>
-              {item.href.startsWith("http") && <ExternalLink className="w-4 h-4 opacity-50" />}
+              {item.name}
+              <ChevronRight className="w-4 h-4 text-emerald-500" />
             </Link>
           ))}
           
-          <div className="pt-6 mt-6 border-t border-slate-800 grid grid-cols-2 gap-4">
-             <a href="tel:+919864646481" className="flex flex-col items-center justify-center p-3 bg-slate-800 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-700">
-                <Phone className="w-5 h-5 mb-1 text-emerald-500" />
-                <span>Call Us</span>
-             </a>
-             <a href="mailto:telanganachessinstitute@gmail.com" className="flex flex-col items-center justify-center p-3 bg-slate-800 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-700">
-                <Mail className="w-5 h-5 mb-1 text-emerald-500" />
-                <span>Email Us</span>
-             </a>
+          <div className="grid grid-cols-1 gap-3 pt-4">
+            <Link href="https://coaching.telanganachessacademy.com/" target="_blank">
+               <button className="w-full p-4 rounded-xl bg-emerald-600 text-white font-black uppercase tracking-widest text-xs">
+                  Online Coaching
+               </button>
+            </Link>
+            <Link href="https://pages.razorpay.com/pl_RimudLa05GzfHG/view" target="_blank">
+               <button className="w-full p-4 rounded-xl bg-slate-900 text-white font-black uppercase tracking-widest text-xs">
+                  Events
+               </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -16,7 +16,10 @@ import {
   ChevronUp,
   ArrowRight,
   Zap,
-  Sparkles
+  Sparkles,
+  CalendarDays,
+  UserCheck,
+  ChevronRight
 } from "lucide-react";
 import Link from "next/link";
 
@@ -209,195 +212,195 @@ export default function CoursesPage() {
     },
   ];
 
-  // Dynamic Theme Helper
+  // Professional Light Theme Styling Helper
   const getThemeStyles = (color: string) => {
     switch (color) {
       case "blue":
         return {
-          iconBg: "bg-indigo-500/10 border-indigo-500/20",
-          iconColor: "text-indigo-400",
-          border: "group-hover:border-indigo-500/50",
-          glow: "group-hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]",
-          btn: "bg-indigo-600 hover:bg-indigo-500",
-          check: "text-indigo-400"
+          iconBg: "bg-blue-50 border-blue-100",
+          iconColor: "text-blue-600",
+          border: "border-slate-100",
+          glow: "hover:shadow-blue-100",
+          btn: "bg-blue-600 hover:bg-blue-700 shadow-blue-50",
+          check: "text-blue-600",
+          text: "text-blue-700"
         };
       case "orange":
         return {
-          iconBg: "bg-orange-500/10 border-orange-500/20",
-          iconColor: "text-orange-400",
-          border: "group-hover:border-orange-500/50",
-          glow: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]",
-          btn: "bg-orange-600 hover:bg-orange-500",
-          check: "text-orange-400"
+          iconBg: "bg-orange-50 border-orange-100",
+          iconColor: "text-orange-600",
+          border: "border-slate-100",
+          glow: "hover:shadow-orange-100",
+          btn: "bg-orange-500 hover:bg-orange-600 shadow-orange-50",
+          check: "text-orange-600",
+          text: "text-orange-700"
         };
       case "purple":
         return {
-          iconBg: "bg-purple-500/10 border-purple-500/20",
-          iconColor: "text-purple-400",
-          border: "group-hover:border-purple-500/50",
-          glow: "group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]",
-          btn: "bg-purple-600 hover:bg-purple-500",
-          check: "text-purple-400"
+          iconBg: "bg-purple-50 border-purple-100",
+          iconColor: "text-purple-600",
+          border: "border-slate-100",
+          glow: "hover:shadow-purple-100",
+          btn: "bg-purple-600 hover:bg-purple-700 shadow-purple-50",
+          check: "text-purple-600",
+          text: "text-purple-700"
         };
       default: return {};
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-emerald-100">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        {/* Background Ambience */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
-           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3"></div>
-           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay"></div>
+      <section className="relative pt-40 pb-24 overflow-hidden bg-white border-b border-slate-100">
+        <div className="absolute inset-0 pointer-events-none">
+           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[120px] opacity-60" />
+           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[100px] opacity-40" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-indigo-500/10 text-indigo-300 border-indigo-500/30 px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg">
-            Curriculum
-          </Badge>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white tracking-tight">
-            Master the Game at <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">Every Level</span>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+            <CalendarDays className="w-3.5 h-3.5" />
+            <span>2025 Academy Enrollment</span>
+          </div>
+          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+            Master Every <span className="text-emerald-600">Level.</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed border-t border-slate-800 pt-6">
-            From your first move to your first tournament win. Our structured curriculum is designed to take you from beginner to expert.
+          <p className="text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
+            The most structured curriculum in <span className="text-slate-900 font-bold underline decoration-emerald-500/30">Telangana Chess Academy</span> history. 
+            From your first move to competitive mastery.
           </p>
         </div>
       </section>
 
-      {/* --- LEVEL SELECTOR --- */}
-      <section className="relative z-20 -mt-12 px-4 pb-12">
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* --- LEVEL SUMMARY --- */}
+      <section className="relative z-20 -mt-16 px-6">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { level: "Beginner", desc: "Foundations & Rules", color: "text-indigo-400", border: "border-indigo-500", bg: "bg-indigo-500/10" },
-              { level: "Intermediate", desc: "Tactics & Strategy", color: "text-orange-400", border: "border-orange-500", bg: "bg-orange-500/10" },
-              { level: "Advanced", desc: "Competition & Mastery", color: "text-purple-400", border: "border-purple-500", bg: "bg-purple-500/10" },
+              { level: "Beginner", desc: "Foundation & Rules", color: "text-blue-600", border: "border-blue-500", bg: "bg-blue-50" },
+              { level: "Intermediate", desc: "Tactics & Strategy", color: "text-orange-600", border: "border-orange-500", bg: "bg-orange-50" },
+              { level: "Advanced", desc: "Competition & Elite", color: "text-purple-600", border: "border-purple-500", bg: "bg-purple-50" },
             ].map((item, idx) => (
               <div 
                 key={idx} 
-                className={`bg-slate-900/60 backdrop-blur-md rounded-2xl shadow-xl p-8 border-t-4 hover:-translate-y-2 transition-transform duration-300 border border-slate-800 ${item.border}`}
+                className={`bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 p-10 border-t-8 transition-transform duration-500 hover:-translate-y-2 border border-slate-100`}
                 style={{borderTopColor: "inherit"}}
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mb-4 shadow-inner border border-white/5 ${item.bg} ${item.color}`}>
-                  {idx + 1}
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-black text-xl mb-6 shadow-sm border border-white ${item.bg} ${item.color}`}>
+                  0{idx + 1}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">{item.level}</h3>
-                <p className="text-slate-400 text-sm">{item.desc}</p>
+                <h3 className="text-2xl font-black text-slate-900 mb-2">{item.level}</h3>
+                <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- COURSES LIST --- */}
-      <section className="py-12 px-4">
+      {/* --- FULL COURSES CATALOG --- */}
+      <section className="py-24 px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {courses.map((course, index) => {
-              const styles = getThemeStyles(course.color);
+              const styles = getThemeStyles(course.color) as any;
 
               return (
                 <div 
                   key={index} 
-                  className={`group bg-slate-900/40 backdrop-blur-md rounded-[2rem] border border-slate-800 overflow-hidden transition-all duration-500 hover:-translate-y-1 flex flex-col ${styles.border} ${styles.glow}`}
+                  className={`group bg-white rounded-[2.5rem] border border-slate-100 overflow-hidden transition-all duration-500 shadow-xl shadow-slate-100/50 flex flex-col ${styles.glow} hover:shadow-2xl`}
                 >
                   
-                  {/* Card Header */}
-                  <div className="p-8 pb-4">
-                    <div className="flex justify-between items-start mb-6">
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border ${styles.iconBg}`}>
+                  {/* Card Content Area */}
+                  <div className="p-10 flex flex-col h-full">
+                    <div className="flex justify-between items-start mb-10">
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border transition-transform duration-500 group-hover:rotate-6 ${styles.iconBg}`}>
                         <course.icon className={`w-8 h-8 ${styles.iconColor}`} />
                       </div>
                       <div className="text-right">
-                        <span className="block text-3xl font-black text-white">{course.price}</span>
-                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">/ course</span>
+                        <span className="block text-4xl font-black text-slate-900 tracking-tighter">{course.price}</span>
+                        <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">Course Fee</span>
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-3">{course.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-slate-700 pl-4">{course.description}</p>
+                    <div className="mb-8">
+                       <span className={`inline-block px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest mb-4 ${styles.bg} ${styles.text}`}>
+                          {course.level} TRACK
+                       </span>
+                       <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-emerald-600 transition-colors">
+                          {course.title}
+                       </h3>
+                       <p className="text-slate-500 font-medium leading-relaxed border-l-4 border-slate-100 pl-6">
+                          {course.description}
+                       </p>
+                    </div>
 
-                    {/* Meta Stats Row (Glass Strip) */}
-                    <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-slate-800 bg-slate-950/30 rounded-lg px-2">
-                       <div className="flex items-center gap-2 justify-center lg:justify-start">
-                          <Clock className="w-4 h-4 text-slate-500" />
-                          <div>
-                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Duration</p>
-                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.duration}</p>
-                          </div>
+                    {/* Meta Stats Dashboard */}
+                    <div className="grid grid-cols-3 gap-1 py-6 border-t border-b border-slate-50 mb-10">
+                       <div className="flex flex-col items-center">
+                          <Clock className="w-4 h-4 text-slate-300 mb-2" />
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Duration</span>
+                          <span className="text-xs font-black text-slate-800 uppercase">{course.duration}</span>
                        </div>
-                       <div className="flex items-center gap-2 justify-center lg:justify-start">
-                          <Users className="w-4 h-4 text-slate-500" />
-                          <div>
-                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Size</p>
-                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.classSize}</p>
-                          </div>
+                       <div className="flex flex-col items-center border-x border-slate-100 px-4">
+                          <Users className="w-4 h-4 text-slate-300 mb-2" />
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Batch Size</span>
+                          <span className="text-xs font-black text-slate-800 uppercase">{course.classSize}</span>
                        </div>
-                       <div className="flex items-center gap-2 justify-center lg:justify-start">
-                          <Star className="w-4 h-4 text-slate-500" />
-                          <div>
-                            <p className="hidden sm:block text-[10px] uppercase text-slate-500 font-bold tracking-wider">Rating</p>
-                            <p className="text-xs sm:text-sm font-bold text-slate-300">{course.rating}</p>
-                          </div>
+                       <div className="flex flex-col items-center">
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 mb-2" />
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Satisfaction</span>
+                          <span className="text-xs font-black text-slate-800 uppercase">{course.rating}/5.0</span>
                        </div>
                     </div>
+
+                    {/* Syllabus Highlights */}
+                    <div className="flex-grow">
+                      <h4 className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+                        <Sparkles className="w-3.5 h-3.5" /> Core Curriculum
+                      </h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
+                        {course.features.slice(0, 4).map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
+                            <span className="text-[13px] font-bold text-slate-600 leading-tight">{feature}</span>
+                          </li>
+                        ))}
+                        
+                        {/* Expanded Items */}
+                        {expandedCourses[index] && course.features.slice(4).map((feature, i) => (
+                          <li key={i} className="flex items-start gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
+                            <span className="text-[13px] font-bold text-slate-600 leading-tight">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {course.features.length > 4 && (
+                        <button 
+                          onClick={() => toggleFeatures(index)}
+                          className={`mt-10 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest transition-all ${styles.text} hover:opacity-70`}
+                        >
+                          {expandedCourses[index] ? (
+                            <>Collapse Syllabus <ChevronUp className="w-3.5 h-3.5" /></>
+                          ) : (
+                            <>Full Syllabus Details <ChevronDown className="w-3.5 h-3.5" /></>
+                          )}
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Enrollment Actions */}
+                    <div className="mt-10 pt-10 border-t border-slate-50 flex gap-4">
+                      <Link href="/contact" className="flex-grow">
+                        <Button className={`w-full h-14 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2 ${styles.btn}`}>
+                          Enroll Course <ChevronRight className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+
                   </div>
-
-                  {/* Syllabus / Features */}
-                  <div className="px-8 py-6 bg-slate-950/40 flex-grow">
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                      <Sparkles className="w-3 h-3" /> Syllabus Highlights
-                    </h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
-                      {course.features.slice(0, 4).map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
-                          <span className="leading-tight">{feature}</span>
-                        </li>
-                      ))}
-                      
-                      {/* Expanded View */}
-                      {expandedCourses[index] && course.features.slice(4).map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300 animate-in fade-in slide-in-from-top-2 duration-300">
-                          <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.check}`} />
-                          <span className="leading-tight">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {course.features.length > 4 && (
-                      <button 
-                        onClick={() => toggleFeatures(index)}
-                        className="mt-6 flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-white transition-colors uppercase tracking-wide"
-                      >
-                        {expandedCourses[index] ? (
-                          <>Show Less <ChevronUp className="w-3 h-3" /></>
-                        ) : (
-                          <>View Full Syllabus <ChevronDown className="w-3 h-3" /></>
-                        )}
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Actions */}
-                  <div className="p-8 pt-4 flex gap-4 mt-auto">
-                    <Link href="/contact" className="flex-1">
-                      <Button className={`w-full h-12 rounded-xl font-bold text-base shadow-lg transition-all hover:scale-[1.02] active:scale-95 ${styles.btn}`}>
-                        Enroll Now
-                      </Button>
-                    </Link>
-                    <Link href="/contact">
-                      <Button variant="outline" className="h-12 w-full rounded-xl font-bold border-slate-700 bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white hover:border-slate-600">
-                        Details
-                      </Button>
-                    </Link>
-                  </div>
-
                 </div>
               );
             })}
@@ -405,23 +408,25 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* --- WHY CHOOSE US (Dark Panel) --- */}
-      <section className="py-20 bg-slate-900/50 relative overflow-hidden border-t border-slate-800">
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      {/* --- INSTITUTIONAL ADVANTAGE --- */}
+      <section className="py-32 bg-white relative overflow-hidden border-t border-slate-100">
+         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:40px_40px] opacity-40"></div>
 
-         <div className="container mx-auto px-4 relative z-10 text-center">
-            <h2 className="text-3xl font-bold text-white mb-12">Why Train With Us?</h2>
+         <div className="container mx-auto px-6 relative z-10 text-center">
+            <h2 className="text-5xl font-black text-slate-900 mb-20 tracking-tight">The Academy Advantage</h2>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-10">
               {[
-                { icon: Users, title: "Small Batches", desc: "We limit class sizes to ensure every student gets personal attention from the coach.", color: "text-indigo-400" },
-                { icon: Trophy, title: "Proven Success", desc: "Our structured curriculum has produced state champions and rated players consistently.", color: "text-amber-400" },
-                { icon: Zap, title: "Interactive Learning", desc: "We use modern tools, puzzles, and game analysis to make learning engaging.", color: "text-emerald-400" },
+                { icon: UserCheck, title: "FIDE Mentorship", desc: "Learn directly from certified FIDE masters who tailor coaching to your unique playing style.", color: "text-blue-600", bg: "bg-blue-50" },
+                { icon: Trophy, title: "Tournament Prep", desc: "Our curriculum is engineered to prepare you for official state and national FIDE rated events.", color: "text-orange-500", bg: "bg-orange-50" },
+                { icon: Zap, title: "Interactive Hub", desc: "Access the academy's digital training suite, complete with Stockfish engine and 1-on-1 feedback.", color: "text-emerald-600", bg: "bg-emerald-50" },
               ].map((item, i) => (
-                <div key={i} className="bg-slate-950/60 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-slate-700 transition-colors">
-                  <item.icon className={`w-12 h-12 mx-auto mb-6 ${item.color}`} />
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <div key={i} className="bg-[#FBFDFF] border border-slate-100 p-12 rounded-[2.5rem] shadow-xl shadow-slate-200/50 group hover:-translate-y-2 transition-all duration-500">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 mx-auto border border-white shadow-sm ${item.bg} ${item.color}`}>
+                    <item.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{item.title}</h3>
+                  <p className="text-slate-500 font-medium text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>

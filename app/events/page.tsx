@@ -19,7 +19,8 @@ import {
   Filter,
   Sparkles,
   LayoutGrid,
-  List
+  CalendarDays,
+  ChevronRight
 } from "lucide-react";
 import { format } from "date-fns";
 
@@ -128,71 +129,72 @@ export default function EventsPage() {
       : events.filter((event) => event.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-emerald-100">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 bg-[#020617] overflow-hidden">
-        {/* Abstract Background */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+      <section className="relative pt-40 pb-24 overflow-hidden bg-white border-b border-slate-100">
+        <div className="absolute inset-0 pointer-events-none">
+           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[120px] opacity-60" />
+           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[100px] opacity-40" />
+        </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-blue-900/50 text-blue-300 border-blue-800 px-4 py-1.5 text-sm uppercase tracking-wider">
-            Mark Your Calendars
-          </Badge>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight">
-            Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">Battles</span>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+            <CalendarDays className="w-3.5 h-3.5" />
+            <span>Championship Calendar 2025</span>
+          </div>
+          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+            Upcoming <span className="text-emerald-600">Battles.</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            From local blitz nights to state championships. Join our events to test your skills, learn from masters, and build your rating.
+          <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
+            From local blitz nights to international FIDE rated championships. 
+            Claim your victory with <span className="text-slate-900 font-bold underline decoration-emerald-500/30">Telangana Chess Academy</span>.
           </p>
         </div>
       </section>
 
-      {/* --- FILTER & TABS --- */}
-      <section className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+      {/* --- FILTER & STICKY BAR --- */}
+      <section className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200 py-6 shadow-sm">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             
-            {/* Category Pills (Scrollable) */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+            {/* Category Pills */}
+            <div className="flex items-center gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
                     selectedCategory === category.id
-                      ? "bg-slate-900 text-white shadow-md"
-                      : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300"
+                      ? "bg-emerald-600 border-transparent text-white shadow-lg shadow-emerald-100 scale-105"
+                      : "bg-white border-slate-100 text-slate-500 hover:border-emerald-200 hover:text-emerald-600"
                   }`}
                 >
-                  <category.icon className="w-4 h-4" />
+                  <category.icon className="w-3.5 h-3.5" />
                   {category.name}
                 </button>
               ))}
             </div>
             
-            {/* View Toggle Info */}
-            <div className="hidden md:flex items-center gap-2 text-sm text-slate-500 font-medium">
-               <Filter className="w-4 h-4" />
-               Showing {filteredEvents.length} Events
+            <div className="hidden md:flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+               <Filter className="w-4 h-4 text-emerald-500" />
+               Current Inventory: {filteredEvents.length} Events
             </div>
           </div>
         </div>
       </section>
 
       {/* --- MAIN CONTENT --- */}
-      <section className="py-12 px-4">
+      <section className="py-20 px-6">
         <div className="container mx-auto max-w-7xl">
           <Tabs defaultValue="grid" className="w-full">
             
-            {/* Tab Controls */}
-            <div className="flex justify-end mb-8">
-              <TabsList className="bg-slate-100 border border-slate-200 p-1">
-                <TabsTrigger value="grid" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                  <LayoutGrid className="w-4 h-4 mr-2" /> Grid
+            <div className="flex justify-end mb-12">
+              <TabsList className="bg-slate-100 border border-slate-200 p-1.5 rounded-2xl">
+                <TabsTrigger value="grid" className="rounded-xl px-6 font-bold text-xs uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-emerald-600">
+                  <LayoutGrid className="w-4 h-4 mr-2" /> Grid View
                 </TabsTrigger>
-                <TabsTrigger value="calendar" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                <TabsTrigger value="calendar" className="rounded-xl px-6 font-bold text-xs uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-emerald-600">
                   <CalendarIcon className="w-4 h-4 mr-2" /> Calendar
                 </TabsTrigger>
               </TabsList>
@@ -200,85 +202,81 @@ export default function EventsPage() {
 
             {/* --- GRID VIEW --- */}
             <TabsContent value="grid">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {filteredEvents.map((event) => {
-                  // Dynamic Styling
-                  const colorClass = 
-                    event.color === 'blue' ? 'text-blue-600 bg-blue-50 border-blue-100' :
-                    event.color === 'orange' ? 'text-orange-600 bg-orange-50 border-orange-100' :
-                    event.color === 'purple' ? 'text-purple-600 bg-purple-50 border-purple-100' :
-                    'text-green-600 bg-green-50 border-green-100';
-                  
-                  const btnClass = 
-                    event.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
-                    event.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' :
-                    event.color === 'purple' ? 'bg-purple-600 hover:bg-purple-700' :
-                    'bg-green-600 hover:bg-green-700';
+                  const styles = 
+                    event.color === 'blue' ? { btn: 'bg-blue-600 hover:bg-blue-700 shadow-blue-100', text: 'text-blue-700', bg: 'bg-blue-50' } :
+                    event.color === 'orange' ? { btn: 'bg-orange-500 hover:bg-orange-600 shadow-orange-100', text: 'text-orange-700', bg: 'bg-orange-50' } :
+                    event.color === 'purple' ? { btn: 'bg-purple-600 hover:bg-purple-700 shadow-purple-100', text: 'text-purple-700', bg: 'bg-purple-50' } :
+                    { btn: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-100', text: 'text-emerald-700', bg: 'bg-emerald-50' };
 
                   return (
-                    <Card key={event.id} className="group bg-white border border-slate-200 rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
-                      {/* Image Area */}
-                      <div className="relative h-56 overflow-hidden">
-                        <img 
-                          src={event.image} 
-                          alt={event.title} 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        
-                        {/* Date Badge */}
-                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md rounded-xl p-2 text-center min-w-[60px] shadow-lg">
-                          <span className="block text-xs font-bold text-slate-500 uppercase">{format(new Date(event.date), "MMM")}</span>
-                          <span className="block text-2xl font-black text-slate-900">{format(new Date(event.date), "dd")}</span>
-                        </div>
+                    <Card key={event.id} className="group bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col h-full">
+                      {/* Image Frame */}
+                      <div className="relative h-64 overflow-hidden p-3 pb-0">
+                        <div className="relative h-full w-full rounded-[2rem] overflow-hidden">
+                            <img 
+                            src={event.image} 
+                            alt={event.title} 
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+                            
+                            {/* Floating Date Badge */}
+                            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-3 text-center min-w-[65px] shadow-xl border border-white">
+                            <span className="block text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-1">{format(new Date(event.date), "MMM")}</span>
+                            <span className="block text-3xl font-black text-slate-900 leading-none">{format(new Date(event.date), "dd")}</span>
+                            </div>
 
-                        {/* Category Tag */}
-                        <div className="absolute top-4 right-4">
-                          <Badge className="bg-slate-900/80 backdrop-blur-md text-white border-0 hover:bg-slate-900 uppercase tracking-wider text-[10px]">
-                            {event.category}
-                          </Badge>
+                            <div className="absolute top-4 right-4">
+                            <Badge className="bg-white/20 backdrop-blur-md text-white border border-white/20 uppercase tracking-[0.2em] text-[9px] font-black px-3 py-1">
+                                {event.category}
+                            </Badge>
+                            </div>
                         </div>
                       </div>
 
-                      <CardContent className="p-6 flex flex-col flex-grow">
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-slate-900 mb-2 line-clamp-1">{event.title}</h3>
-                          <p className="text-slate-500 text-sm line-clamp-2">{event.description}</p>
+                      <CardContent className="p-8 flex flex-col flex-grow">
+                        <div className="mb-8">
+                          <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tight group-hover:text-emerald-600 transition-colors line-clamp-1">{event.title}</h3>
+                          <p className="text-slate-500 font-medium text-sm leading-relaxed line-clamp-2">{event.description}</p>
                         </div>
 
-                        {/* Meta Details */}
-                        <div className="space-y-3 mb-6">
-                          <div className="flex items-center gap-3 text-sm text-slate-600">
-                            <Clock className="w-4 h-4 text-slate-400" />
+                        {/* Event Details Grid */}
+                        <div className="space-y-4 mb-10 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+                          <div className="flex items-center gap-4 text-xs font-bold text-slate-700">
+                            <Clock className={`w-4 h-4 ${styles.text}`} />
                             {event.time}
                           </div>
-                          <div className="flex items-center gap-3 text-sm text-slate-600">
-                            <MapPin className="w-4 h-4 text-slate-400" />
-                            <span className="line-clamp-1">{event.location}</span>
+                          <div className="flex items-center gap-4 text-xs font-bold text-slate-700">
+                            <MapPin className={`w-4 h-4 ${styles.text}`} />
+                            <span className="truncate">{event.location}</span>
                           </div>
-                          <div className="flex items-center gap-3 text-sm text-slate-600">
-                            <Users className="w-4 h-4 text-slate-400" />
+                          <div className="flex items-center gap-4 text-xs font-bold text-slate-700">
+                            <Users className={`w-4 h-4 ${styles.text}`} />
                             {event.participants}
                           </div>
                         </div>
 
-                        {/* Info Boxes */}
-                        <div className="grid grid-cols-2 gap-3 mb-6 mt-auto">
-                          <div className={`rounded-xl p-3 text-center border ${colorClass}`}>
-                            <div className="text-[10px] font-bold uppercase opacity-70">Prize Pool</div>
-                            <div className="font-bold">{event.prize}</div>
-                          </div>
-                          <div className="rounded-xl p-3 text-center border border-slate-100 bg-slate-50 text-slate-600">
-                            <div className="text-[10px] font-bold uppercase opacity-70">Entry</div>
-                            <div className="font-bold">{event.registrationFee}</div>
-                          </div>
+                        {/* Action Area */}
+                        <div className="mt-auto">
+                            <div className="flex items-center justify-between mb-8 px-2">
+                                <div>
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Prize Fund</p>
+                                    <p className={`text-lg font-black ${styles.text}`}>{event.prize}</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Entry Fee</p>
+                                    <p className="text-lg font-black text-slate-900">{event.registrationFee}</p>
+                                </div>
+                            </div>
+                            
+                            <Link href="/contact" className="w-full">
+                            <Button className={`w-full h-14 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white shadow-xl ${styles.btn} transition-all active:scale-95 flex items-center justify-center gap-2 group-hover:gap-4`}>
+                                Join Battle <ChevronRight className="w-4 h-4" />
+                            </Button>
+                            </Link>
                         </div>
-
-                        <Link href="/contact" className="w-full">
-                          <Button className={`w-full rounded-xl font-bold h-12 shadow-md ${btnClass}`}>
-                            Register Now <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </Link>
                       </CardContent>
                     </Card>
                   );
@@ -288,90 +286,90 @@ export default function EventsPage() {
 
             {/* --- CALENDAR VIEW --- */}
             <TabsContent value="calendar">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 
-                {/* Calendar Selector */}
+                {/* Date Picker Side */}
                 <div className="lg:col-span-4">
-                  <div className="bg-white p-6 rounded-[2rem] shadow-xl border border-slate-100 sticky top-24">
-                    <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                       <CalendarIcon className="w-5 h-5 text-blue-600" /> Select Date
+                  <div className="bg-white p-8 rounded-[3rem] shadow-xl shadow-slate-200/50 border border-slate-100 sticky top-40">
+                    <h3 className="text-xl font-black text-slate-900 mb-8 flex items-center gap-3">
+                       <div className="w-2 h-8 bg-emerald-600 rounded-full" />
+                       Select Date
                     </h3>
                     <Calendar
                       mode="single"
                       selected={selectedDate}
                       onSelect={setSelectedDate}
-                      className="rounded-xl border border-slate-100 p-4"
+                      className="rounded-2xl border border-slate-50 p-4"
                       classNames={{
-                        head_cell: "text-slate-400 font-medium text-sm pt-4 pb-2",
-                        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-blue-50 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                        day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100 hover:bg-slate-100 rounded-full transition-colors",
-                        day_selected: "bg-blue-600 text-white hover:bg-blue-700 hover:text-white focus:bg-blue-600 focus:text-white",
+                        head_cell: "text-slate-400 font-bold text-[10px] uppercase tracking-widest pt-4 pb-2",
+                        cell: "text-center p-0 relative focus-within:relative focus-within:z-20",
+                        day: "h-10 w-10 p-0 font-bold aria-selected:opacity-100 hover:bg-emerald-50 rounded-xl transition-all",
+                        day_selected: "bg-emerald-600 text-white hover:bg-emerald-700 hover:text-white focus:bg-emerald-600 focus:text-white shadow-lg shadow-emerald-100",
                         day_today: "bg-slate-100 text-slate-900",
                       }}
                     />
-                    <div className="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                      <p className="text-xs text-slate-500 mb-2"><strong>Tip:</strong> Dates with dots indicate scheduled events.</p>
-                      <div className="flex gap-2">
-                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                        <span className="w-2 h-2 rounded-full bg-orange-500"></span>
-                        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                    <div className="mt-8 p-6 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Event Legend</p>
+                      <div className="flex gap-4">
+                        <div className="flex items-center gap-2 text-[10px] font-bold text-slate-600"><span className="w-2 h-2 rounded-full bg-blue-500"></span> Tournament</div>
+                        <div className="flex items-center gap-2 text-[10px] font-bold text-slate-600"><span className="w-2 h-2 rounded-full bg-orange-500"></span> Workshop</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Event List for Date */}
+                {/* Event Schedule Side */}
                 <div className="lg:col-span-8">
-                  <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100 min-h-[500px]">
-                    <div className="flex justify-between items-end mb-8 border-b border-slate-100 pb-4">
+                  <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-xl shadow-slate-200/50 border border-slate-100 min-h-[600px]">
+                    <div className="flex justify-between items-end mb-12 border-b border-slate-50 pb-8">
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-900">Schedule</h3>
-                        <p className="text-slate-500">Events for {selectedDate ? format(selectedDate, "MMMM dd, yyyy") : "Selected Date"}</p>
+                        <h3 className="text-3xl font-black text-slate-900 tracking-tight">Daily Schedule</h3>
+                        <p className="text-slate-500 font-medium">Portals open for {selectedDate ? format(selectedDate, "MMMM dd, yyyy") : "Academy Events"}</p>
                       </div>
                       {selectedDate && (
-                         <Badge variant="outline" className="border-blue-200 text-blue-600 bg-blue-50">
+                         <div className="px-5 py-2 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-black uppercase tracking-widest">
                             {format(selectedDate, "EEEE")}
-                         </Badge>
+                         </div>
                       )}
                     </div>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       {filteredEvents
                         .filter(e => selectedDate ? e.date === format(selectedDate, "yyyy-MM-dd") : true)
                         .length > 0 ? (
                         filteredEvents
                           .filter(e => selectedDate ? e.date === format(selectedDate, "yyyy-MM-dd") : true)
                           .map(event => (
-                            <div key={event.id} className="flex flex-col sm:flex-row items-start gap-6 p-6 border border-slate-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all group">
-                               {/* Time Column */}
-                               <div className="flex flex-row sm:flex-col items-center sm:items-start gap-2 min-w-[100px]">
-                                  <span className="text-lg font-bold text-slate-900">{event.time.split(" ")[0]}</span>
-                                  <span className="text-xs font-bold text-slate-400 uppercase bg-slate-100 px-2 py-0.5 rounded">{event.time.split(" ")[1]}</span>
+                            <div key={event.id} className="flex flex-col md:flex-row items-center gap-8 p-8 border border-slate-50 rounded-[2rem] bg-slate-50/30 hover:bg-white hover:border-emerald-100 hover:shadow-xl hover:shadow-emerald-50 transition-all duration-500 group">
+                               {/* Time Block */}
+                               <div className="flex flex-row md:flex-col items-center md:items-start gap-3 min-w-[120px]">
+                                  <span className="text-2xl font-black text-slate-900">{event.time.split(" ")[0]}</span>
+                                  <span className="text-[10px] font-black text-slate-400 uppercase bg-white border border-slate-100 px-3 py-1 rounded-lg shadow-sm">{event.time.split(" ")[1]}</span>
                                </div>
 
-                               {/* Content */}
-                               <div className="flex-1">
-                                  <div className="flex justify-between items-start mb-2">
-                                     <h4 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{event.title}</h4>
-                                     <Badge className={`uppercase text-[10px] ${
-                                        event.color === 'blue' ? 'bg-blue-100 text-blue-700 hover:bg-blue-200' : 
-                                        event.color === 'orange' ? 'bg-orange-100 text-orange-700 hover:bg-orange-200' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+                               {/* Information */}
+                               <div className="flex-1 text-center md:text-left">
+                                  <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
+                                     <h4 className="text-xl font-black text-slate-900 group-hover:text-emerald-600 transition-colors">{event.title}</h4>
+                                     <span className={`px-4 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${
+                                        event.color === 'blue' ? 'border-blue-100 text-blue-700 bg-blue-50' : 
+                                        event.color === 'orange' ? 'border-orange-100 text-orange-700 bg-orange-50' : 'border-purple-100 text-purple-700 bg-purple-50'
                                      }`}>
                                         {event.category}
-                                     </Badge>
+                                     </span>
                                   </div>
-                                  <p className="text-slate-500 text-sm mb-4">{event.description}</p>
+                                  <p className="text-slate-500 font-medium text-sm mb-6 leading-relaxed line-clamp-2">{event.description}</p>
                                   
-                                  <div className="flex items-center gap-4 text-xs font-medium text-slate-400">
-                                     <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {event.location}</span>
-                                     <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-yellow-500" /> Prize: {event.prize}</span>
+                                  <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+                                     <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-emerald-500" /> {event.location}</span>
+                                     <span className="flex items-center gap-2"><Trophy className="w-4 h-4 text-yellow-500" /> {event.prize}</span>
                                   </div>
                                </div>
 
                                {/* Action */}
-                               <div className="mt-4 sm:mt-0">
+                               <div className="mt-4 md:mt-0">
                                  <Link href="/contact">
-                                    <Button size="sm" variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <Button variant="outline" className="h-12 px-6 rounded-xl border-slate-200 text-slate-900 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 font-bold transition-all shadow-sm">
                                       Details
                                     </Button>
                                  </Link>
@@ -379,16 +377,16 @@ export default function EventsPage() {
                             </div>
                           ))
                       ) : (
-                        <div className="text-center py-20 bg-slate-50 rounded-2xl border-dashed border-2 border-slate-200">
-                           <CalendarIcon className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                           <h4 className="text-slate-900 font-bold mb-1">No Events Found</h4>
-                           <p className="text-slate-500 text-sm">There are no events scheduled for this specific date.</p>
+                        <div className="flex flex-col items-center justify-center py-32 text-center bg-slate-50/50 rounded-[3rem] border-2 border-dashed border-slate-100">
+                           <CalendarIcon className="w-16 h-16 text-slate-200 mb-6" />
+                           <h4 className="text-xl font-black text-slate-900 mb-2 tracking-tight">Rest Day.</h4>
+                           <p className="text-slate-500 font-medium max-w-[240px] leading-relaxed">There are no institutional battles scheduled for this date.</p>
                            <Button 
                              variant="link" 
                              onClick={() => setSelectedDate(undefined)}
-                             className="text-blue-600 mt-2"
+                             className="text-emerald-600 font-bold mt-4 hover:no-underline"
                            >
-                             View all events instead
+                             View Full Season
                            </Button>
                         </div>
                       )}
