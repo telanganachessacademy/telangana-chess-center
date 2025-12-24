@@ -57,7 +57,7 @@ export function HeroSection() {
 
             {/* MAIN CTA BUTTONS - Increased text to text-lg */}
             <div className="flex flex-wrap gap-4">
-              <Link href="https://app.chesslang.com" target="_blank">
+              <Link href="https://svc-ui-7.netlify.app/login" target="_blank">
                 <Button className="h-16 px-10 rounded-2xl text-lg font-bold text-white
                   bg-emerald-600 hover:bg-emerald-700 shadow-xl shadow-emerald-200
                   transition-all duration-300 hover:-translate-y-1">
