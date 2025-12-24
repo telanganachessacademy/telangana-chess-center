@@ -34,7 +34,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
             Nurturing chess champions since 2010, we are dedicated to developing
-            strategic thinking, problem-solving skills, and competitive
+            strategic thinking, problem-solving skills, competitive
             excellence in players of all ages.
           </p>
 
