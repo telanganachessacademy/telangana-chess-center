@@ -157,7 +157,7 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* Terminal Style Visual - Modernized */}
+              {/* Terminal Style - Modernized */}
               <div className="bg-[#0A0F1C] border-l border-white/5 p-12 md:p-20 flex flex-col justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
                 
