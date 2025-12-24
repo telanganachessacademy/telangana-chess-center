@@ -85,22 +85,36 @@ export function Header() {
               className="object-cover w-full h-full"
             />
           </div>
-          <span className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter whitespace-nowrap">
+          <span className="text-xl md:text-2xl font-black text-emerald-600 tracking-tighter whitespace-nowrap">
             Telangana Chess <span className="text-emerald-600">Academy</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="px-3 py-2 text-[13px] font-bold text-slate-600 hover:text-emerald-600 transition-all"
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+  item.isExternal ? (
+    <a
+      key={item.name}
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-3 py-2 text-[13px] font-bold text-slate-600 hover:text-emerald-600 transition-all flex items-center gap-1"
+    >
+      {item.name}
+      <ExternalLink className="w-3 h-3 opacity-50" />
+    </a>
+  ) : (
+    <Link
+      key={item.name}
+      href={item.href}
+      className="px-3 py-2 text-[13px] font-bold text-slate-600 hover:text-emerald-600 transition-all"
+    >
+      {item.name}
+    </Link>
+  )
+)}
+
 
           {/* Action Buttons
           <div className="flex items-center gap-3 ml-4">
