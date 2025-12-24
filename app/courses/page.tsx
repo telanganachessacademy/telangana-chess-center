@@ -264,7 +264,7 @@ export default function CoursesPage() {
             <CalendarDays className="w-3.5 h-3.5" />
             <span>2025 Academy Enrollment</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-5xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
             Master Every <span className="text-emerald-600">Level.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">

@@ -120,7 +120,7 @@ export default function CoachesPage() {
             <span>Elite Academy Faculty</span>
           </div>
           
-          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-5xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
             Meet Your <span className="text-emerald-600">Mentors</span>
           </h1>
           
@@ -284,7 +284,7 @@ export default function CoachesPage() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none -mr-48 -mt-48" />
             
             <div className="relative z-10 space-y-8">
-                <h2 className="text-4xl lg:text-7xl font-black text-white tracking-tighter">Train With Champions.</h2>
+                <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter">Train With Champions.</h2>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
                   Don&apos;t just play chess, master it. Start your elite 1-on-1 coaching assessment today.
                 </p>

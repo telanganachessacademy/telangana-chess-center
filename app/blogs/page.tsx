@@ -99,7 +99,7 @@ Understanding movement is step one. Step two is understanding *coordination*. A 
             <span>The Knowledge Hub</span>
           </div>
           
-          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-5xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
             Academy <span className="text-emerald-600">Insights</span>
           </h1>
           

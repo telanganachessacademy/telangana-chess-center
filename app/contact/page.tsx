@@ -82,7 +82,7 @@ export default function ContactPage() {
             <Globe className="w-3.5 h-3.5" />
             <span>Global Admissions Open</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-5xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
             Start a <span className="text-emerald-600">Conversation</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">

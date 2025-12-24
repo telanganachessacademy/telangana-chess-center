@@ -143,7 +143,7 @@ export default function EventsPage() {
             <CalendarDays className="w-3.5 h-3.5" />
             <span>Championship Calendar 2025</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-5xl font-black mb-8 text-slate-900 tracking-tighter leading-none">
             Upcoming <span className="text-emerald-600">Battles.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">

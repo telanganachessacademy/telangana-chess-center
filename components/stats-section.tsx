@@ -147,7 +147,7 @@ export function StatsSection() {
             <span>Championship Metrics</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-none">
+          <h2 className="text-5xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-none">
             Our Impact in <br />
             <span className="text-emerald-600">Numbers</span>
           </h2>

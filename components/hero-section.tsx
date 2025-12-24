@@ -55,30 +55,28 @@ export function HeroSection() {
               Telangana Chess Academy is the place for professional chess training
             </div>
 
-            
-
-            {/* MAIN CTA BUTTONS */}
+            {/* MAIN CTA BUTTONS - Increased text to text-lg */}
             <div className="flex flex-wrap gap-4">
               <Link href="https://app.chesslang.com" target="_blank">
-                <Button className="h-16 px-10 rounded-2xl text-base font-bold text-white
+                <Button className="h-16 px-10 rounded-2xl text-lg font-bold text-white
                   bg-emerald-600 hover:bg-emerald-700 shadow-xl shadow-emerald-200
                   transition-all duration-300 hover:-translate-y-1">
-                  <Users className="w-5 h-5 mr-2" />
+                  <Users className="w-6 h-6 mr-2" />
                   ONLINE COACHING
                 </Button>
               </Link>
 
               <Link href="https://rzp.io/rzp/4OFIdi7" target="_blank">
-                <Button className="h-16 px-10 rounded-2xl text-base font-bold text-white
+                <Button className="h-16 px-10 rounded-2xl text-lg font-bold text-white
                   bg-amber-500 hover:bg-amber-600 shadow-xl shadow-amber-100
                   transition-all duration-300 hover:-translate-y-1">
-                  <Trophy className="w-5 h-5 mr-2" />
+                  <Trophy className="w-6 h-6 mr-2" />
                   EVENTS & TOURNAMENTS
                 </Button>
               </Link>
             </div>
 
-            {/* QUICK ACCESS PORTALS - Full Colored Buttons */}
+            {/* QUICK ACCESS PORTALS - Increased label to text-sm */}
             <div className="space-y-4 pt-4">
               <h3 className="text-slate-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                 <div className="w-8 h-[1px] bg-slate-200" />
@@ -130,7 +128,7 @@ export function HeroSection() {
                 />
               </div>
               <div className="space-y-4">
-              <h1 className="text-5xl md:text-5xl font-black text-slate-900 leading-tight">
+              <h1 className="text-5xl md:text-4xl font-black text-slate-900 leading-tight">
                 Master The Game <br />
                 <span className="text-emerald-600">Strategic Excellence.</span>
               </h1>
@@ -145,7 +143,6 @@ export function HeroSection() {
           {/* RIGHT SIDE IMAGE */}
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full max-w-md mx-auto">
-              {/* Decorative Rings */}
               <div className="absolute -inset-4 border-2 border-emerald-100 rounded-[3rem] -z-10 animate-[spin_20s_linear_infinite]" />
               <div className="absolute -inset-8 border border-emerald-50 rounded-[4rem] -z-10 animate-[spin_30s_linear_infinite_reverse]" />
               
@@ -164,7 +161,6 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent" />
               </div>
 
-              {/* Stats Overlay */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 flex gap-8">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-slate-900">600+</p>
@@ -202,14 +198,16 @@ function FullColorButton({
 }) {
   return (
     <Link href={href} target="_blank" className="block group">
-      <div className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1 ${bgColor} ${hoverColor}`}>
+      {/* Adjusted padding to p-4 to accommodate larger text */}
+      <div className={`flex items-center gap-3 p-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1 ${bgColor} ${hoverColor}`}>
         <div className="p-2 rounded-lg bg-white/20 text-white">
-          <Icon className="w-4 h-4" />
+          <Icon className="w-5 h-5" />
         </div>
-        <span className="text-white text-xs font-bold truncate">
+        {/* Increased text size to text-sm */}
+        <span className="text-white text-l font-bold truncate">
           {label}
         </span>
-        <ArrowUpRight className="w-3 h-3 text-white/50 ml-auto group-hover:text-white transition-colors" />
+        <ArrowUpRight className="w-4 h-4 text-white/50 ml-auto group-hover:text-white transition-colors" />
       </div>
     </Link>
   );

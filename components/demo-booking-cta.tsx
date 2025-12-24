@@ -82,7 +82,7 @@ export function DemoBookingCTA() {
                 <span>Your First Move is Free</span>
               </div>
               
-              <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight">
                 Experience the <br/>
                 <span className="text-emerald-600">
                   Academy Method

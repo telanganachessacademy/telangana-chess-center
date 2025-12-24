@@ -69,7 +69,7 @@ export function TestimonialsSection() {
             <span>Success Stories</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-none">
+          <h2 className="text-5xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
             Stories from the <br />
             <span className="text-emerald-600">Academy Board</span>
           </h2>
