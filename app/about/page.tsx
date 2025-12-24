@@ -30,7 +30,7 @@ export default function AboutPage() {
             About Our Academy
           </Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900">
-            Telanagana chess institute
+            Telanagana chess academy
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
             Nurturing chess champions since 2010, we are dedicated to developing
