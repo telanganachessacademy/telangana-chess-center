@@ -52,23 +52,14 @@ export function HeroSection() {
             {/* Proper Green Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-widest">
               <Award className="w-4 h-4" />
-              Telangana&apos;s #1 Chess Institute
+              Telangana Chess Academy is the place for professional chess training
             </div>
 
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-5xl font-black text-slate-900 leading-tight">
-                Master The Game <br />
-                <span className="text-emerald-600">Strategic Excellence.</span>
-              </h1>
-              <p className="text-slate-600 text-lg max-w-xl font-medium">
-                Professional FIDE coaching for aspiring champions. Join the most 
-                prestigious chess community in Telangana.
-              </p>
-            </div>
+            
 
             {/* MAIN CTA BUTTONS */}
             <div className="flex flex-wrap gap-4">
-              <Link href="https://coaching.telanganachessacademy.com/login" target="_blank">
+              <Link href="https://app.chesslang.com" target="_blank">
                 <Button className="h-16 px-10 rounded-2xl text-base font-bold text-white
                   bg-emerald-600 hover:bg-emerald-700 shadow-xl shadow-emerald-200
                   transition-all duration-300 hover:-translate-y-1">
@@ -77,7 +68,7 @@ export function HeroSection() {
                 </Button>
               </Link>
 
-              <Link href="/events" target="_blank">
+              <Link href="https://rzp.io/rzp/4OFIdi7" target="_blank">
                 <Button className="h-16 px-10 rounded-2xl text-base font-bold text-white
                   bg-amber-500 hover:bg-amber-600 shadow-xl shadow-amber-100
                   transition-all duration-300 hover:-translate-y-1">
@@ -138,6 +129,16 @@ export function HeroSection() {
                   hoverColor="hover:bg-cyan-700"
                 />
               </div>
+              <div className="space-y-4">
+              <h1 className="text-5xl md:text-5xl font-black text-slate-900 leading-tight">
+                Master The Game <br />
+                <span className="text-emerald-600">Strategic Excellence.</span>
+              </h1>
+              <p className="text-slate-600 text-lg max-w-xl font-medium">
+                Professional FIDE coaching for aspiring champions. Join the most 
+                prestigious chess community in Telangana.
+              </p>
+            </div>
             </div>
           </div>
 

@@ -27,13 +27,13 @@ export function Header() {
   const navItems: NavItem[] = [
     { name: "Home", href: "/" },
     {
-      name: "Online Coaching",
-      href: "https://coaching.telanganachessacademy.com/",
+      name: "ONLINE COACHING",
+      href: "https://app.chesslang.com/",
       isExternal: true,
     },
     {
       name: "Events",
-      href: "/events",
+      href: "https://rzp.io/rzp/4OFIdi7",
       isExternal: true,
     },
     { name: "Courses", href: "/courses" },
