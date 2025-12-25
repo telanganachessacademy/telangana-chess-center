@@ -7,19 +7,58 @@ import {
   Trophy,
   Sparkles,
   Award,
-  VideoIcon,
-  BellIcon,
-  Phone,
-  ArrowUpRight,
+  Video,
+  Bell,
+  ChevronRight,
+  Crown,
 } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import Link from "next/link"; // Kept for internal links if needed
+import Image from "next/image";
 
 export function HeroSection() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const heroImages = [
+  const meetingLinks = [
+    {
+      href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
+      icon: Video,
+      label: "G-Meet",
+      bg: "from-blue-500 to-blue-600",
+    },
+    {
+      href: "https://meet.jit.si/TelanganaChessAcademy",
+      icon: Play,
+      label: "Start Call",
+      bg: "from-cyan-500 to-blue-500",
+    },
+    {
+      href: "https://meet.google.com/wuk-nfie-mgx",
+      icon: Play,
+      label: "Call Naresh",
+      bg: "from-blue-600 to-indigo-600",
+    },
+    {
+      href: "https://meet.google.com/atu-ziid-ojg",
+      icon: Sparkles,
+      label: "TCS Meeting",
+      bg: "from-emerald-600 to-teal-700",
+    },
+    {
+      href: "https://meet.google.com/uux-vyxa-pgq",
+      icon: Bell,
+      label: "BCA Meeting",
+      bg: "from-green-600 to-emerald-700",
+    },
+    {
+      href: "https://meet.google.com/mxj-uwyj-vzp",
+      icon: Bell,
+      label: "Call Rohith",
+      bg: "from-teal-600 to-green-700",
+    },
+  ];
+
+  const carouselImages = [
     "/hero-1.jpg",
     "/hero-2.jpg",
     "/hero-3.jpg",
@@ -29,186 +68,163 @@ export function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [carouselImages.length]);
 
   return (
-    <section className="relative min-h-screen flex items-center bg-white overflow-hidden pt-12">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/50 skew-x-12 translate-x-32" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center overflow-hidden bg-slate-50 md:pt-28 pt-30"
+    >
+      {/* Background stays exactly the same */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%)`,
+          }}
+        />
       </div>
 
-      <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-
-          {/* LEFT CONTENT */}
-          <div className="lg:col-span-7 space-y-8">
-
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-widest">
-              <Award className="w-4 h-4" />
-              Telangana Chess Academy is the place for professional chess training
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          <div className="space-y-6">
+            {/* Badge stays the same */}
+            <div className="inline-flex items-center gap-3 bg-white px-3 py-2 rounded-full shadow-lg border-2 border-purple-100 animate-bounce-slow">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <Crown className="w-4 h-4 text-white" />
+              </div>
+              <span className="font-bold text-gray-800">Certified FIDE Coaches</span>
+              <Sparkles className="w-5 h-5 text-yellow-500" />
             </div>
 
-            {/* CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="https://svc-ui-7.netlify.app/login" target="_blank" className="w-full sm:w-auto">
-                <Button
-                  className="h-16 w-full sm:w-auto px-6 sm:px-10 rounded-2xl
-                  text-lg font-bold text-white
-                  bg-emerald-600 hover:bg-emerald-700
-                  shadow-xl shadow-emerald-200
-                  transition-all duration-300 hover:-translate-y-1"
-                >
-                  <Users className="w-6 h-6 mr-2" />
-                  ONLINE COACHING
-                </Button>
-              </Link>
-
-              <Link href="https://rzp.io/rzp/4OFIdi7" target="_blank" className="w-full sm:w-auto">
-                <Button
-                  className="h-16 w-full sm:w-auto px-6 sm:px-10 rounded-2xl
-                  text-lg font-bold text-white
-                  bg-amber-500 hover:bg-amber-600
-                  shadow-xl shadow-amber-100
-                  transition-all duration-300 hover:-translate-y-1"
-                >
-                  <Trophy className="w-6 h-6 mr-2" />
+            {/* Main Buttons fixed with asChild and <a> */}
+            <div className="flex flex-col sm:flex-row gap-2 relative z-20">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-8 py-5 rounded-2xl shadow-xl transition-all duration-300 text-lg group backdrop-blur-md bg-white/80 w-full sm:w-auto"
+              >
+                <a href="https://pages.razorpay.com/pl_RpoQZQ84xy57mj/view" target="_blank">
+                  <Trophy className="w-5 h-5 mr-2" />
                   EVENTS & TOURNAMENTS
-                </Button>
-              </Link>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold px-8 py-5.5 rounded-2xl shadow-2xl transition-all duration-300 text-lg group animate-pulse-glow w-full sm:w-auto"
+              >
+                <a href="https://svc-ui-7.netlify.app/login" target="_blank">
+                  <Users className="w-5 h-5 mr-2" />
+                  ONLINE COACHING
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </a>
+              </Button>
             </div>
 
-            {/* PORTALS */}
-            <div className="space-y-4 pt-4">
-              <h3 className="text-slate-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                <div className="w-8 h-[1px] bg-slate-200" />
-                Live Portals & Meetings
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                <FullColorButton
-                  href="https://meet.google.com/vjj-cfpx-dav?pli=1"
-                  icon={VideoIcon}
-                  label="G-Meet"
-                  bgColor="bg-blue-600"
-                  hoverColor="hover:bg-blue-700"
-                />
-                <FullColorButton
-                  href="https://meet.jit.si/TelanganaChessAcademy"
-                  icon={Play}
-                  label="Start Call"
-                  bgColor="bg-emerald-600"
-                  hoverColor="hover:bg-emerald-700"
-                />
-                <FullColorButton
-                  href="https://meet.google.com/wuk-nfie-mgx"
-                  icon={Phone}
-                  label="Call Naresh"
-                  bgColor="bg-orange-600"
-                  hoverColor="hover:bg-orange-700"
-                />
-                <FullColorButton
-                  href="https://meet.google.com/atu-ziid-ojg"
-                  icon={Sparkles}
-                  label="TCS Meeting"
-                  bgColor="bg-purple-600"
-                  hoverColor="hover:bg-purple-700"
-                />
-                <FullColorButton
-                  href="https://meet.google.com/uux-vyxa-pgq"
-                  icon={BellIcon}
-                  label="BCA Meeting"
-                  bgColor="bg-rose-600"
-                  hoverColor="hover:bg-rose-700"
-                />
-                <FullColorButton
-                  href="https://meet.google.com/mxj-uwyj-vzp"
-                  icon={Phone}
-                  label="Call Rohith"
-                  bgColor="bg-cyan-600"
-                  hoverColor="hover:bg-cyan-700"
-                />
-              </div>
-
-              {/* Heading */}
-              <div className="space-y-4 pt-6">
-                <h1 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
-                  Master The Game <br />
-                  <span className="text-emerald-600">Strategic Excellence.</span>
-                </h1>
-                <p className="text-slate-600 text-lg max-w-xl font-medium">
-                  Professional FIDE coaching for aspiring champions. Join the most
-                  prestigious chess community in Telangana.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT IMAGE */}
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full max-w-md mx-auto">
-              <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
-                {heroImages.map((src, i) => (
-                  <Image
-                    key={i}
-                    src={src}
-                    alt="Chess Coaching"
-                    fill
-                    className={`object-cover transition-all duration-1000 ${
-                      i === currentImageIndex
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-105"
-                    }`}
-                  />
+            {/* 6 MEETING LINKS FIXED (Switched to <a> and added z-30) */}
+            <div className="space-y-3 relative z-30">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {meetingLinks.map((link, idx) => (
+                  <a 
+                    key={idx} 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block touch-manipulation" 
+                  >
+                    <div
+                      className={`relative overflow-hidden bg-gradient-to-br ${link.bg} p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 active:scale-95 cursor-pointer group`}
+                    >
+                      <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors" />
+                      <div className="relative flex items-center gap-2 text-white">
+                        <link.icon className="w-5 h-5" />
+                        <span className="font-semibold text-sm">
+                          {link.label}
+                        </span>
+                      </div>
+                    </div>
+                  </a>
                 ))}
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent" />
               </div>
+            </div>
+
+            {/* Heading stays the same */}
+            <div className="space-y-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
+                <span className="text-gray-900">Become a</span>
+                <br />
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+                  Chess Master
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
+                Telangana chess school empowers you with world-class training
+                from FIDE-rated coaches.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Carousel stays the same */}
+          <div className="relative h-80 sm:h-[400px] lg:h-[500px] rounded-xl overflow-hidden ml-2 shadow-2xl">
+            <div className="relative w-full h-full">
+              {carouselImages.map((src, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    currentSlide === idx ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt="Chess"
+                    fill
+                    className="object-cover"
+                    priority={idx === 0}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+              ))}
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Styles kept exactly as provided */}
+      <style jsx>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        @keyframes bounce-s22 {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-s22 3s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 20px 50px -10px rgba(139, 92, 246, 0.3); }
+          50% { box-shadow: 0 25px 60px -10px rgba(139, 92, 246, 0.5); }
+        }
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+      `}</style>
     </section>
-  );
-}
-
-/* ---------- BUTTON COMPONENT ---------- */
-
-function FullColorButton({
-  href,
-  icon: Icon,
-  label,
-  bgColor,
-  hoverColor,
-}: {
-  href: string;
-  icon: any;
-  label: string;
-  bgColor: string;
-  hoverColor: string;
-}) {
-  return (
-    <Link href={href} target="_blank" className="block group">
-      <div
-        className={`flex items-center gap-3 px-4 py-5 rounded-xl
-        transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1
-        ${bgColor} ${hoverColor}`}
-      >
-        <div className="p-2 rounded-lg bg-white/20 text-white">
-          <Icon className="w-5 h-5" />
-        </div>
-
-        <span className="text-white text-sm sm:text-base font-bold whitespace-nowrap">
-          {label}
-        </span>
-
-        <ArrowUpRight className="w-4 h-4 text-white/60 ml-auto group-hover:text-white transition-colors" />
-      </div>
-    </Link>
   );
 }
