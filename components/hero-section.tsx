@@ -96,10 +96,10 @@ export function HeroSection() {
           <div className="space-y-6">
             {/* Badge stays the same */}
             <div className="inline-flex items-center gap-3 bg-white px-3 py-2 rounded-full shadow-lg border-2 border-purple-100 animate-bounce-slow">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
                 <Crown className="w-4 h-4 text-white" />
               </div>
-              <span className="font-bold text-gray-800">Certified FIDE Coaches</span>
+              <span className="font-bold text-emerald-600">Certified FIDE Coaches</span>
               <Sparkles className="w-5 h-5 text-yellow-500" />
             </div>
 
@@ -163,7 +163,7 @@ export function HeroSection() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
                 <span className="text-gray-900">Become a</span>
                 <br />
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+                <span className="bg-emerald-600 bg-clip-text text-transparent animate-gradient">
                   Chess Master
                 </span>
               </h1>
