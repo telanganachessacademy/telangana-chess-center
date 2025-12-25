@@ -151,7 +151,7 @@ export default function AboutPage() {
                 <p>
                   Over the years, we have grown into one of India's most respected
                   chess academies, producing numerous state and national champions.
-                  Our systematic approach to chess education combines And traditional
+                  Our systematic approach to chess education combines traditional
                   teaching methods with modern technology.
                 </p>
                 <p>
