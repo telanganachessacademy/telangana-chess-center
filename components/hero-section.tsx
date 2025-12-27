@@ -20,43 +20,44 @@ export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const meetingLinks = [
-    {
-      href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
-      icon: Video,
-      label: "G-MEET",
-      bg: "from-blue-500 to-blue-600",
-    },
-    {
-      href: "https://meet.jit.si/TelanganaChessAcademy",
-      icon: Play,
-      label: "START CALL",
-      bg: "from-cyan-500 to-blue-500",
-    },
-    {
-      href: "https://meet.google.com/wuk-nfie-mgx",
-      icon: Play,
-      label: "CALL Naresh",
-      bg: "from-blue-600 to-indigo-600",
-    },
-    {
-      href: "https://meet.google.com/atu-ziid-ojg",
-      icon: Sparkles,
-      label: "TCS Meeting",
-      bg: "from-emerald-600 to-teal-700",
-    },
-    {
-      href: "https://meet.google.com/uux-vyxa-pgq",
-      icon: Bell,
-      label: "BCA MEETING",
-      bg: "from-green-600 to-emerald-700",
-    },
-    {
-      href: "https://meet.google.com/mxj-uwyj-vzp",
-      icon: Bell,
-      label: "Call Rohith",
-      bg: "from-teal-600 to-green-700",
-    },
-  ];
+  {
+    href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
+    icon: Video,
+    label: "G-MEET",
+    bg: "from-blue-500 to-indigo-600",
+  },
+  {
+    href: "https://meet.jit.si/TelanganaChessAcademy",
+    icon: Play,
+    label: "START CALL",
+    bg: "from-cyan-500 to-sky-600",
+  },
+  {
+    href: "https://meet.google.com/wuk-nfie-mgx",
+    icon: Play,
+    label: "Call Naresh",
+    bg: "from-purple-500 to-fuchsia-600",
+  },
+  {
+    href: "https://meet.google.com/atu-ziid-ojg",
+    icon: Sparkles,
+    label: "TCS Meeting",
+    bg: "from-emerald-500 to-teal-600",
+  },
+  {
+    href: "https://meet.google.com/uux-vyxa-pgq",
+    icon: Bell,
+    label: "BCA MEETING",
+    bg: "from-green-500 to-lime-600",
+  },
+  {
+    href: "https://meet.google.com/mxj-uwyj-vzp",
+    icon: Bell,
+    label: "Call Rohith",
+    bg: "from-orange-500 to-red-600",
+  },
+];
+
 
   const carouselImages = [
     "/hero-1.jpg",
