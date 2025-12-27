@@ -35,7 +35,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/wuk-nfie-mgx",
       icon: Play,
-      label: "Call Naresh",
+      label: "CALL Naresh",
       bg: "from-blue-600 to-indigo-600",
     },
     {
