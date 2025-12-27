@@ -142,7 +142,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 2010 by Grandmaster Tejavath Naresh, Telangana Chess
+                  Founded in 2020 by Grandmaster Tejavath Naresh, Telangana Chess
                   Academy began as a small coaching center with just 10 students.
                   Our founder's vision was to create a nurturing environment where
                   young minds could develop their chess skills while building
