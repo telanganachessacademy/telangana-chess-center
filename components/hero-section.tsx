@@ -23,7 +23,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
       icon: Video,
-      label: "G-Meet",
+      label: "G-MEET",
       bg: "from-blue-500 to-blue-600",
     },
     {
