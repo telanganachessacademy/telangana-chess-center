@@ -150,7 +150,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Over the years, we have grown into one of India's most respected
-                  chess academies, producing numerous state and national champions.
+                  chess academies, producing numerous state national champions.
                   Our systematic approach to chess education combines traditional
                   teaching methods with modern technology.
                 </p>
