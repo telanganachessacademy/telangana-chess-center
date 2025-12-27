@@ -29,7 +29,7 @@ export function HeroSection() {
     {
       href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Play,
-      label: "Start Call",
+      label: "START CALL",
       bg: "from-cyan-500 to-blue-500",
     },
     {
