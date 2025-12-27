@@ -13,7 +13,7 @@ import {
   Crown,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import Link from "next/link"; // Kept for internal links if needed
+import Link from "next/link"; 
 import Image from "next/image";
 
 export function HeroSection() {
@@ -24,37 +24,43 @@ export function HeroSection() {
       href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
       icon: Video,
       label: "G-Meet",
-      bg: "from-blue-500 to-blue-600",
+      // 1. Amber / Gold (High Visibility)
+      bg: "from-amber-500 to-orange-600",
     },
     {
       href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Play,
       label: "Start Call",
-      bg: "from-cyan-500 to-blue-500",
+      // 2. Deep Teal (Brand Primary)
+      bg: "from-[#1a5f5f] to-[#0d3d3d]",
     },
     {
       href: "https://meet.google.com/wuk-nfie-mgx",
       icon: Play,
       label: "Call Naresh",
-      bg: "from-blue-600 to-indigo-600",
+      // 3. Indigo (Professional)
+      bg: "from-indigo-600 to-blue-700",
     },
     {
       href: "https://meet.google.com/atu-ziid-ojg",
       icon: Sparkles,
       label: "TCS Meeting",
+      // 4. Emerald (Success/Growth)
       bg: "from-emerald-600 to-teal-700",
     },
     {
       href: "https://meet.google.com/uux-vyxa-pgq",
       icon: Bell,
       label: "BCA Meeting",
-      bg: "from-green-600 to-emerald-700",
+      // 5. Violet (Elite/Expertise)
+      bg: "from-violet-600 to-purple-700",
     },
     {
       href: "https://meet.google.com/mxj-uwyj-vzp",
       icon: Bell,
       label: "Call Rohith",
-      bg: "from-teal-600 to-green-700",
+      // 6. Crimson/Rose (Warm/Urgent)
+      bg: "from-rose-500 to-red-600",
     },
   ];
 
@@ -78,7 +84,6 @@ export function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-slate-50 md:pt-28 pt-30"
     >
-      {/* Background stays exactly the same */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
         <div
           className="absolute inset-0"
@@ -94,7 +99,6 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           <div className="space-y-6">
-            {/* Badge stays the same */}
             <div className="inline-flex items-center gap-3 bg-white px-3 py-2 rounded-full shadow-lg border-2 border-purple-100 animate-bounce-slow">
               <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
                 <Crown className="w-4 h-4 text-white" />
@@ -103,7 +107,6 @@ export function HeroSection() {
               <Sparkles className="w-5 h-5 text-yellow-500" />
             </div>
 
-            {/* Main Buttons fixed with asChild and <a> */}
             <div className="flex flex-col sm:flex-row gap-2 relative z-20">
               <Button
                 asChild
@@ -131,7 +134,7 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* 6 MEETING LINKS FIXED (Switched to <a> and added z-30) */}
+            {/* 6 MEETING LINKS UPDATED WITH NEW COLORS */}
             <div className="space-y-3 relative z-30">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {meetingLinks.map((link, idx) => (
@@ -145,7 +148,7 @@ export function HeroSection() {
                     <div
                       className={`relative overflow-hidden bg-gradient-to-br ${link.bg} p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 active:scale-95 cursor-pointer group`}
                     >
-                      <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors" />
+                      <div className="absolute inset-0 bg-white/10 group-hover:bg-white/25 transition-colors" />
                       <div className="relative flex items-center gap-2 text-white">
                         <link.icon className="w-5 h-5" />
                         <span className="font-semibold text-sm">
@@ -158,7 +161,6 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Heading stays the same */}
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
                 <span className="text-gray-900">Become a</span>
@@ -174,7 +176,6 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Carousel stays the same */}
           <div className="relative h-80 sm:h-[400px] lg:h-[500px] rounded-xl overflow-hidden ml-2 shadow-2xl">
             <div className="relative w-full h-full">
               {carouselImages.map((src, idx) => (
@@ -200,7 +201,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Styles kept exactly as provided */}
       <style jsx>{`
         @keyframes gradient {
           0%, 100% { background-position: 0% 50%; }
