@@ -64,7 +64,7 @@ export function HeroSection() {
     "/hero-2.jpg",
     "/hero-3.jpg",
     "/hero-5.jpg",
-    "/hero-6.jpg",
+  
   ];
 
   useEffect(() => {
