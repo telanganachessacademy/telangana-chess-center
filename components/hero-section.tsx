@@ -162,7 +162,7 @@ export function HeroSection() {
             {/* Heading stays the same */}
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-2xl lg:text-3xl font-black leading-tight">
-                <span className="text-gray-900">Become a</span>
+                <span className="text-gray-900">Become a {" "}</span>
         
                 <span className="bg-emerald-600 bg-clip-text text-transparent animate-gradient">
                   Chess Master
