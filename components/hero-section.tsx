@@ -114,7 +114,7 @@ export function HeroSection() {
               >
                 <a href="https://pages.razorpay.com/pl_RpoQZQ84xy57mj/view" target="_blank">
                   <Trophy className="w-5 h-5 mr-2" />
-                  EVENTS & TOURNAMENTS
+                  Events & Tournaments
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </a>
               </Button>
