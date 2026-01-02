@@ -47,7 +47,7 @@ export function HeroSection() {
   {
     href: "https://meet.google.com/uux-vyxa-pgq",
     icon: Bell,
-    label: "BCA MEETING",
+    label: "BCA Meeting",
     bg: "from-green-500 to-lime-600",
   },
   {
@@ -114,7 +114,7 @@ export function HeroSection() {
               >
                 <a href="https://pages.razorpay.com/pl_RpoQZQ84xy57mj/view" target="_blank">
                   <Trophy className="w-5 h-5 mr-2" />
-                  Events & Tournaments
+                  EVENTS & Tournaments
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </a>
               </Button>
