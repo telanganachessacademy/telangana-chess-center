@@ -45,7 +45,7 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "GM Rajesh Kumar Workshop",
+      title: "Tejavath Naresh Workshop",
       category: "workshop",
       date: "2025-03-08",
       time: "02:00 PM",
