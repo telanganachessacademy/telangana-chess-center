@@ -32,7 +32,7 @@ export function Header() {
       isExternal: true,
     },
     {
-      name: "Events",
+      name: "EVENTS",
       href: "https://rzp.io/rzp/4OFIdi7",
       isExternal: true,
     },

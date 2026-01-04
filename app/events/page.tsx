@@ -26,7 +26,7 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "GM Rajesh Kumar Workshop",
+      title: "Tejavath Naresh Workshop",
       category: "workshop",
       image: "/2.jpeg",
     },
