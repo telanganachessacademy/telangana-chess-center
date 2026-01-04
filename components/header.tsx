@@ -40,8 +40,9 @@ export function Header() {
     { name: "Our Coaches", href: "/coaches" },
     { name: "Gallery", href: "/gallery" },
     { name: "Blogs", href: "/blogs" },
-    { name: "Contact", href: "/contact" },
+    { name: "CONTACT", href: "/contact" },
   ];
+  
 
   return (
     <header 
