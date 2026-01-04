@@ -109,7 +109,7 @@ export function HeroSection() {
                 variant="outline"
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-8 py-5 rounded-2xl shadow-xl transition-all duration-300 text-lg group backdrop-blur-md bg-white/80 w-full sm:w-auto"
               >
-                <a href="https://pages.razorpay.com/pl_RpoQZQ84xy57mj/view" target="_blank">
+                <a href="https://www.telanganachessacademy.com/events" target="_blank">
                   <Trophy className="w-5 h-5 mr-2" />
                   EVENTS & TOURNAMENTS
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
