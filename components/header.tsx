@@ -33,7 +33,7 @@ export function Header() {
     },
     {
       name: "EVENTS",
-      href: "https://rzp.io/rzp/4OFIdi7",
+      href: "https://www.telanganachessacademy.com/events",
       isExternal: true,
     },
     { name: "Courses", href: "/courses" },
