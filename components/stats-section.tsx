@@ -148,7 +148,7 @@ export function StatsSection() {
           </div>
           
           <h2 className="text-5xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-none">
-            Our Impact in <br />
+            Our Impact in{" "}
             <span className="text-emerald-600">Numbers</span>
           </h2>
           

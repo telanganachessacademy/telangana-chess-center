@@ -57,7 +57,7 @@ export function DemoBookingCTA() {
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-0 bg-white relative overflow-hidden">
       
       {/* --- Elegant Background Decor --- */}
       <div className="absolute inset-0 pointer-events-none">

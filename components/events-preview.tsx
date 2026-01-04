@@ -84,7 +84,7 @@ export function EventsPreview() {
   };
 
   return (
-    <section className="py-24 bg-[#F8FAFC] relative overflow-hidden">
+    <section className="py-0 bg-[#F8FAFC] relative overflow-hidden">
       
       {/* --- Light Background Textures --- */}
       <div className="absolute inset-0 pointer-events-none">

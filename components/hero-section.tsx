@@ -24,43 +24,37 @@ export function HeroSection() {
       href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
       icon: Video,
       label: "G-Meet",
-      // 1. Amber / Gold (High Visibility)
-      bg: "from-amber-500 to-orange-600",
+      bg: "from-blue-500 to-blue-600",
     },
     {
       href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Play,
       label: "Start Call",
-      // 2. Deep Teal (Brand Primary)
-      bg: "from-[#1a5f5f] to-[#0d3d3d]",
+      bg: "from-cyan-500 to-blue-500",
     },
     {
       href: "https://meet.google.com/wuk-nfie-mgx",
       icon: Play,
       label: "Call Naresh",
-      // 3. Indigo (Professional)
-      bg: "from-indigo-600 to-blue-700",
+      bg: "from-blue-600 to-indigo-600",
     },
     {
       href: "https://meet.google.com/atu-ziid-ojg",
       icon: Sparkles,
       label: "TCS Meeting",
-      // 4. Emerald (Success/Growth)
       bg: "from-emerald-600 to-teal-700",
     },
     {
       href: "https://meet.google.com/uux-vyxa-pgq",
       icon: Bell,
       label: "BCA Meeting",
-      // 5. Violet (Elite/Expertise)
-      bg: "from-violet-600 to-purple-700",
+      bg: "from-green-600 to-emerald-700",
     },
     {
       href: "https://meet.google.com/mxj-uwyj-vzp",
       icon: Bell,
       label: "Call Rohith",
-      // 6. Crimson/Rose (Warm/Urgent)
-      bg: "from-rose-500 to-red-600",
+      bg: "from-teal-600 to-green-700",
     },
   ];
 
@@ -69,7 +63,7 @@ export function HeroSection() {
     "/hero-2.jpg",
     "/hero-3.jpg",
     "/hero-5.jpg",
-    "/hero-6.jpg",
+  
   ];
 
   useEffect(() => {
@@ -162,9 +156,9 @@ export function HeroSection() {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-                <span className="text-gray-900">Become a</span>
-                <br />
+              <h1 className="text-3xl sm:text-2xl lg:text-3xl font-black leading-tight">
+                <span className="text-gray-900">Become a {" "}</span>
+        
                 <span className="bg-emerald-600 bg-clip-text text-transparent animate-gradient">
                   Chess Master
                 </span>
