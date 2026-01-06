@@ -25,37 +25,37 @@ export function HeroSection() {
       href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
       icon: Video,
       label: "G-Meet",
-      bg: "from-blue-500 to-blue-600",
+      bg: "from-blue-600 to-indigo-700",
     },
     {
       href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Play,
       label: "START CALL",
-      bg: "from-cyan-500 to-blue-500",
+      bg: "from-cyan-500 to-teal-600",
     },
     {
       href: "https://meet.google.com/wuk-nfie-mgx",
       icon: Play,
       label: "Naresh Naik",
-      bg: "from-blue-600 to-indigo-600",
+      bg: "from-orange-500 to-amber-600",
     },
     {
       href: "https://meet.google.com/atu-ziid-ojg",
       icon: Sparkles,
       label: "TCS Meeting",
-      bg: "from-emerald-600 to-teal-700",
+      bg: "from-emerald-600 to-green-700",
     },
     {
       href: "https://meet.google.com/uux-vyxa-pgq",
       icon: Bell,
       label: "BCA Meeting",
-      bg: "from-green-600 to-emerald-700",
+      bg: "from-rose-500 to-pink-600",
     },
     {
       href: "https://meet.google.com/mxj-uwyj-vzp",
       icon: Bell,
       label: "Call Rohith",
-      bg: "from-teal-600 to-green-700",
+      bg: "from-indigo-600 to-purple-700",
     },
   ];
 
