@@ -22,7 +22,7 @@ export default function EventsPage() {
       id: 1,
       title: "24th TCA All India Chess Tournament-2026",
       category: "tournament",
-      image: "/15-02-2026.jpg",
+      image: "/25-01-2026.jpg",
     },
     {
       id: 2,
