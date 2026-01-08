@@ -38,21 +38,21 @@ export default function EventsPage() {
     },
     {
       id: 4,
-      title: "Psychology of Chess",
-      category: "seminar",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800",
+      title: "TCA",
+      category: "TCA",
+      image: "/TCA Advatisement.JPG",
     },
     {
       id: 5,
-      title: "Simultaneous Exhibition",
-      category: "exhibition",
-      image: "https://images.unsplash.com/photo-1586165368502-1bad197a6461?auto=format&fit=crop&q=80&w=800",
+      title: "TCA",
+      category: "TCA",
+      image: "/TCA Advatisement.JPG",
     },
     {
       id: 6,
-      title: "Women’s Chess Day",
-      category: "special",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+      title: "TCA",
+      category: "TCA",
+      image: "/TCA Advatisement.JPG",
     },
   ];
 
