@@ -20,9 +20,9 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "State Championship 2025",
+      title: "24th TCA All India Chess Tournament-2026",
       category: "tournament",
-      image: "/1.jpeg",
+      image: "/15-02-2026.jpg",
     },
     {
       id: 2,
@@ -144,7 +144,7 @@ export default function EventsPage() {
                   {event.title}
                 </h3>
 
-                <Link href="/contact">
+                <Link href="/https://rzp.io/rzp/p4HolA5I">
                   <Button className="w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-widest shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
                     Register Now <ChevronRight className="w-4 h-4" />
                   </Button>
