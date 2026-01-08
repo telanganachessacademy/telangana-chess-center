@@ -26,9 +26,9 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "Tejavath Naresh Workshop",
-      category: "workshop",
-      image: "/2.jpeg",
+      title: "Mount Banyan Global School Tournament",
+      category: "Tournament",
+      image: "/01-02-2026.jpg",
     },
     {
       id: 3,
