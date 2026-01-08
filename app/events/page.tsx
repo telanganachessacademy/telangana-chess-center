@@ -32,9 +32,9 @@ export default function EventsPage() {
     },
     {
       id: 3,
-      title: "Youth Rapid Fire",
+      title: "All India TCA Open Tournament",
       category: "tournament",
-      image: "/3.jpeg",
+      image: "/15-02-2026.jpg",
     },
     {
       id: 4,
