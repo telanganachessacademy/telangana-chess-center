@@ -144,7 +144,7 @@ export default function EventsPage() {
                   {event.title}
                 </h3>
 
-                <Link href="/https://rzp.io/rzp/p4HolA5I">
+                <Link href="https://rzp.io/rzp/p4HolA5I">
                   <Button className="w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-widest shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
                     Register Now <ChevronRight className="w-4 h-4" />
                   </Button>
