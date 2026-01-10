@@ -11,7 +11,7 @@ import {
   Star,
   Sparkles,
   Filter,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 
 export default function EventsPage() {
@@ -23,36 +23,42 @@ export default function EventsPage() {
       title: "24th TCA All India Chess Tournament-2026",
       category: "tournament",
       image: "/25-01-2026.jpg",
+      registerUrl: "https://rzp.io/rzp/tca24",
     },
     {
       id: 2,
       title: "Mount Banyan Global School Tournament",
-      category: "Tournament",
+      category: "tournament",
       image: "/01-02-2026.jpg",
+      registerUrl: "https://rzp.io/rzp/banyan",
     },
     {
       id: 3,
       title: "All India TCA Open Tournament",
       category: "tournament",
       image: "/15-02-2026.jpg",
+      registerUrl: "https://rzp.io/rzp/tcaopen",
     },
     {
       id: 4,
-      title: "TCA",
+      title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
+      registerUrl: "https://tcaindia.org",
     },
     {
       id: 5,
-      title: "TCA",
+      title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
+      registerUrl: "https://tcaindia.org",
     },
     {
       id: 6,
-      title: "TCA",
+      title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
+      registerUrl: "https://tcaindia.org",
     },
   ];
 
@@ -92,7 +98,6 @@ export default function EventsPage() {
       {/* FILTER BAR */}
       <section className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200 py-6">
         <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center gap-6">
-          
           <div className="flex gap-3 overflow-x-auto no-scrollbar">
             {categories.map((category) => (
               <button
@@ -120,14 +125,13 @@ export default function EventsPage() {
       {/* EVENTS GRID */}
       <section className="py-24 px-6">
         <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
           {filteredEvents.map((event) => (
             <Card
               key={event.id}
               className="group bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
-              {/* IMAGE (CLICKABLE) */}
-              <Link href={event.image} target="_blank" className="block">
+              {/* IMAGE */}
+              <Link href={event.image} target="_blank">
                 <div className="relative h-72 overflow-hidden cursor-zoom-in">
                   <img
                     src={event.image}
@@ -144,7 +148,11 @@ export default function EventsPage() {
                   {event.title}
                 </h3>
 
-                <Link href="https://rzp.io/rzp/p4HolA5I">
+                <Link
+                  href={event.registerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button className="w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-widest shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
                     Register Now <ChevronRight className="w-4 h-4" />
                   </Button>
@@ -152,7 +160,6 @@ export default function EventsPage() {
               </CardContent>
             </Card>
           ))}
-
         </div>
       </section>
     </div>
