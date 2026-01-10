@@ -20,21 +20,21 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "24th TCA All India Chess Tournament-2026",
+      title: "24th TCA All India Chess Tournament on 25-01-2026",
       category: "tournament",
       image: "/25-01-2026.jpg",
       registerUrl: "https://rzp.io/rzp/p4HolA5I",
     },
     {
       id: 2,
-      title: "Mount Banyan Global School Tournament",
+      title: "7th Mount Banyan Global School Chess Tournament on 01-02-2026",
       category: "tournament",
       image: "/01-02-2026.jpg",
       registerUrl: "https://rzp.io/rzp/fjeG1FkO",
     },
     {
       id: 3,
-      title: "All India TCA Open Tournament",
+      title: "25th All India TCA Open Chess Tournament on 15-02-2026",
       category: "tournament",
       image: "/15-02-2026.jpg",
       registerUrl: "https://rzp.io/rzp/KzIMjyhi",
