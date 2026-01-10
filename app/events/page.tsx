@@ -30,7 +30,7 @@ export default function EventsPage() {
       title: "Mount Banyan Global School Tournament",
       category: "tournament",
       image: "/01-02-2026.jpg",
-      registerUrl: "https://rzp.io/rzp/banyan",
+      registerUrl: "https://rzp.io/rzp/fjeG1FkO",
     },
     {
       id: 3,
