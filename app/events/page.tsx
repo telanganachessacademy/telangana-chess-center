@@ -37,7 +37,7 @@ export default function EventsPage() {
       title: "All India TCA Open Tournament",
       category: "tournament",
       image: "/15-02-2026.jpg",
-      registerUrl: "https://rzp.io/rzp/tcaopen",
+      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
     },
     {
       id: 4,
