@@ -28,9 +28,9 @@ export function HeroSection() {
       bg: "from-blue-600 to-indigo-700",
     },
     {
-      href: "https://meet.jit.si/TelanganaChessAcademy",
+      href: "https://meet.google.com/wdn-eosj-rdw",
       icon: Play,
-      label: "START CALL",
+      label: "TCA CALL",
       bg: "from-cyan-500 to-teal-600",
     },
     {
@@ -52,9 +52,9 @@ export function HeroSection() {
       bg: "from-rose-500 to-pink-600",
     },
     {
-      href: "https://meet.google.com/mxj-uwyj-vzp",
+      href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Bell,
-      label: "ROHITH NAIK",
+      label: "START CALL",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
