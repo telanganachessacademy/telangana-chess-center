@@ -36,7 +36,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/wuk-nfie-mgx",
       icon: Play,
-      label: "Naresh Naik",
+      label: "NARESH NAIK",
       bg: "from-orange-500 to-amber-600",
     },
     {
@@ -54,7 +54,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/mxj-uwyj-vzp",
       icon: Bell,
-      label: "Call Rohith",
+      label: "ROHITH NAIK",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
