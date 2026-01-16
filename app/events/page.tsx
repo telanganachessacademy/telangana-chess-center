@@ -65,9 +65,9 @@ export default function EventsPage() {
   const categories = [
     { id: "all", name: "All Events", icon: Sparkles },
     { id: "tournament", name: "Tournaments", icon: Trophy },
+    { id: "TCA", name: "TCA", icon: Star },
     { id: "workshop", name: "Workshops", icon: BookOpen },
     { id: "seminar", name: "Seminars", icon: Users },
-    { id: "exhibition", name: "Exhibitions", icon: Star },
   ];
 
   const filteredEvents =
@@ -77,91 +77,112 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-
-      {/* HERO */}
-      <section className="pt-40 pb-24 bg-white border-b border-slate-100 text-center">
-        <div className="container mx-auto px-6">
-          <span className="inline-flex px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+      {/* HERO - Fixed Text Overflow on mobile */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-white border-b border-slate-100 text-center">
+        <div className="container mx-auto px-4 sm:px-6">
+          <span className="inline-flex px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6 md:mb-8">
             Championship Calendar
           </span>
 
-          <h1 className="text-6xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-4 md:mb-6 leading-tight">
             Upcoming <span className="text-emerald-600">Events</span>
           </h1>
 
-          <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto">
             Minimal. Exclusive. Limited.
           </p>
         </div>
       </section>
 
-      {/* FILTER BAR */}
-      <section className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200 py-6">
-        <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center gap-6">
-          <div className="flex gap-3 overflow-x-auto no-scrollbar">
+      {/* FILTER BAR - Fixed Z-index and Height issues */}
+      <section className="sticky top-[64px] md:top-[72px] z-[45] bg-white/90 backdrop-blur-xl border-b border-slate-200 py-4 md:py-6">
+        <div className="container mx-auto px-4 md:px-6 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex gap-2 md:gap-3 overflow-x-auto no-scrollbar w-full md:w-auto pb-1 md:pb-0">
             {categories.map((category) => (
               <button
                 key={category.id}
+                type="button"
                 onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest border transition-all whitespace-nowrap ${
+                className={`flex items-center gap-2 px-5 py-2 md:px-6 md:py-2.5 rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest border transition-all whitespace-nowrap ${
                   selectedCategory === category.id
-                    ? "bg-emerald-600 text-white border-transparent shadow-lg"
-                    : "bg-white border-slate-200 text-slate-500 hover:text-emerald-600 hover:border-emerald-300"
+                    ? "bg-emerald-600 text-white border-transparent shadow-md"
+                    : "bg-white border-slate-200 text-slate-500 hover:text-emerald-600"
                 }`}
               >
-                <category.icon className="w-4 h-4" />
+                <category.icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
                 {category.name}
               </button>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-            <Filter className="w-4 h-4 text-emerald-500" />
-            {filteredEvents.length} Events
+          <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+            <Filter className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-500" />
+            {filteredEvents.length} Events Listed
           </div>
         </div>
       </section>
 
       {/* EVENTS GRID */}
-      <section className="py-24 px-6">
-        <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="py-12 md:py-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {filteredEvents.map((event) => (
-            <Card
-              key={event.id}
-              className="group bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
-            >
-              {/* IMAGE */}
-              <Link href={event.image} target="_blank">
-                <div className="relative h-72 overflow-hidden cursor-zoom-in">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                </div>
-              </Link>
+  <Card
+    key={event.id}
+    className="bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-md flex flex-col"
+  >
+    {/* IMAGE — COMPLETELY NON CLICKABLE */}
+    <div className="h-60 md:h-72 overflow-hidden pointer-events-none">
+      <img
+        src={event.image}
+        alt={event.title}
+        className="w-full h-full object-cover"
+        draggable={false}
+      />
+    </div>
 
-              {/* CONTENT */}
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-black text-slate-900 mb-6 tracking-tight">
-                  {event.title}
-                </h3>
+    {/* CONTENT */}
+    <CardContent className="p-6 md:p-8 text-center flex flex-col flex-grow justify-between pointer-events-none">
+      <h3 className="text-lg md:text-xl font-black text-slate-900 mb-6 tracking-tight leading-tight line-clamp-3">
+        {event.title}
+      </h3>
 
-                <Link
-                  href={event.registerUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-widest shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
-                    Register Now <ChevronRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
+      {/* REGISTER — ONLY INTERACTIVE ELEMENT */}
+      <div className="pointer-events-auto">
+        <button
+          type="button"
+          onTouchStart={(e) => {
+            e.stopPropagation();
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // HARD NAVIGATION — browser CANNOT override this
+            window.location.assign(event.registerUrl);
+          }}
+          className="inline-flex w-full h-12 md:h-14 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[10px] md:text-xs uppercase tracking-widest shadow-lg active:scale-95 items-center justify-center gap-2 touch-manipulation"
+        >
+          Register Now <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+    </CardContent>
+  </Card>
+))}
+
         </div>
+
+        {filteredEvents.length === 0 && (
+          <div className="text-center py-32">
+            <p className="text-slate-400 font-bold uppercase tracking-widest">No events listed in this category.</p>
+          </div>
+        )}
       </section>
+
+      {/* Utility CSS */}
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
     </div>
   );
 }

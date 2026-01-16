@@ -145,10 +145,12 @@ export function Header() {
       </div>
 
       {/* --- MOBILE OVERLAY --- */}
-      <div 
-        className={`fixed inset-0 bg-white z-[-1] transition-all duration-500 lg:hidden pt-32 px-6 ${
-          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-        }`}
+      <div
+  className={`fixed inset-0 bg-white transition-all duration-500 lg:hidden pt-32 px-6
+    ${isMobileMenuOpen 
+      ? "translate-y-0 opacity-100 z-40 pointer-events-auto" 
+      : "-translate-y-full opacity-0 z-[-1] pointer-events-none"}
+  `}
       >
         <div className="space-y-3">
           {navItems.map((item) => (
