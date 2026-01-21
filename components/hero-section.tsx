@@ -52,7 +52,7 @@ export function HeroSection() {
       bg: "from-rose-500 to-pink-600",
     },
     {
-      href: "https://meet.jit.si/TelanganaChessAcademy",
+      href: "https://meet.google.com/swh-khgo-foc",
       icon: Bell,
       label: "NARESH NAIK",
       bg: "from-indigo-600 to-purple-700",
