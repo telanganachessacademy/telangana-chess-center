@@ -36,19 +36,19 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/isn-hyzm-bdk",
       icon: Play,
-      label: "TCA Meeting",
+      label: "TCA MEETING",
       bg: "from-orange-500 to-amber-600",
     },
     {
       href: "https://meet.google.com/atu-ziid-ojg",
       icon: Sparkles,
-      label: "TCS Meeting",
+      label: "TCS MEETING",
       bg: "from-emerald-600 to-green-700",
     },
     {
       href: "https://meet.google.com/uux-vyxa-pgq",
       icon: Bell,
-      label: "BCA Meeting",
+      label: "BCA MEETING",
       bg: "from-rose-500 to-pink-600",
     },
     {
