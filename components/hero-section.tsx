@@ -28,15 +28,15 @@ export function HeroSection() {
       bg: "from-blue-600 to-indigo-700",
     },
     {
-      href: "https://meet.google.com/wdn-eosj-rdw",
+      href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Play,
-      label: "TCA CALL",
+      label: "START CALL",
       bg: "from-cyan-500 to-teal-600",
     },
     {
-      href: "https://meet.google.com/wuk-nfie-mgx",
+      href: "https://meet.google.com/jij-dxwb-iox",
       icon: Play,
-      label: "NARESH NAIK",
+      label: "TCA Meetings",
       bg: "from-orange-500 to-amber-600",
     },
     {
