@@ -54,7 +54,7 @@ export function HeroSection() {
     {
       href: "https://meet.jit.si/TelanganaChessAcademy",
       icon: Bell,
-      label: "START CALL",
+      label: "NARESH NAIK",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
