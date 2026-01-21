@@ -34,9 +34,9 @@ export function HeroSection() {
       bg: "from-cyan-500 to-teal-600",
     },
     {
-      href: "https://meet.google.com/jij-dxwb-iox",
+      href: "https://meet.google.com/isn-hyzm-bdk",
       icon: Play,
-      label: "TCA Meetings",
+      label: "TCA Meeting",
       bg: "from-orange-500 to-amber-600",
     },
     {
