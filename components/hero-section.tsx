@@ -40,9 +40,9 @@ export function HeroSection() {
       bg: "from-orange-500 to-amber-600",
     },
     {
-      href: "https://meet.google.com/atu-ziid-ojg",
+      href: "https://meet.google.com/azx-brjh-ccv",
       icon: Sparkles,
-      label: "TCS MEETING",
+      label: "HCI MEETING",
       bg: "from-emerald-600 to-green-700",
     },
     {
@@ -54,7 +54,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/gct-cgec-owd",
       icon: Bell,
-      label: "TSA Meeting",
+      label: "TSA MEETING",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
