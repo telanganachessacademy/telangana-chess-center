@@ -22,7 +22,7 @@ export function HeroSection() {
 
   const meetingLinks = [
     {
-      href: "https://meet.google.com/vjj-cfpx-dav?pli=1",
+      href: "https://meet.google.com/aoq-xcnz-mwx",
       icon: Video,
       label: "G-MEET",
       bg: "from-blue-600 to-indigo-700",
