@@ -52,9 +52,9 @@ export function HeroSection() {
       bg: "from-rose-500 to-pink-600",
     },
     {
-      href: "https://meet.google.com/swh-khgo-foc",
+      href: "https://meet.google.com/gct-cgec-owd",
       icon: Bell,
-      label: "NARESH NAIK",
+      label: "TSA Meeting",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
