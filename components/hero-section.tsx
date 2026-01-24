@@ -46,7 +46,7 @@ export function HeroSection() {
       bg: "from-emerald-600 to-green-700",
     },
     {
-      href: "https://meet.google.com/uux-vyxa-pgq",
+      href: "https://meet.google.com/mwk-zhcq-fts",
       icon: Bell,
       label: "BCA MEETING",
       bg: "from-rose-500 to-pink-600",
