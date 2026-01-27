@@ -29,7 +29,7 @@ export default function EventsPage() {
       id: 2,
       title: "7th Mount Banyan Global School Chess Tournament on 01-02-2026",
       category: "tournament",
-      image: "/01-02-2026.jpg",
+      image: "/02-02-26.jpg",
       registerUrl: "https://rzp.io/rzp/fjeG1FkO",
     },
     {
