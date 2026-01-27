@@ -20,10 +20,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "24th TCA All India Chess Tournament on 25-01-2026",
+      title: "7TH MBGS All India Chess Tournament on 25-01-2026",
       category: "tournament",
-      image: "/25-01-2026.jpg",
-      registerUrl: "https://rzp.io/rzp/p4HolA5I",
+      image: "/02-02-26.jpg",
+      registerUrl: "https://rzp.io/rzp/fjeG1FkO",
     },
     {
       id: 2,
