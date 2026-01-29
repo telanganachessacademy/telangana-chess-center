@@ -28,7 +28,7 @@ export function Header() {
     { name: "Home", href: "/" },
     {
       name: "ONLINE COACHING",
-      href: "https://svc-ui-7.netlify.app/login",
+      href: "https://app.chesslang.com/app",
       isExternal: true,
     },
     {
