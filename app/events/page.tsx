@@ -20,24 +20,24 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "7TH MBGS All India Chess Tournament on 25-01-2026",
+      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
       category: "tournament",
       image: "/02-02-26.jpg",
-      registerUrl: "https://rzp.io/rzp/fjeG1FkO",
+      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
     },
     {
       id: 2,
-      title: "7th Mount Banyan Global School Chess Tournament on 01-02-2026",
+      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
       category: "tournament",
       image: "/02-02-26.jpg",
-      registerUrl: "https://rzp.io/rzp/fjeG1FkO",
+      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
     },
     {
       id: 3,
-      title: "25th All India TCA Open Chess Tournament on 15-02-2026",
+      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
       category: "tournament",
       image: "/15-02-2026.jpg",
-      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
+      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
     },
     {
       id: 4,
