@@ -22,9 +22,9 @@ export function HeroSection() {
 
   const meetingLinks = [
     {
-      href: "https://meet.google.com/nhx-mfzc-fsi",
+      href: "https://meet.google.com/isn-hyzm-bdk",
       icon: Video,
-      label: "G-MEET",
+      label: "TCA MEETING",
       bg: "from-blue-600 to-indigo-700",
     },
     {
@@ -34,9 +34,9 @@ export function HeroSection() {
       bg: "from-cyan-500 to-teal-600",
     },
     {
-      href: "https://meet.google.com/isn-hyzm-bdk",
+      href: "https://meet.google.com/nhx-mfzc-fsi",
       icon: Play,
-      label: "TCA MEETING",
+      label: "G-MEET",
       bg: "from-orange-500 to-amber-600",
     },
     {
