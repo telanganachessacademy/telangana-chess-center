@@ -25,7 +25,7 @@ export function Header() {
 
   // EXACT SEQUENCE AS REQUESTED
   const navItems: NavItem[] = [
-    { name: "Home", href: "/" },
+    { name: "HOME", href: "/" },
     {
       name: "ONLINE COACHING",
       href: "https://app.chesslang.com/app",
