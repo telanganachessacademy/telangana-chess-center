@@ -22,8 +22,8 @@ import {
   MessageSquare,
   Globe,
   HelpCircle,
-  ChevronRight,
-  ArrowRight
+  Loader2, // Added for loading state
+  AlertCircle
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -37,6 +37,8 @@ export default function ContactPage() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const inquiryTypes = [
     "General Information",
@@ -53,18 +55,36 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        inquiryType: "",
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          inquiryType: "",
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -97,7 +117,7 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-12 gap-0 bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100">
             
-            {/* LEFT COLUMN: Contact Details (Studio Light Panel) */}
+            {/* LEFT COLUMN: Contact Details */}
             <div className="lg:col-span-5 bg-slate-50 p-12 md:p-16 relative overflow-hidden flex flex-col justify-between border-r border-slate-100">
               <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:32px_32px] opacity-30"></div>
               
@@ -106,7 +126,7 @@ export default function ContactPage() {
                 <p className="text-slate-500 font-medium mb-12 text-lg">Reach us directly via our official academy channels.</p>
                 
                 <div className="space-y-6">
-                  {/* Phone - Blue Theme */}
+                  {/* Phone */}
                   <div className="flex items-center gap-5 group p-5 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all duration-500">
                     <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
                       <Phone className="w-6 h-6" />
@@ -117,7 +137,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Mail - Orange Theme */}
+                  {/* Mail */}
                   <div className="flex items-center gap-5 group p-5 rounded-[2rem] bg-white border border-slate-100 hover:border-orange-200 hover:shadow-lg hover:shadow-orange-50 transition-all duration-500">
                     <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
                       <Mail className="w-6 h-6" />
@@ -128,7 +148,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Map - Purple Theme */}
+                  {/* Map */}
                   <div className="flex items-center gap-5 group p-5 rounded-[2rem] bg-white border border-slate-100 hover:border-purple-200 hover:shadow-lg hover:shadow-purple-50 transition-all duration-500">
                     <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
                       <MapPin className="w-6 h-6" />
@@ -143,7 +163,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Multi-colored Utility Buttons */}
               <div className="mt-16 pt-10 border-t border-slate-200 relative z-10 flex gap-4">
                   <button className="flex-1 h-14 rounded-2xl bg-white border border-slate-200 text-slate-600 font-bold text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition-all shadow-sm">
                     <Globe className="w-4 h-4" /> Portals
@@ -165,9 +184,22 @@ export default function ContactPage() {
                   <p className="text-slate-500 font-medium max-w-xs mx-auto text-lg leading-relaxed">
                     Our grandmasters will review your inquiry and reach out within 24 hours.
                   </p>
+                  <Button 
+                    variant="link" 
+                    className="mt-6 text-emerald-600 font-bold"
+                    onClick={() => setIsSubmitted(false)}
+                  >
+                    Send another message
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
+                  {error && (
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 flex items-center gap-3 text-sm font-bold">
+                      <AlertCircle className="w-5 h-5" /> {error}
+                    </div>
+                  )}
+
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
                       <Label htmlFor="name" className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Full Name</Label>
@@ -176,7 +208,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:border-emerald-500 focus:ring-emerald-500 font-bold text-slate-900"
-                        placeholder="Grandmaster"
+                        placeholder="Grandmaster Name"
                         required
                       />
                     </div>
@@ -203,6 +235,7 @@ export default function ContactPage() {
                         onChange={(e) => handleInputChange("phone", e.target.value)}
                         className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:border-emerald-500 focus:ring-emerald-500 font-bold text-slate-900"
                         placeholder="+91 00000 00000"
+                        required
                       />
                     </div>
                     <div className="space-y-3">
@@ -210,6 +243,7 @@ export default function ContactPage() {
                       <Select
                         value={formData.inquiryType}
                         onValueChange={(value) => handleInputChange("inquiryType", value)}
+                        required
                       >
                         <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-slate-100 font-bold text-slate-900 focus:ring-emerald-500">
                           <SelectValue placeholder="Select Topic" />
@@ -237,9 +271,14 @@ export default function ContactPage() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black uppercase tracking-[0.2em] h-16 rounded-2xl shadow-xl shadow-emerald-100 transition-all active:scale-95 text-xs"
+                    disabled={isLoading}
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black uppercase tracking-[0.2em] h-16 rounded-2xl shadow-xl shadow-emerald-100 transition-all active:scale-95 text-xs disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message <Send className="ml-3 w-4 h-4" />
+                    {isLoading ? (
+                      <>Sending... <Loader2 className="ml-3 w-4 h-4 animate-spin" /></>
+                    ) : (
+                      <>Send Message <Send className="ml-3 w-4 h-4" /></>
+                    )}
                   </Button>
                 </form>
               )}
