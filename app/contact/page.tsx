@@ -41,11 +41,7 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null);
 
   const inquiryTypes = [
-    "General Information",
-    "Course Enrollment",
-    "Private Coaching",
-    "Tournament Registration",
-    "Partnership Inquiry",
+    "Chess Coaching",
     "Other",
   ];
 
