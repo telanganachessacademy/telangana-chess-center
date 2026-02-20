@@ -15,7 +15,7 @@ const galleryCategories = [
 const galleryImages = [
   { id: 1, src: "/gallery-1.jpg", alt: "Chess Tournament 2024", category: "tournaments", title: "Organising Tournaments", description: "Our students competing in the championship" },
   { id: 2, src: "/gallery-2.jpg", alt: "Beginner Chess Class", category: "tournaments", title: "Tournaments", description: "Young minds learning the mastery of chess" },
-  { id: 3, src: "/gallery-3.jpg", alt: "Chess Workshop", category: "tournaments", title: "Inhouse Tournaments", description: "Advanced strategy inhouse tournaments." },
+  { id: 3, src: "/gallery-3.jpg", alt: "Chess Workshop", category: "tournaments", title: "Tournaments Hall", description: "Advanced strategy inhouse tournaments." },
   { id: 4, src: "/certificate-1.jpg", alt: "Youth Tournament", category: "certificate", title: "Fide Arbiter", description: "Tejavath Naresh Sir" },
   { id: 5, src: "/certificate-2.jpeg", alt: "Advanced Chess Class", category: "certificate", title: "SChool Instructor", description: "Tejawat Naresh Sir" },
   { id: 6, src: "/certificate-3.jpeg", alt: "Chess Seminar", category: "certificate", title: "National Instructor", description: "Tejawat Naresh Sir" },
