@@ -36,10 +36,10 @@ export function Header() {
       href: "https://www.telanganachessacademy.com/events",
       isExternal: true,
     },
-    { name: "Courses", href: "/courses" },
-    { name: "Our Coaches", href: "/coaches" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Blogs", href: "/blogs" },
+    { name: "COURSES", href: "/courses" },
+    { name: "OUR COACHES", href: "/coaches" },
+    { name: "GALLERY", href: "/gallery" },
+    { name: "BLOGS", href: "/blogs" },
     { name: "CONTACT", href: "/contact" },
   ];
   
