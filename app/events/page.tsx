@@ -20,24 +20,24 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
+      title: "7th Mount Banyan Gobal School All India TCA Under 10, Under 14 & Under 18 Chess Tournament-29/03/2026",
       category: "tournament",
-      image: "/22-02.jpg",
-      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
+      image: "/7th Mount Banyan.jpg",
+      registerUrl: "https://rzp.io/rzp/xY6ep9g",
     },
     {
       id: 2,
-      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
+      title: "7th Mount Banyan Global School All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
       category: "tournament",
-      image: "/22-02.jpg",
-      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
+      image: "/7th Mount Banyan.jpg",
+      registerUrl: "https://rzp.io/rzp/xY6ep9g",
     },
     {
       id: 3,
-      title: "26th All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
+      title: "7th Mount Banyan Global School All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
       category: "tournament",
-      image: "/22-02.jpg",
-      registerUrl: "https://rzp.io/rzp/GdcEzfeD",
+      image: "/7th Mount Banyan.jpg",
+      registerUrl: "https://rzp.io/rzp/xY6ep9g",
     },
     {
       id: 4,
