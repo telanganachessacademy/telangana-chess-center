@@ -32,7 +32,7 @@ export function Header() {
       isExternal: true,
     },
     {
-      name: "EVENT",
+      name: "EVENTS",
       href: "https://www.telanganachessacademy.com/events",
       isExternal: true,
     },
