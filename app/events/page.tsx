@@ -29,7 +29,7 @@ export default function EventsPage() {
       id: 2,
       title: "29th TCA Children's TRN on-08/02/2026",
       category: "tournament",
-      image: "/7th Mount Banyan.jpg",
+      image: "/TCA Childrens 7th June.JPG",
       registerUrl: "https://rzp.io/rzp/mchQAtG",
     },
     {
