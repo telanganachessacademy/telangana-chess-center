@@ -27,10 +27,10 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "7th Mount Banyan Global School All India TCA Under 10, Under 14 & Under 18 Chess Tournament-08/02/2026",
+      title: "29th TCA Children's TRN on-08/02/2026",
       category: "tournament",
       image: "/7th Mount Banyan.jpg",
-      registerUrl: "https://rzp.io/rzp/xY6ep9g",
+      registerUrl: "https://rzp.io/rzp/mchQAtG",
     },
     {
       id: 3,
