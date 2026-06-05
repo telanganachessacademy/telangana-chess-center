@@ -20,9 +20,9 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "28th TCA Open Chess Tournament-06/06/2026",
+      title: "28th TCA Open Chess Tournament-14/06/2026",
       category: "tournament",
-      image: "/TCA Open 6th June.JPG",
+      image: "/14th June.jpg",
       registerUrl: "https://rzp.io/rzp/gn3xbal5",
     },
     {
