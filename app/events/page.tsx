@@ -37,7 +37,7 @@ export default function EventsPage() {
       title: "8th MBGS All India TCA Under 10, Under 14 & Under 18 Chess Tournament-21/06/2026",
       category: "tournament",
       image: "/21.06-.jpg",
-      registerUrl: "https://rzp.io/rzp/auI1Oya",
+      registerUrl: "https://rzp.io/rzp/FPjgi8p",
     },
     {
       id: 4,
