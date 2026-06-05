@@ -34,9 +34,9 @@ export default function EventsPage() {
     },
     {
       id: 3,
-      title: "8th Mount Banyan Global School All India TCA Under 10, Under 14 & Under 18 Chess Tournament-14/06/2026",
+      title: "8th MBGS All India TCA Under 10, Under 14 & Under 18 Chess Tournament-21/06/2026",
       category: "tournament",
-      image: "/MBGS 14th June.JPG",
+      image: "/21.06-.jpg",
       registerUrl: "https://rzp.io/rzp/auI1Oya",
     },
     {
