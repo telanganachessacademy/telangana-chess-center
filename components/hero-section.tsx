@@ -54,7 +54,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/aoq-xcnz-mwx",
       icon: Bell,
-      label: "NARESH NAIK",
+      label: "COACH NARESH",
       bg: "from-indigo-600 to-purple-700",
     },
   ];
