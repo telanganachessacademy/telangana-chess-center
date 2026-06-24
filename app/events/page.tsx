@@ -20,24 +20,24 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "8th MBGS All India TCA Under 10, Under 14 & Under 18 Chess Tournament-21/06/2026",
+      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
       category: "tournament",
-      image: "/21.06-.jpg",
-      registerUrl: "https://rzp.io/rzp/FPjgi8p",
+      image: "/28th June 2026.JPG",
+      registerUrl: "https://rzp.io/rzp/nptKJtfi",
     },
     {
       id: 2,
-      title: "8th MBGS All India TCA Under 10, Under 14 & Under 18 Chess Tournament-21/06/2026",
+      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
       category: "tournament",
-      image: "/21.06-.jpg",
-      registerUrl: "https://rzp.io/rzp/FPjgi8p",
+      image: "/28th June 2026.JPG",
+      registerUrl: "https://rzp.io/rzp/nptKJtfi",
     },
     {
       id: 3,
-      title: "8th MBGS All India TCA Under 10, Under 14 & Under 18 Chess Tournament-21/06/2026",
+      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
       category: "tournament",
-      image: "/21.06-.jpg",
-      registerUrl: "https://rzp.io/rzp/FPjgi8p",
+      image: "/28th June 2026.JPG",
+      registerUrl: "https://rzp.io/rzp/nptKJtfi",
     },
     {
       id: 4,
