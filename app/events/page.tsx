@@ -20,24 +20,24 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
+      title: "31st TCA Open CashPrize Tournament on 26/07/2026",
       category: "tournament",
       image: "/28th June 2026.JPG",
-      registerUrl: "https://rzp.io/rzp/nptKJtfi",
+      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
     },
     {
       id: 2,
-      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
+      title: "31st TCA Open CashPrize Tournament on 26/07/2026",
       category: "tournament",
       image: "/28th June 2026.JPG",
-      registerUrl: "https://rzp.io/rzp/nptKJtfi",
+      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
     },
     {
       id: 3,
-      title: "30th All India TCA Under 10 ,14 & 18 Tournament on 28/06/2026",
+      title: "31st TCA Open CashPrize Tournament on 26/07/2026",
       category: "tournament",
       image: "/28th June 2026.JPG",
-      registerUrl: "https://rzp.io/rzp/nptKJtfi",
+      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
     },
     {
       id: 4,
