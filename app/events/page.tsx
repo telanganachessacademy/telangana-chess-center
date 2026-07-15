@@ -27,17 +27,17 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 26/07/2026",
+      title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 02/08/2026",
       category: "tournament",
       image: "/2nd August 2026.JPG",
       registerUrl: "https://rzp.io/rzp/TKv36TK",
     },
     {
       id: 3,
-      title: "31st TCA Open CashPrize Tournament on 26/07/2026",
+      title: "32nd TCA Under 10,12 & 18 Chess Tournament on 16/08/2026",
       category: "tournament",
-      image: "/TCA Open 26th July.jpg",
-      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
+      image: "/16th August 2026.PNG",
+      registerUrl: "https://rzp.io/rzp/ntAKuVci",
     },
     {
       id: 4,
