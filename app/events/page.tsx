@@ -20,10 +20,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "31st TCA Open CashPrize Tournament on 26/07/2026",
+      title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 02/08/2026",
       category: "tournament",
-      image: "/TCA Open 26th July.jpg",
-      registerUrl: "https://rzp.io/rzp/KzIMjyhi",
+      image: "/2nd August 2026.JPG",
+      registerUrl: "https://rzp.io/rzp/TKv36TK",
     },
     {
       id: 2,
