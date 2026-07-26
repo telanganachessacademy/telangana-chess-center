@@ -22,14 +22,14 @@ export default function EventsPage() {
       id: 1,
       title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 02/08/2026",
       category: "tournament",
-      image: "/2nd August 2026.JPG",
+      image: "/2nd August 2026.png",
       registerUrl: "https://rzp.io/rzp/TKv36TK",
     },
     {
       id: 2,
       title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 02/08/2026",
       category: "tournament",
-      image: "/2nd August 2026.JPG",
+      image: "/2nd August 2026.png",
       registerUrl: "https://rzp.io/rzp/TKv36TK",
     },
     {
