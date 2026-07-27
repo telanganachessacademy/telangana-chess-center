@@ -36,7 +36,7 @@ export function HeroSection() {
     {
       href: "https://meet.google.com/nhx-mfzc-fsi",
       icon: Play,
-      label: "Google Meet",
+      label: "GOOGLE MEET",
       bg: "from-orange-500 to-amber-600",
     },
     {
