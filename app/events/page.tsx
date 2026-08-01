@@ -20,10 +20,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 02/08/2026",
+      title: "32nd ALL INDIA TCA Chess Tournament Under 10,12 & 18 on 16/08/2026",
       category: "tournament",
-      image: "/2nd August 2026.png",
-      registerUrl: "https://rzp.io/rzp/TKv36TK",
+      image: "/16th August 2026.jpeg",
+      registerUrl: "https://rzp.io/rzp/ntAKuVci",
     },
     {
       id: 2,
