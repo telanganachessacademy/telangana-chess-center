@@ -29,7 +29,7 @@ export default function EventsPage() {
       id: 2,
       title: "32nd TCA Under 10,12 & 18 Chess Tournament on 16/08/2026",
       category: "tournament",
-      image: "/30th August 2026.jpeg",
+      image: "/30thAug2026.jpeg",
       registerUrl: "https://rzp.io/rzp/ntAKuVci",
     },
     {
