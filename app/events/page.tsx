@@ -20,45 +20,45 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "32nd ALL INDIA TCA Chess Tournament Under 10,12 & 18 on 16/08/2026",
-      category: "tournament",
-      image: "/16th August 2026.jpeg",
-      registerUrl: "https://rzp.io/rzp/ntAKuVci",
-    },
-    {
-      id: 2,
       title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 23/08/2026",
       category: "tournament",
       image: "/23rd August 2026.png",
       registerUrl: "https://rzp.io/rzp/TKv36TK",
     },
     {
-      id: 3,
+      id: 2,
       title: "32nd TCA Under 10,12 & 18 Chess Tournament on 16/08/2026",
       category: "tournament",
-      image: "/16th August 2026.jpeg",
+      image: "/30th August 2026.jpeg",
       registerUrl: "https://rzp.io/rzp/ntAKuVci",
+    },
+    {
+      id: 3,
+      title: "TCA Advertisement",
+      category: "tournament",
+      image: "/TCA Advatisement.JPG",
+      registerUrl: "https://www.telanganachessacademy.com/contact",
     },
     {
       id: 4,
       title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
-      registerUrl: "https://tcaindia.org",
+      registerUrl: "https://www.telanganachessacademy.com/contact",
     },
     {
       id: 5,
       title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
-      registerUrl: "https://tcaindia.org",
+      registerUrl: "https://www.telanganachessacademy.com/contact",
     },
     {
       id: 6,
       title: "TCA Advertisement",
       category: "TCA",
       image: "/TCA Advatisement.JPG",
-      registerUrl: "https://tcaindia.org",
+      registerUrl: "https://www.telanganachessacademy.com/contact",
     },
   ];
 
