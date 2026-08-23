@@ -20,24 +20,24 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "9th Mount Banyan School Under 10,12 & 18 Chess TRN on 23/08/2026",
+      title: "33rd All India TCA 8,10 ,12 & 15 Chess TRN on 30/08/2026",
       category: "tournament",
-      image: "/23rd August 2026.png",
-      registerUrl: "https://rzp.io/rzp/TKv36TK",
+      image: "/30th August 2026.png",
+      registerUrl: "https://rzp.io/rzp/q6QzsTYD",
     },
     {
       id: 2,
-      title: "32nd TCA Under 10,12 & 18 Chess Tournament on 30/08/2026",
+      title: "33rd All India TCA 8,10 ,12 & 15 Chess TRN on 30/08/2026",
       category: "tournament",
-      image: "/30thAug2026.jpeg",
-      registerUrl: "https://rzp.io/rzp/ntAKuVci",
+      image: "/30th August 2026.png",
+      registerUrl: "https://rzp.io/rzp/q6QzsTYD",
     },
     {
       id: 3,
-      title: "TCA Advertisement",
+      title: "33rd All India TCA 8,10 ,12 & 15 Chess TRN on 30/08/2026",
       category: "tournament",
-      image: "/TCA Advatisement.JPG",
-      registerUrl: "https://www.telanganachessacademy.com/contact",
+      image: "/30th August 2026.png",
+      registerUrl: "https://rzp.io/rzp/q6QzsTYD",
     },
     {
       id: 4,
