@@ -27,7 +27,7 @@ export function Header() {
   const navItems: NavItem[] = [
     { name: "HOME", href: "/" },
     {
-      name: "ONLINE COACHING",
+      name: "CLASSROOM",
       href: "https://app.chesslang.com/app",
       isExternal: true,
     },
