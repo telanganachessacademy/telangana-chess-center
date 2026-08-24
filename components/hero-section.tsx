@@ -22,9 +22,9 @@ export function HeroSection() {
 
   const meetingLinks = [
     {
-      href: "https://meet.google.com/isn-hyzm-bdk",
+      href: "https://meet.google.com/mwk-zhcq-fts",
       icon: Video,
-      label: "TCA MEETING",
+      label: "BCA MEETING",
       bg: "from-blue-600 to-indigo-700",
     },
     {
@@ -40,9 +40,9 @@ export function HeroSection() {
       bg: "from-orange-500 to-amber-600",
     },
     {
-      href: "https://meet.google.com/mwk-zhcq-fts",
+      href: "https://meet.google.com/isn-hyzm-bdk",
       icon: Sparkles,
-      label: "BCA MEETING",
+      label: "TCA MEETING",
       bg: "from-emerald-600 to-green-700",
     },
     {
