@@ -20,10 +20,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "33rd All India TCA 8,10 ,12 & 15 Chess TRN on 30/08/2026",
+      title: "34th All India TCI Open Chess TRN on 06/09/2026",
       category: "tournament",
-      image: "/30th August 2026.png",
-      registerUrl: "https://rzp.io/rzp/q6QzsTYD",
+      image: "/TCI Open Tournament 6th September 2026.png",
+      registerUrl: "https://rzp.io/rzp/tGgRICuD",
     },
     {
       id: 2,
