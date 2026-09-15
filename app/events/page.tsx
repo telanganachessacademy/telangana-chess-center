@@ -22,7 +22,7 @@ export default function EventsPage() {
       id: 1,
       title: "TCF Under 8,12 & 16 Chess Event on 27th September 202",
       category: "tournament",
-      image: "/TCF Under 8,12 & 16 Chess Event on 27th September 2026.png",
+      image: "/27th Sep 2026.png",
       registerUrl: "https://rzp.io/rzp/BzWp6KV",
     },
     {
