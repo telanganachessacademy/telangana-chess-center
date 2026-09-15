@@ -27,9 +27,9 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      title: "33rd All India TCA 8,10 ,12 & 15 Chess TRN on 30/08/2026",
+      title: "36th All India TCI 8,12 & 16 Chess TRN on 11/10/2026",
       category: "tournament",
-      image: "/30th August 2026.png",
+      image: "/TCI 11th October 2026.png",
       registerUrl: "https://rzp.io/rzp/6gDuzmS",
     },
     {
