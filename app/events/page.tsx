@@ -20,10 +20,10 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      title: "34th All India TCI Open Chess TRN on 06/09/2026",
+      title: "TCF Under 8,12 & 16 Chess Event on 27th September 202",
       category: "tournament",
-      image: "/TCI Open Tournament 6th September 2026.png",
-      registerUrl: "https://rzp.io/rzp/tGgRICuD",
+      image: "/TCF Under 8,12 & 16 Chess Event on 27th September 2026.png",
+      registerUrl: "https://rzp.io/rzp/BzWp6KV",
     },
     {
       id: 2,
