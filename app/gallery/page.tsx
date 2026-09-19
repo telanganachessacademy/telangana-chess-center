@@ -18,6 +18,7 @@ const galleryImages = [
   { id: 3, src: "/gallery-3.jpg", alt: "Chess Workshop", category: "tournaments", title: "Tournaments Hall", description: "Advanced strategy inhouse tournaments." },
   { id: 4, src: "/certificate-1.jpg", alt: "Youth Tournament", category: "certificate", title: "Fide Arbiter", description: "Tejavath Naresh Sir" },
   { id: 5, src: "/certificate-2.jpeg", alt: "Advanced Chess Class", category: "certificate", title: "SChool Instructor", description: "Tejawat Naresh Sir" },
+  { id: 8, src: "/sir.jpeg", alt: "School Tournament", category: "certificate", title: "Our Founder", description: "Tejawat Naresh Sir" }
   { id: 6, src: "/certificate-3.jpeg", alt: "Chess Seminar", category: "certificate", title: "National Instructor", description: "Tejawat Naresh Sir" },
   { id: 7, src: "/academy.jpeg", alt: "School Tournament", category: "events", title: "TCA Board", description: "Schools competing for the championship title" },
   { id: 8, src: "/certificate.jpg", alt: "School Tournament", category: "certificate", title: "Arena International Master", description: "Tejawat Naresh Sir" }
