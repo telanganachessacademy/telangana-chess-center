@@ -22,7 +22,7 @@ export default function EventsPage() {
       id: 1,
       title: "35th TCF Under 8,12 & 16 Chess Event on 27th September 202",
       category: "tournament",
-      image: "/27th Sep 2026.png",
+      image: "/27thSep2026 Final Brochure.png",
       registerUrl: "https://rzp.io/rzp/BzWp6KV",
     },
     {
