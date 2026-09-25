@@ -86,7 +86,7 @@ export function FeaturesSection() {
             <span>Premium Learning Experience</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">
             Elite Tools for <br/>
             <span className="text-emerald-600">Chess Mastery</span>
           </h2>

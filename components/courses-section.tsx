@@ -1,192 +1,335 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Clock, Users, Star, ArrowRight, Check, Crown, Shield, Zap, BookOpen, ChevronRight } from "lucide-react";
+import { Clock, Users, Star, Check, Crown, Target, Zap, BookOpen, ChevronRight, Trophy, Shield } from "lucide-react";
 import Link from "next/link";
 
 export function CoursesSection() {
   const courses = [
     {
+      title: "Beginner Level – 1",
       level: "Beginner",
-      icon: Shield,
-      title: "Foundation",
-      description: "Start your journey. Master the rules, piece movements, and basic checkmates.",
-      duration: "4 Weeks",
-      students: "50+ Active",
-      rating: 4.9,
-      price: "₹2,999",
-      features: ["Rules & Movements", "Basic Opening Principles", "Fundamental Tactics", "Endgame Basics"],
+      duration: "3 Months",
+      price: "₹15,000",
+      students: "50+",
+      rating: "4.9",
+      icon: BookOpen,
       color: "blue",
+      description: "Perfect for complete beginners. Learn the rules, movements, and basic checkmates to start playing confidently.",
+      features: [
+        "Intro to Chess Board & Pieces",
+        "Movement & Value of Pieces",
+        "Rules: Castling, En Passant",
+        "Basic Checkmates & Stalemate",
+      ],
+      schedule: "2 classes/week (1.5 hrs)",
+      ageGroup: "6+ years",
+      classSize: "8-10 students",
       popular: false,
     },
     {
+      title: "Beginner Level – 2",
+      level: "Beginner",
+      duration: "3 Months",
+      price: "₹15,000",
+      students: "45+",
+      rating: "4.8",
+      icon: BookOpen,
+      color: "blue",
+      description: "Builds on basics. Focus on elementary checkmates, simple tactics like pins and forks, and piece coordination.",
+      features: [
+        "King + Queen/Rook Checkmates",
+        "Checkmate in 1 & 2 moves",
+        "Tactics: Pin, Fork (Basic)",
+        "Attacking the King",
+      ],
+      schedule: "2 classes/week (1.5 hrs)",
+      ageGroup: "6+ years",
+      classSize: "8-10 students",
+      popular: false,
+    },
+    {
+      title: "Intermediate Level – 1",
       level: "Intermediate",
-      icon: Crown,
-      title: "Tactical Mastery",
-      description: "For players knowing the basics. Deep dive into strategy, combinations, and planning.",
-      duration: "8 Weeks",
-      students: "120+ Active",
-      rating: 4.8,
-      price: "₹4,999",
-      features: ["Advanced Tactical Patterns", "Positional Understanding", "Opening Repertoire Building", "Tournament Preparation"],
+      duration: "4 Months",
+      price: "₹20,000",
+      students: "40+",
+      rating: "4.8",
+      icon: Target,
       color: "orange",
-      popular: true, 
+      description: "Introduction to advanced tactics. Learn absolute pins, forks, double attacks, and calculating deeper mates.",
+      features: [
+        "Absolute vs Relative Pins",
+        "Knight Forks & Double Attacks",
+        "Checkmate in 3 & 4 moves",
+        "Decoy Sacrifices",
+      ],
+      schedule: "3 classes/week (2 hrs)",
+      ageGroup: "8+ years",
+      classSize: "6-8 students",
+      popular: true,
     },
     {
-      level: "Advanced",
-      icon: Zap,
-      title: "Grandmaster Path",
-      description: "Elite training for rated players aiming for titles and competitive dominance.",
-      duration: "12 Weeks",
-      students: "15+ Active",
-      rating: 5.0,
-      price: "₹7,999",
-      features: ["Grandmaster Analysis", "Complex Endgame Theory", "Psychological Preparation", "1-on-1 Performance Review"],
-      color: "purple",
+      title: "Intermediate Level – 2",
+      level: "Intermediate",
+      duration: "4 Months",
+      price: "₹20,000",
+      students: "40+",
+      rating: "4.8",
+      icon: Target,
+      color: "orange",
+      description: "Master opening principles. Develop pieces effectively, control the center, and study the Giuoco Piano.",
+      features: [
+        "Opening Principles & Development",
+        "Good vs Bad Bishop",
+        "Coordination of Pieces",
+        "King Pawn Openings",
+      ],
+      schedule: "3 classes/week (2 hrs)",
+      ageGroup: "8+ years",
+      classSize: "6-8 students",
       popular: false,
+    },
+    {
+      title: "Intermediate Level – 3",
+      level: "Intermediate",
+      duration: "4 Months",
+      price: "₹20,000",
+      students: "35+",
+      rating: "4.8",
+      icon: Target,
+      color: "orange",
+      description: "Deepen tactical understanding. Learn complex motifs like X-rays, interference, and overloading.",
+      features: [
+        "Discovered Attacks & X-Ray",
+        "Interference Tactics",
+        "Overloaded Pieces",
+        "Clearance Sacrifices",
+      ],
+      schedule: "3 classes/week (2 hrs)",
+      ageGroup: "8+ years",
+      classSize: "6-8 students",
+      popular: false,
+    },
+    {
+      title: "Intermediate Level – 4",
+      level: "Intermediate",
+      duration: "4 Months",
+      price: "₹20,000",
+      students: "35+",
+      rating: "4.8",
+      icon: Target,
+      color: "orange",
+      description: "Strategic mastery. Understand pawn structures, open files, and positional concepts like zugzwang.",
+      features: [
+        "Pawn Structures & Chains",
+        "Isolated & Backward Pawns",
+        "Open Files & Outposts",
+        "Repertoire Building",
+      ],
+      schedule: "3 classes/week (2 hrs)",
+      ageGroup: "8+ years",
+      classSize: "6-8 students",
+      popular: false,
+    },
+    {
+      title: "Advanced Level – 1",
+      level: "Advanced",
+      duration: "6 Months",
+      price: "₹30,000",
+      students: "25+",
+      rating: "4.9",
+      icon: Trophy,
+      color: "purple",
+      description: "Intensive training for competitive players. Deep opening analysis, endgame theory, and positional sacrifices.",
+      features: [
+        "Dynamic vs Static Centers",
+        "Pawn & Knight Endgames",
+        "Opening Repertoire",
+        "Positional Sacrifices",
+      ],
+      schedule: "4 classes/week (2.5 hrs)",
+      ageGroup: "12+ years",
+      classSize: "4-6 students",
+      popular: false,
+    },
+    {
+      title: "Advanced Level – 2",
+      level: "Expert",
+      duration: "6 Months",
+      price: "₹30,000",
+      students: "20+",
+      rating: "4.9",
+      icon: Crown,
+      color: "purple",
+      description: "Elite training for aspiring masters. Focus on tournament discipline, psychology, and rigorous practice.",
+      features: [
+        "Tournament Psychology",
+        "Calculation Visualization",
+        "Complex Endgames",
+        "GM Game Analysis",
+      ],
+      schedule: "4 classes/week (2.5 hrs)",
+      ageGroup: "12+ years",
+      classSize: "4-6 students",
+      popular: true,
     },
   ];
 
-  const getThemeStyles = (color: string, popular: boolean) => {
+  const getThemeStyles = (color: string) => {
     switch (color) {
       case "blue":
         return {
-          btn: "bg-blue-600 hover:bg-blue-700 shadow-blue-100",
-          iconBg: "bg-blue-50",
-          iconColor: "text-blue-600",
-          badge: "bg-slate-100 text-slate-600",
-          border: "border-slate-100"
+          btn: "bg-[#0b3272] hover:bg-[#082352] text-white shadow-blue-900/15",
+          iconBg: "bg-blue-50 text-[#0b3272] border-blue-100",
+          iconColor: "text-[#0b3272]",
+          badgeBg: "bg-blue-50 text-[#0b3272] border-blue-100",
+          accentLine: "bg-[#0b3272]",
+          border: "border-slate-200/80"
         };
       case "orange":
         return {
-          btn: "bg-orange-500 hover:bg-orange-600 shadow-orange-100",
-          iconBg: "bg-orange-50",
-          iconColor: "text-orange-600",
-          badge: "bg-emerald-600 text-white shadow-lg shadow-emerald-100",
-          border: "border-emerald-200"
+          btn: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black shadow-amber-500/20",
+          iconBg: "bg-amber-50 text-amber-700 border-amber-200",
+          iconColor: "text-amber-700",
+          badgeBg: "bg-amber-50 text-amber-800 border-amber-200",
+          accentLine: "bg-amber-500",
+          border: "border-amber-200/80"
         };
       case "purple":
         return {
-          btn: "bg-purple-600 hover:bg-purple-700 shadow-purple-100",
-          iconBg: "bg-purple-50",
-          iconColor: "text-purple-600",
-          badge: "bg-slate-100 text-slate-600",
-          border: "border-slate-100"
+          btn: "bg-[#0e8743] hover:bg-[#085a2b] text-white shadow-emerald-900/15",
+          iconBg: "bg-emerald-50 text-[#0e8743] border-emerald-100",
+          iconColor: "text-[#0e8743]",
+          badgeBg: "bg-emerald-50 text-[#0e8743] border-emerald-100",
+          accentLine: "bg-[#0e8743]",
+          border: "border-slate-200/80"
         };
-      default: return {};
+      default: return {
+        btn: "bg-[#0b3272] hover:bg-[#082352] text-white",
+        iconBg: "bg-blue-50 text-[#0b3272] border-blue-100",
+        iconColor: "text-[#0b3272]",
+        badgeBg: "bg-blue-50 text-[#0b3272]",
+        accentLine: "bg-[#0b3272]",
+        border: "border-slate-200/80"
+      };
     }
   };
 
   return (
-    <section id="courses" className="py-24 bg-white relative overflow-hidden">
+    <section id="courses" className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
       
-      {/* --- Background Design --- */}
+      {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:40px_40px] opacity-30" />
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[120px] opacity-50" />
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] opacity-60" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[120px] opacity-50" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         
-        {/* --- Header Section --- */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em]">
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>Academy Curriculum</span>
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[10px] font-black uppercase tracking-[0.2em]">
+            <BookOpen className="w-3.5 h-3.5 text-amber-600" />
+            <span>Structured Academy Curriculum</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-none">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
             Choose Your <br />
-            <span className="text-emerald-600">Path to Mastery</span>
+            <span className="text-[#0b3272]">Path to</span> <span className="text-[#0e8743]">Mastery</span>
           </h2>
           
-          <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            From first moves to tournament trophies, our structured curriculum is 
-            designed by FIDE masters to elevate your game.
+          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
+            From first moves to tournament trophies, our structured curriculum is designed by FIDE masters to elevate your game.
           </p>
         </div>
 
-        {/* --- Courses Grid --- */}
-        <div className="grid lg:grid-cols-3 gap-10 items-stretch">
+        {/* 4 Per Row Courses Grid on Desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {courses.map((course, index) => {
             const Icon = course.icon;
-            const styles = getThemeStyles(course.color, course.popular) as any;
+            const styles = getThemeStyles(course.color) as any;
 
             return (
               <div
                 key={index}
-                className={`relative bg-white rounded-[2.5rem] border ${styles.border} p-10 transition-all duration-500 flex flex-col shadow-xl shadow-slate-100/50 group hover:-translate-y-3 hover:shadow-2xl hover:shadow-slate-200`}
+                className={`relative bg-white rounded-3xl border ${styles.border} p-6 transition-all duration-500 flex flex-col shadow-lg shadow-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-950/10 group`}
               >
-                {/* Popular Badge Rebranded as Academy Choice */}
+                {/* Popular Badge */}
                 {course.popular && (
-                  <div className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest ${styles.badge}`}>
-                    Academy Choice
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 shadow-md flex items-center gap-1">
+                    <Crown className="w-3 h-3" />
+                    <span>Popular Choice</span>
                   </div>
                 )}
 
-                {/* Card Header */}
-                <div className="mb-8">
-                  <div className={`w-16 h-16 ${styles.iconBg} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6`}>
-                    <Icon className={`w-8 h-8 ${styles.iconColor}`} />
-                  </div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-md">
-                        {course.level}
+                {/* Card Top */}
+                <div className="mb-4">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <div className={`w-11 h-11 ${styles.iconBg} rounded-xl border flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md border ${styles.badgeBg}`}>
+                      {course.level}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-emerald-600 transition-colors">
+
+                  <h3 className="text-lg font-black text-slate-950 mb-2 tracking-tight group-hover:text-[#0b3272] transition-colors line-clamp-1">
                     {course.title}
                   </h3>
-                  <p className="text-slate-500 font-medium text-sm leading-relaxed">
+                  
+                  <p className="text-slate-500 font-medium text-xs leading-relaxed line-clamp-2 min-h-[36px]">
                     {course.description}
                   </p>
                 </div>
 
-                {/* Stats Mini Dashboard */}
-                <div className="grid grid-cols-3 gap-2 py-5 border-t border-b border-slate-50 mb-8">
-                  <div className="flex flex-col items-center">
-                    <Clock className="w-4 h-4 text-slate-300 mb-1" />
-                    <span className="text-[10px] font-bold text-slate-900">{course.duration}</span>
+                {/* Mini Stats Bar */}
+                <div className="grid grid-cols-3 gap-1 py-2.5 border-y border-slate-100 mb-4 bg-slate-50/60 rounded-xl px-2 text-center">
+                  <div>
+                    <span className="text-[9px] font-bold text-slate-400 block uppercase">Duration</span>
+                    <span className="text-[11px] font-extrabold text-slate-800">{course.duration}</span>
                   </div>
-                  <div className="border-x border-slate-50 flex flex-col items-center">
-                    <Users className="w-4 h-4 text-slate-300 mb-1" />
-                    <span className="text-[10px] font-bold text-slate-900">{course.students}</span>
+                  <div className="border-x border-slate-200">
+                    <span className="text-[9px] font-bold text-slate-400 block uppercase">Students</span>
+                    <span className="text-[11px] font-extrabold text-slate-800">{course.students}</span>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 mb-1" />
-                    <span className="text-[10px] font-bold text-slate-900">{course.rating}</span>
+                  <div>
+                    <span className="text-[9px] font-bold text-slate-400 block uppercase">Rating</span>
+                    <span className="text-[11px] font-extrabold text-slate-800 flex items-center justify-center gap-0.5">
+                      <Star className="w-3 h-3 text-amber-500 fill-amber-400" /> {course.rating}
+                    </span>
                   </div>
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-4 mb-10 flex-grow">
+                <div className="space-y-2 mb-6 flex-grow">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-400">Core Highlights</p>
                   {course.features.map((feature, i) => (
-                    <div key={i} className="flex items-center">
-                      <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${styles.iconBg} mr-3`}>
-                        <Check className={`w-3 h-3 ${styles.iconColor}`} />
-                      </div>
-                      <span className="text-sm text-slate-600 font-bold tracking-tight">{feature}</span>
+                    <div key={i} className="flex items-start gap-2">
+                      <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${styles.iconColor}`} />
+                      <span className="text-xs text-slate-700 font-semibold leading-tight">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Pricing & CTA */}
-                <div className="mt-auto pt-6 border-t border-slate-50">
-                  <div className="flex items-end justify-between mb-8">
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <div className="flex items-baseline justify-between mb-4">
                     <div>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Full Course</p>
-                        <span className="text-4xl font-black text-slate-900">{course.price}</span>
+                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Course Fee</p>
+                      <span className="text-2xl font-black text-slate-950">{course.price}</span>
                     </div>
-                    <div className="text-right">
-                        <span className="text-xs font-bold text-slate-400 uppercase">Lifetime Access</span>
-                    </div>
+                    <span className="text-[10px] font-bold text-slate-500">
+                      {course.schedule}
+                    </span>
                   </div>
                   
                   <Link href="/contact" className="w-full">
                     <Button 
-                      className={`w-full h-14 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white transition-all active:scale-95 flex items-center justify-center gap-2 group-hover:gap-4 shadow-xl ${styles.btn}`}
+                      className={`w-full h-11 rounded-xl font-black text-[11px] uppercase tracking-wider transition-all active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer ${styles.btn}`}
                     >
-                      Enroll Now <ChevronRight className="w-4 h-4" />
+                      <span>Enroll Now</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
                     </Button>
                   </Link>
                 </div>
@@ -195,6 +338,16 @@ export function CoursesSection() {
             );
           })}
         </div>
+
+        {/* Bottom Explorer Link */}
+        <div className="mt-14 text-center">
+          <Link href="/courses">
+            <Button variant="outline" className="border-slate-300 text-slate-800 hover:bg-[#0b3272] hover:text-white rounded-2xl px-8 h-12 text-xs font-black uppercase tracking-wider transition-all shadow-sm">
+              View Complete Syllabus & Batch Schedules
+            </Button>
+          </Link>
+        </div>
+
       </div>
     </section>
   );

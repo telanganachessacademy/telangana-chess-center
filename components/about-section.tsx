@@ -68,7 +68,7 @@ export function AboutSection() {
               <span>Global Excellence</span>
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-tight tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">
               Reimagining <br/>
               <span className="text-emerald-600">Chess Education</span>
             </h2>
@@ -205,7 +205,7 @@ export function AboutSection() {
 
         {/* --- PART 3: REFINED FEATURES GRID --- */}
         <div className="text-center mb-20 space-y-4">
-          <h2 className="text-4xl font-black text-slate-900 tracking-tight">Why the Academy?</h2>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">Why the Academy?</h2>
           <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">Blending championship tradition with modern technology.</p>
         </div>
 

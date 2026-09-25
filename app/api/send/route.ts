@@ -8,11 +8,11 @@ export async function POST(req: Request) {
     const { name, email, phone, subject, inquiryType, message } = await req.json();
 
     const data = await resend.emails.send({
-      from: 'Academy Contact <onboarding@resend.dev>', // Use your verified domain once set up
-      to: ['telanganachessacademy@gmail.com'], // Where you want to receive emails
+      from: 'Telangana Chess Centre <onboarding@resend.dev>',
+      to: ['telanganachesscentre@gmail.com'],
       subject: `New Inquiry: ${inquiryType} - ${name}`,
       html: `
-        <h1>New Contact Form Submission</h1>
+        <h1>New Telangana Chess Centre Inquiry</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>

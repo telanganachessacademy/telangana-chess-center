@@ -9,10 +9,27 @@ import { Footer } from "@/components/footer"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Telanagana chess academy - Professional Chess Training",
+  title: "Telangana Chess Centre - Professional Chess Training & Championships",
   description:
-    "Professional chess training academy with FIDE rated coaches. Learn chess from beginners to advanced levels with online and offline classes.",
-  generator: "v0.app",
+    "Telangana Chess Centre (TCC) offers premier FIDE-certified chess coaching, tournaments, grandmaster masterclasses, and online classes across Telangana and globally. Contact: telanganachesscentre@gmail.com | +91 9864646481",
+  generator: "Telangana Chess Centre",
+  keywords: [
+    "Telangana Chess Centre",
+    "Telangana Chess",
+    "Chess Academy Hyderabad",
+    "FIDE Rated Chess Coaches",
+    "Online Chess Coaching",
+    "Chess Tournaments Telangana",
+    "Chess Training Hyderabad",
+    "Grandmaster Masterclass"
+  ],
+  authors: [{ name: "Telangana Chess Centre" }],
+  openGraph: {
+    title: "Telangana Chess Centre - Premier Chess Institution",
+    description: "FIDE Certified Chess Training, Grandmaster Faculty & Tournaments in Telangana.",
+    images: ["/logo.png"],
+    siteName: "Telangana Chess Centre",
+  },
 }
 
 export default function RootLayout({
@@ -23,26 +40,40 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <script type="application/ld+json">
-        {`
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Bharat Chess Academy",
-          "url": "https://bharatchessacademy.com",
-          "sameAs": [
-            "https://thegeniuschessacademy.com"
-          ]
-        }
-        `}
-        </script>
-        <meta name="relatedAcademy" content="https://thegeniuschessacademy.com" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsOrganization",
+              name: "Telangana Chess Centre",
+              alternateName: "Telangana Chess Academy",
+              url: "https://www.telanganachesscentre.com",
+              logo: "https://www.telanganachesscentre.com/logo.png",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-9864646481",
+                contactType: "Customer Support",
+                email: "telanganachesscentre@gmail.com",
+                areaServed: "IN",
+                availableLanguage: ["English", "Telugu", "Hindi"],
+              },
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Kothapet",
+                addressLocality: "Hyderabad",
+                addressRegion: "Telangana",
+                postalCode: "500035",
+                addressCountry: "IN",
+              },
+            }),
+          }}
+        />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased bg-slate-50 text-slate-900`}>
         <Header />
         <Suspense fallback={null}>{children}</Suspense>
         <Footer />

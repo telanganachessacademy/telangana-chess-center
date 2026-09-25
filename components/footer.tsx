@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Mail,
@@ -13,7 +14,9 @@ import {
   ChevronRight,
   Globe,
   ShieldCheck,
-  Award
+  Award,
+  Crown,
+  Sparkles
 } from "lucide-react";
 
 export function Footer() {
@@ -29,88 +32,91 @@ export function Footer() {
     { name: "About Us", href: "/about" },
     { name: "Our Courses", href: "/courses" },
     { name: "Meet Coaches", href: "/coaches" },
-    { name: "Latest Events", href: "/events" },
-    { name: "Contact", href: "/contact" },
+    { name: "Tournament Events", href: "/events" },
+    { name: "Photo Gallery", href: "/gallery" },
+    { name: "Chess Blogs", href: "/blogs" },
+    { name: "Contact & Admissions", href: "/contact" },
   ];
 
   const networkLinks = [
-    { name: "Telangana Chess Academy", href: "https://telanganachessacademy.com/" },
-    { name: "Telangana Chess School", href: "https://www.telanganachessschool.com" },
+    { name: "Telangana Chess Centre", href: "/" },
+    { name: "Live Student Classroom", href: "https://app.chesslang.com/app" },
     { name: "Bharat Chess Academy", href: "https://www.bharatchessacademy.com" },
-    { name: "Bharat Chess Institute", href: "http://www.bharatchessinstitute.com" },
     { name: "Hyderabad Chess Institute", href: "https://www.hyderabadchessinstitute.com" },
   ];
 
   return (
-    <footer className="bg-white text-slate-600 font-sans relative overflow-hidden border-t border-slate-100">
+    <footer className="bg-slate-950 text-slate-300 font-sans relative overflow-hidden border-t border-slate-900">
       
-      {/* --- Aesthetic Background --- */}
+      {/* Decorative Brand Color Top Bar (Royal Blue + Emerald Green + Gold) */}
+      <div className="h-1.5 w-full bg-gradient-to-r from-[#0b3272] via-amber-400 to-[#0e8743]"></div>
+
+      {/* Aesthetic Background Glows */}
       <div className="absolute inset-0 pointer-events-none">
-         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-[100px] opacity-60" />
-         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[100px] opacity-60" />
+        <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-emerald-900/10 rounded-full blur-[120px]" />
       </div>
 
-      {/* Institutional Top Accent */}
-      <div className="h-1.5 w-full bg-emerald-600"></div>
-
-      <div className="container mx-auto max-w-7xl px-6 pt-20 pb-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 pt-18 pb-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10">
           
           {/* Column 1: Brand Info */}
-          <div className="lg:col-span-4 space-y-8">
-            <div className="flex items-center gap-4">
-              {/* Refined Logo Box */}
-              <div className="w-14 h-14 bg-white border border-slate-100 rounded-2xl flex items-center justify-center shadow-xl shadow-slate-200/50">
-                <span className="text-emerald-600 font-black text-2xl">♔</span>
+          <div className="lg:col-span-4 space-y-6">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white border-2 border-amber-400 p-0.5 shadow-lg group-hover:scale-105 transition-transform shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Telangana Chess Centre"
+                  width={48}
+                  height={48}
+                  className="object-contain w-full h-full rounded-full"
+                />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-black text-xl text-slate-900 tracking-tighter whitespace-nowrap">
-                  Telangana Chess <span className="text-emerald-600">Academy</span>
-                </h3>
-                <div className="flex items-center gap-2 mt-1">
-                   <div className="flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
-                      <Award className="w-3 h-3 text-emerald-600" />
-                      <span className="text-[9px] text-emerald-700 font-black uppercase tracking-widest">FIDE Certified</span>
-                   </div>
-                </div>
+                <span className="font-black text-xl text-white tracking-tight leading-tight">
+                  TELANGANA <span className="text-amber-400">CHESS</span> <span className="text-emerald-400">CENTRE</span>
+                </span>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
+                  FIDE Certified Academy
+                </span>
               </div>
-            </div>
+            </Link>
             
-            <p className="text-slate-500 font-medium text-sm leading-relaxed max-w-sm">
-              The premier institution for strategic excellence in Telangana. We forge champions by blending traditional wisdom with modern engine analysis.
+            <p className="text-slate-400 font-medium text-sm leading-relaxed max-w-sm">
+              The premier institution for strategic excellence and Grandmaster preparation in Telangana. We empower minds by blending classical theory with modern engine tactics.
             </p>
 
-            {/* Social Buttons - Varied Colors */}
-            <div className="flex gap-3">
+            {/* Social Buttons */}
+            <div className="flex gap-2.5 pt-2">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-11 h-11 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center transition-all duration-300 group ${social.bgColor} hover:shadow-lg hover:-translate-y-1`}
+                  className={`w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center transition-all duration-300 group ${social.bgColor} hover:text-white hover:-translate-y-1`}
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+                  <social.icon className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2">
-            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-               Explore
-               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
+          <div className="lg:col-span-3">
+            <h4 className="font-black text-white text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+              <span>Explore Portal</span>
+              <span className="h-0.5 w-6 bg-amber-400 rounded-full" />
             </h4>
-            <ul className="space-y-4">
+            <ul className="grid grid-cols-2 gap-y-3 gap-x-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="group flex items-center text-sm font-bold text-slate-500 hover:text-emerald-600 transition-all"
+                    className="group flex items-center text-xs sm:text-sm font-semibold text-slate-400 hover:text-amber-400 transition-colors"
                   >
-                    <ChevronRight className="w-4 h-4 mr-2 text-slate-200 group-hover:text-emerald-500 transition-all group-hover:translate-x-1" />
+                    <ChevronRight className="w-3 h-3 mr-1 text-slate-600 group-hover:text-amber-400 transition-transform group-hover:translate-x-0.5" />
                     {link.name}
                   </Link>
                 </li>
@@ -119,89 +125,70 @@ export function Footer() {
           </div>
 
           {/* Column 3: Contact Info */}
-          <div className="lg:col-span-3">
-            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-               Connect
-               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
+          <div className="lg:col-span-5 space-y-4">
+            <h4 className="font-black text-white text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+              <span>Official Contacts</span>
+              <span className="h-0.5 w-6 bg-emerald-400 rounded-full" />
             </h4>
-            <div className="space-y-4">
-              <a href="tel:+919864646481" className="flex items-center gap-4 group p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-emerald-100 hover:bg-emerald-50/30 transition-all">
-                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Phone className="w-4 h-4 text-emerald-600" />
+            
+            <div className="grid sm:grid-cols-2 gap-3.5">
+              <a 
+                href="tel:+919864646481" 
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+              >
+                <div className="w-10 h-10 bg-emerald-950/80 border border-emerald-800/60 rounded-xl flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Phone className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Call</span>
-                  <span className="text-sm font-bold text-slate-700">+91 9864646481</span>
-                </div>
-              </a>
-
-              <a href="mailto:telanganachessacademy@gmail.com" className="flex items-center gap-4 group p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-blue-100 hover:bg-blue-50/30 transition-all">
-                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mail className="w-4 h-4 text-blue-600" />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Email</span>
-                  <span className="text-sm font-bold text-slate-700 truncate">telanganachessacademy@gmail.com</span>
+                <div className="min-w-0">
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-widest block">Direct Call & WhatsApp</span>
+                  <span className="text-xs sm:text-sm font-black text-white truncate block">+91 9864646481</span>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4">
-                <div className="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-orange-600" />
+              <a 
+                href="mailto:telanganachesscentre@gmail.com" 
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 transition-all group"
+              >
+                <div className="w-10 h-10 bg-blue-950/80 border border-blue-800/60 rounded-xl flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Mail className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Visit</span>
-                  <span className="text-sm font-bold text-slate-700">Hyderabad, Telangana</span>
+                <div className="min-w-0">
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-widest block">Official Email</span>
+                  <span className="text-xs sm:text-sm font-black text-white truncate block">telanganachesscentre@gmail.com</span>
                 </div>
-              </div>
+              </a>
             </div>
-          </div>
 
-          {/* Column 4: Our Network */}
-          <div className="lg:col-span-3">
-            <h4 className="font-black text-slate-900 text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-               Network
-               <span className="h-1 w-8 bg-emerald-600 rounded-full" />
-            </h4>
-            <div className="grid grid-cols-1 gap-3">
-              {networkLinks.map((site, index) => (
-                <a
-                  key={index}
-                  href={site.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all group shadow-sm hover:shadow-md"
-                >
-                  <div className="flex items-center gap-3">
-                    <Globe className="w-4 h-4 text-slate-300 group-hover:text-emerald-600" />
-                    <span className="text-xs font-bold text-slate-600 group-hover:text-slate-900 transition-colors">
-                      {site.name}
-                    </span>
-                  </div>
-                  <ExternalLink className="w-3 h-3 text-slate-300 group-hover:text-emerald-600" />
-                </a>
-              ))}
+            <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800">
+              <div className="w-10 h-10 bg-amber-950/80 border border-amber-800/60 rounded-xl flex items-center justify-center text-amber-400 shrink-0">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-widest block">Academy Headquarter</span>
+                <span className="text-xs sm:text-sm font-bold text-white block">Kothapet, Hyderabad, Telangana 500035</span>
+              </div>
             </div>
           </div>
 
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-slate-100 mt-20 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-slate-400 text-xs font-bold">
-              © {new Date().getFullYear()} <span className="text-slate-900">Telangana Chess Academy</span>. Empowering strategic minds.
+        <div className="border-t border-slate-900 mt-16 pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <p className="text-slate-500 text-xs font-semibold">
+              © {new Date().getFullYear()} <span className="text-white font-bold">Telangana Chess Centre</span>. All rights reserved. Empowering strategic minds.
             </p>
-            <div className="flex items-center gap-8">
-              <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-emerald-600 transition-colors">
-                Privacy
+            
+            <div className="flex items-center gap-6">
+              <Link href="/terms" className="text-xs font-semibold text-slate-500 hover:text-white transition-colors">
+                Terms & Conditions
               </Link>
-              <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-emerald-600 transition-colors">
-                Terms
+              <Link href="/contact" className="text-xs font-semibold text-slate-500 hover:text-white transition-colors">
+                Support
               </Link>
-              <div className="flex items-center gap-2 px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Secure Portal</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-900 rounded-lg border border-slate-800 text-[10px] font-bold text-emerald-400">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Verified Portal</span>
               </div>
             </div>
           </div>
