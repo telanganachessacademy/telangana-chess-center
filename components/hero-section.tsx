@@ -38,15 +38,15 @@ export function HeroSection() {
       bg: "from-orange-500 to-amber-600",
     },
     {
-      href: "https://meet.google.com/mwk-zhcq-fts",
+      href: "https://meet.google.com/azx-brjh-ccv",
       icon: Sparkles,
-      label: "BCA MEETING",
+      label: "HCI MEETING",
       bg: "from-emerald-600 to-green-700",
     },
     {
-      href: "https://meet.google.com/azx-brjh-ccv",
+      href: "https://meet.google.com/mwk-zhcq-fts",
       icon: Bell,
-      label: "HCI MEETING",
+      label: "BCA MEETING",
       bg: "from-rose-500 to-pink-600",
     },
     {
